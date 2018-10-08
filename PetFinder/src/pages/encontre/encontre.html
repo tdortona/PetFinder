@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>¡Encontre un perro!</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content>
+          <button ion-button color="danger" icon-rigth block (click)="takePicture();">
+            Sacar Foto!
+            <ion-icon name="camera"></ion-icon>
+          </button>
+          <img (show)="base64Image !== ''" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)" />
+        </ion-card-content>
+      </ion-card>
+</ion-content>

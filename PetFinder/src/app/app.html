@@ -1,0 +1,51 @@
+<ion-menu [content]="content">
+
+  <ion-header>
+      <ion-toolbar class="user-profile">
+
+          <ion-grid>
+            <ion-row>
+              <ion-col col-4>
+                  <div class="user-avatar">
+                    <img src="../assets/imgs/avatar.jpeg">
+                  </div>
+              </ion-col>
+              <ion-col padding-top col-8>
+                <h2 ion-text class="no-margin bold text-white">
+                  Tomás D'Ortona
+                </h2>
+                <span ion-text color="light">Customer</span>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row no-padding class="other-data">
+              <ion-col no-padding class="column">
+                <button ion-button icon-left small full color="light" menuClose disabled>
+                  <ion-icon name="contact"></ion-icon>
+                  Edit Profile
+                </button>
+              </ion-col>
+              <ion-col no-padding class="column">
+                <button ion-button icon-left small full color="light" menuClose> <!-- (click)="logout()" -->
+                  <ion-icon name="log-out"></ion-icon>
+                  Log Out
+                </button>
+              </ion-col>
+            </ion-row>
+    
+          </ion-grid>
+    
+        </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list class="user-list">
+      <button ion-item menuClose class="text-1x" *ngFor="let p of pages" (click)="openPage(p)">
+          <span ion-text color="primary">{{p.title}}</span>
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

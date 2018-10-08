@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>PetFinder</ion-title>
+    <ion-buttons end>
+      <button ion-button tappable> <!-- (click)="presentNotifications($event)" -->
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable> <!-- (click)="goToAccount()" -->
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <h3>¡Bienvenidos a PetFinder!</h3>
+
+  <p>
+    This starter project is our way of helping you get a functional app running in record time.
+  </p>
+  <p>
+    Follow along on the tutorial section of the Ionic docs!
+  </p>
+  <p>
+    <button ion-button color="primary" menuToggle>Toggle Menu</button>
+  </p>
+  <p>
+    <button ion-button color="primary" (click)="goToTitan();">Go to Titan</button>
+  </p>
+
+</ion-content>

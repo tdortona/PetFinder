@@ -1,0 +1,7 @@
+{
+  "name": "PetFinder",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

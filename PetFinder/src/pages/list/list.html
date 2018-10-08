@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Perros perdidos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="trips detail-bg">
+  <div class="trip card" tappable margin-bottom> <!-- (click)="viewDetail(trip.id)" -->
+    <div class="background border-bottom" [ngStyle]="{'background-image': 'url(assets/imgs/trip/trip_1.jpg)'}">
+      <div class="background-filter rlt">
+        <div class="align-bottom" padding-left padding-right>
+          <h6 class="pull-left text-white" ion-text>Copacabana</h6>
+          <h6 class="pull-right text-white" ion-text>$90.00</h6>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-sm primary-bg">
+      <ion-icon name="time" class="text-white"></ion-icon>
+      <span ion-text class="text-white">12h</span>
+      <span class="pull-right" ion-text color="light"><strong>per adult</strong> (childs has <span ion-text  class="text-green bold">50% OFF</span>)</span>
+    </div>
+  </div>
+  <div class="trip card" tappable margin-bottom> <!-- (click)="viewDetail(trip.id)" -->
+    <div class="background border-bottom" [ngStyle]="{'background-image': 'url(assets/imgs/trip/trip_1.jpg)'}">
+      <div class="background-filter rlt">
+        <div class="align-bottom" padding-left padding-right>
+          <h6 class="pull-left text-white" ion-text>Copacabana</h6>
+          <h6 class="pull-right text-white" ion-text>$90.00</h6>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <div class="padding-sm primary-bg">
+      <ion-icon name="time" class="text-white"></ion-icon>
+      <span ion-text class="text-white">12h</span>
+      <span class="pull-right" ion-text color="light"><strong>per adult</strong> (childs has <span ion-text  class="text-green bold">50% OFF</span>)</span>
+    </div>
+  </div>
+</ion-content>
