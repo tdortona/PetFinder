@@ -1,0 +1,38 @@
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>PetFinder</strong>
+      </h2>
+    </div>
+
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <button ion-button icon-only block class="btn-facebook" (click)="login();">Iniciar sesión con Facebook 
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <button ion-button icon-only block class="btn-twitter" (click)="login();">Iniciar sesión con Twitter 
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <button ion-button icon-only block class="btn-gplus" (click)="login();">Iniciar sesión con Google 
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

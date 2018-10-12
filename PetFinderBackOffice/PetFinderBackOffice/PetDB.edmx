@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PetFinderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ImagenMascota">
+          <Key>
+            <PropertyRef Name="IdImagen" />
+          </Key>
+          <Property Name="IdImagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMascota" Type="int" />
+          <Property Name="Localizacion" Type="varchar(max)" />
+          <Property Name="ImagenPath" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mascota">
+          <Key>
+            <PropertyRef Name="IdMascota" />
+          </Key>
+          <Property Name="IdMascota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdRaza" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Perdida" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Raza">
+          <Key>
+            <PropertyRef Name="IdRaza" />
+          </Key>
+          <Property Name="IdRaza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Avatar" Type="varchar(max)" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__ImagenMas__IdMas__2B3F6F97">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="0..1" />
+          <End Role="ImagenMascota" Type="Self.ImagenMascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="IdMascota" />
+            </Principal>
+            <Dependent Role="ImagenMascota">
+              <PropertyRef Name="IdMascota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota__IdRaza__286302EC">
+          <End Role="Raza" Type="Self.Raza" Multiplicity="1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raza">
+              <PropertyRef Name="IdRaza" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="IdRaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota__IdUsuar__276EDEB3">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetFinderDBModelStoreContainer">
+          <EntitySet Name="ImagenMascota" EntityType="Self.ImagenMascota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mascota" EntityType="Self.Mascota" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Raza" EntityType="Self.Raza" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ImagenMas__IdMas__2B3F6F97" Association="Self.FK__ImagenMas__IdMas__2B3F6F97">
+            <End Role="Mascota" EntitySet="Mascota" />
+            <End Role="ImagenMascota" EntitySet="ImagenMascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota__IdRaza__286302EC" Association="Self.FK__Mascota__IdRaza__286302EC">
+            <End Role="Raza" EntitySet="Raza" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota__IdUsuar__276EDEB3" Association="Self.FK__Mascota__IdUsuar__276EDEB3">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PetFinderDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ImagenMascota">
+          <Key>
+            <PropertyRef Name="IdImagen" />
+          </Key>
+          <Property Name="IdImagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMascota" Type="Int32" />
+          <Property Name="Localizacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Mascota" Relationship="Self.FK__ImagenMas__IdMas__2B3F6F97" FromRole="ImagenMascota" ToRole="Mascota" />
+        </EntityType>
+        <EntityType Name="Mascota">
+          <Key>
+            <PropertyRef Name="IdMascota" />
+          </Key>
+          <Property Name="IdMascota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdRaza" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Perdida" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ImagenMascota" Relationship="Self.FK__ImagenMas__IdMas__2B3F6F97" FromRole="Mascota" ToRole="ImagenMascota" />
+          <NavigationProperty Name="Raza" Relationship="Self.FK__Mascota__IdRaza__286302EC" FromRole="Mascota" ToRole="Raza" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Mascota__IdUsuar__276EDEB3" FromRole="Mascota" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Raza">
+          <Key>
+            <PropertyRef Name="IdRaza" />
+          </Key>
+          <Property Name="IdRaza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Mascota" Relationship="Self.FK__Mascota__IdRaza__286302EC" FromRole="Raza" ToRole="Mascota" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Mascota" Relationship="Self.FK__Mascota__IdUsuar__276EDEB3" FromRole="Usuario" ToRole="Mascota" />
+        </EntityType>
+        <Association Name="FK__ImagenMas__IdMas__2B3F6F97">
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="0..1" />
+          <End Role="ImagenMascota" Type="Self.ImagenMascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mascota">
+              <PropertyRef Name="IdMascota" />
+            </Principal>
+            <Dependent Role="ImagenMascota">
+              <PropertyRef Name="IdMascota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota__IdRaza__286302EC">
+          <End Role="Raza" Type="Self.Raza" Multiplicity="1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raza">
+              <PropertyRef Name="IdRaza" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="IdRaza" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Mascota__IdUsuar__276EDEB3">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Mascota" Type="Self.Mascota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Mascota">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PetFinderDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ImagenMascota" EntityType="Self.ImagenMascota" />
+          <EntitySet Name="Mascota" EntityType="Self.Mascota" />
+          <EntitySet Name="Raza" EntityType="Self.Raza" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__ImagenMas__IdMas__2B3F6F97" Association="Self.FK__ImagenMas__IdMas__2B3F6F97">
+            <End Role="Mascota" EntitySet="Mascota" />
+            <End Role="ImagenMascota" EntitySet="ImagenMascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota__IdRaza__286302EC" Association="Self.FK__Mascota__IdRaza__286302EC">
+            <End Role="Raza" EntitySet="Raza" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Mascota__IdUsuar__276EDEB3" Association="Self.FK__Mascota__IdUsuar__276EDEB3">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Mascota" EntitySet="Mascota" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PetFinderDBModelStoreContainer" CdmEntityContainer="PetFinderDBEntities">
+          <EntitySetMapping Name="ImagenMascota">
+            <EntityTypeMapping TypeName="PetFinderDBModel.ImagenMascota">
+              <MappingFragment StoreEntitySet="ImagenMascota">
+                <ScalarProperty Name="IdImagen" ColumnName="IdImagen" />
+                <ScalarProperty Name="IdMascota" ColumnName="IdMascota" />
+                <ScalarProperty Name="Localizacion" ColumnName="Localizacion" />
+                <ScalarProperty Name="ImagenPath" ColumnName="ImagenPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mascota">
+            <EntityTypeMapping TypeName="PetFinderDBModel.Mascota">
+              <MappingFragment StoreEntitySet="Mascota">
+                <ScalarProperty Name="IdMascota" ColumnName="IdMascota" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdRaza" ColumnName="IdRaza" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Perdida" ColumnName="Perdida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Raza">
+            <EntityTypeMapping TypeName="PetFinderDBModel.Raza">
+              <MappingFragment StoreEntitySet="Raza">
+                <ScalarProperty Name="IdRaza" ColumnName="IdRaza" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="PetFinderDBModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

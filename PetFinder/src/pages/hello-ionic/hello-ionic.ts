@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { DomSanitizer } from '@angular/platform-browser';
-import { TitanPage } from '../titan/titan';
 
 @Component({
   selector: 'page-hello-ionic',
@@ -32,9 +31,5 @@ export class HelloIonicPage {
     }, (err) => {
      // Handle error
     });
-  }
-
-  goToTitan() {
-    this.navCtrl.push(TitanPage);
   }
 }
