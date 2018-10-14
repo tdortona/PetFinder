@@ -194,10 +194,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ImagenMascota.cs">
+      <DependentUpon>PetDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mascota.cs">
+      <DependentUpon>PetDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="PetDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PetDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PetDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PetDB.tt</DependentUpon>
     </Compile>
     <Compile Include="PetDB.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -205,6 +216,12 @@
       <DependentUpon>PetDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Raza.cs">
+      <DependentUpon>PetDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>PetDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -218,6 +235,12 @@
     <Content Include="PetDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PetDB.Context.cs</LastGenOutput>
+      <DependentUpon>PetDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="PetDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PetDB.edmx</DependentUpon>
+      <LastGenOutput>PetDB.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -247,9 +270,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PetDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="PetDB.edmx.diagram">
+    <Content Include="PetDB.edmx.diagram">
       <DependentUpon>PetDB.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
