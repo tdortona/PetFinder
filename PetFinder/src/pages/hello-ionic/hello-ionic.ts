@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'page-hello-ionic',
@@ -12,7 +13,8 @@ export class HelloIonicPage {
   constructor(private camera: Camera,
               public domSanitizer: DomSanitizer,
               public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public http: HttpClient) {
 
   }
 
@@ -31,5 +33,14 @@ export class HelloIonicPage {
     }, (err) => {
      // Handle error
     });
+  }
+
+  pegarleAWatson() {
+    let url = 'http://localhost:62605/';
+
+    this.http.get(url + 'api/values', )
+             .subscribe((result) => {
+               console.log("Le pegamos a watson");
+             });
   }
 }
