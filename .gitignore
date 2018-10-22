@@ -17,3 +17,4 @@ Debug
 /PetFinderBackOffice/PetFinderBackOffice/bin/*.pdb
 /PetFinderBackOffice/PetFinderBackOffice/obj/Debug/*.dll
 /PetFinderBackOffice/PetFinderBackOffice/obj/Debug/*.pdb
+/PetFinder/node_modules
