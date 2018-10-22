@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using IBM.WatsonDeveloperCloud.Util;
 using IBM.WatsonDeveloperCloud.VisualRecognition.v3;
+using Newtonsoft.Json.Linq;
 
 namespace PetFinderBackOffice.Controllers
 {
@@ -17,7 +18,7 @@ namespace PetFinderBackOffice.Controllers
         private const string endpoint = "https://gateway.watsonplatform.net/visual-recognition/api";
 
         // GET api/values
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
             List<string> classifierIds = new List<string>();
             classifierIds.Add("DogsBreed_2053415849");
@@ -34,19 +35,12 @@ namespace PetFinderBackOffice.Controllers
             };
 
             visualRecognition.SetCredential(iamAssistantTokenOptions);
-            //visualRecognition.GetClassifier("DogsBreed_2053415849");
             
             var result = visualRecognition.Classify(img, classifierIds: classifierIds);
 
-            //if (result != null)
-            //{
-            //    foreach (ClassifyTopLevelSingle image in result.Images)
-            //        foreach (ClassifyPerClassifier classifier in image.Classifiers)
-            //            foreach (ClassResult classResult in classifier.Classes)
-            //                Console.WriteLine(string.Format("class: {0} | score: {1} | type hierarchy: {2}", classResult._Class, classResult.Score, classResult.TypeHierarchy));
-            //}
+            JObject jsonResult = JObject.Parse(result.ResponseJson);
 
-            return new string[] { "value1", "value2" };
+            return this.Ok(jsonResult);
         }
 
         // GET api/values/5

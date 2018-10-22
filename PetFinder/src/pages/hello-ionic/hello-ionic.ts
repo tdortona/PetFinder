@@ -40,7 +40,13 @@ export class HelloIonicPage {
 
     this.http.get(url + 'api/values', )
              .subscribe((result) => {
+               debugger;
+               console.log(result);
                console.log("Le pegamos a watson");
+             },
+             (error) =>{
+               debugger;
+               console.error(error);
              });
   }
 }
