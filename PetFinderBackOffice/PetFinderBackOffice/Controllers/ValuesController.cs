@@ -40,7 +40,7 @@ namespace PetFinderBackOffice.Controllers
 
             JObject jsonResult = JObject.Parse(result.ResponseJson);
 
-            return this.Ok(jsonResult);
+            return this.Ok(result);
         }
 
         // GET api/values/5
