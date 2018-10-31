@@ -173,7 +173,7 @@ section h2 {
 }
 
 header.masthead {
-  padding-top: calc(6rem + 72px);
+  padding-top: calc(3rem + 72px);
   padding-bottom: 6rem;
   background: url(../img/fondo.jpg) no-repeat center;
   background-size: cover;
