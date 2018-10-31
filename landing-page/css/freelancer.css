@@ -175,9 +175,6 @@ section h2 {
 header.masthead {
   padding-top: calc(3rem + 72px);
   padding-bottom: 6rem;
-  background: url(../img/fondo.jpg) no-repeat center;
-  background-size: cover;
-  height: 100vh;
 }
 
 header.masthead h1 {
@@ -192,8 +189,8 @@ header.masthead h2 {
 
 @media (min-width: 992px) {
   header.masthead {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    padding-top: calc(3rem + 72px);
+    padding-bottom: 9rem;
   }
   header.masthead h1 {
     font-size: 4.75em;
