@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class ServicioProvider {
 
   private URL_DEV: string  = "http://localhost:62605";
-  private URL_PROD: string  = "";
+  // private URL_PROD: string  = "";
 
   constructor(public http: HttpClient) {
     

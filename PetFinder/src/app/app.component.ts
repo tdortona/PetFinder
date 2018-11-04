@@ -9,6 +9,9 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Storage } from '@ionic/storage';
+import { Facebook } from '@ionic-native/facebook';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 
 @Component({
@@ -20,12 +23,16 @@ export class MyApp {
   // make HelloIonicPage the root (or first) page
   rootPage = LoginPage;
   pages: Array<{title: string, component: any}>;
+  UserImg: string;
+  UserName: string;
 
   constructor(
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    private storage: Storage,
+    private fb: Facebook
   ) {
     this.initializeApp();
 
@@ -35,6 +42,14 @@ export class MyApp {
       { title: 'Lista de perros', component: ListPage },
       { title: 'Encontre un perro', component: EncontrePage }
     ];
+    
+    this.storage.get('UserImg').then((img) => {
+      this.UserImg = img;
+    });
+
+    this.storage.get('UserName').then((name) => {
+      this.UserName = name;
+    });
   }
 
   initializeApp() {
@@ -51,5 +66,17 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+  }
+
+  logout() {
+    debugger;
+    this.storage.set('UserImg', '');
+    this.storage.set('UserName', '');
+    console.log('deslogueado(?)');
+    this.nav.push(LoginPage);
+  }
+
+  editProfile() {
+    this.nav.push(EditProfilePage);
   }
 }

@@ -8,6 +8,7 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { ListPage } from '../pages/list/list';
 import { EncontrePage } from '../pages/encontre/encontre';
 import { LoginPage } from '../pages/login/login';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,6 +16,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from '@ionic-native/camera';
 import { HttpClientModule } from '@angular/common/http';
 import { ServicioProvider } from '../providers/servicio/servicio';
+import { Facebook } from '@ionic-native/facebook';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,14 @@ import { ServicioProvider } from '../providers/servicio/servicio';
     ItemDetailsPage,
     ListPage,
     EncontrePage,
-    LoginPage
+    LoginPage,
+    EditProfilePage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,12 +42,14 @@ import { ServicioProvider } from '../providers/servicio/servicio';
     ItemDetailsPage,
     ListPage,
     EncontrePage,
-    LoginPage
+    LoginPage,
+    EditProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     Camera,
+    Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServicioProvider
   ]

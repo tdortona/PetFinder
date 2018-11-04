@@ -41,6 +41,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+    "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+    "pluginId": "cordova-plugin-facebook4",
+    "clobbers": [
+      "facebookConnectPlugin"
+    ]
+  },
+  {
     "id": "cordova-plugin-ionic-keyboard.keyboard",
     "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
     "pluginId": "cordova-plugin-ionic-keyboard",
@@ -63,6 +71,14 @@ module.exports = [
     "clobbers": [
       "window.StatusBar"
     ]
+  },
+  {
+    "id": "cordova-sqlite-storage.SQLitePlugin",
+    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+    "pluginId": "cordova-sqlite-storage",
+    "clobbers": [
+      "SQLitePlugin"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -70,11 +86,13 @@ module.exports.metadata =
 {
   "cordova-plugin-camera": "4.0.3",
   "cordova-plugin-device": "2.0.2",
+  "cordova-plugin-facebook4": "3.1.0",
   "cordova-plugin-ionic-keyboard": "2.1.3",
   "cordova-plugin-ionic-webview": "1.2.1",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-statusbar": "2.4.2",
-  "cordova-plugin-whitelist": "1.3.3"
+  "cordova-plugin-whitelist": "1.3.3",
+  "cordova-sqlite-storage": "2.5.1"
 };
 // BOTTOM OF METADATA
 });
