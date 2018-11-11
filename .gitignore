@@ -598,3 +598,9 @@ PetFinder/.sourcemaps/main.js.map
 *.map
 PetFinder/www/build/main.js
 PetFinder/www/build/main.js
+PetFinder/www/assets/fonts/ionicons.scss
+PetFinder/www/assets/fonts/noto-sans.scss
+PetFinder/www/assets/fonts/roboto.scss
+PetFinder/www/build/main.css
+PetFinder/www/build/main.js
+PetFinder/www/build/main.js.map
