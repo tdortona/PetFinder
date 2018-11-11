@@ -12,7 +12,8 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ConfirmarFotoPage } from '../pages/confirmar-foto/confirmar-foto';
 import { MisMascotasPage} from '../pages/mis-mascotas/mis-mascotas';
 import { PerfilMascotaPage } from '../pages/perfil-mascota/perfil-mascota';
-
+import { FotosMascotaPage } from '../pages/fotos-mascota/fotos-mascota';
+ 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -33,7 +34,8 @@ import { IonicStorageModule } from '@ionic/storage';
     EditProfilePage,
     ConfirmarFotoPage,
     MisMascotasPage,
-    PerfilMascotaPage
+    PerfilMascotaPage,
+    FotosMascotaPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { IonicStorageModule } from '@ionic/storage';
     EditProfilePage,
     ConfirmarFotoPage,
     MisMascotasPage,
-    PerfilMascotaPage
+    PerfilMascotaPage,
+    FotosMascotaPage
   ],
   providers: [
     StatusBar,
