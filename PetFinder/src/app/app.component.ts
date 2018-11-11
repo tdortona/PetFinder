@@ -12,6 +12,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { FotosMascotaPage } from '../pages/fotos-mascota/fotos-mascota';
+import { MisMascotasPage } from '../pages/mis-mascotas/mis-mascotas';
 
 @Component({
   templateUrl: 'app.html'
@@ -37,8 +39,7 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Pet Finder', component: HelloIonicPage },
-      { title: 'Lista de perros', component: ListPage },
+      { title: 'Mis mascotas', component: MisMascotasPage },
       { title: 'Encontre un perro', component: EncontrePage }
     ];
     

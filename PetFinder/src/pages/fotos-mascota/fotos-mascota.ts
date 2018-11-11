@@ -13,12 +13,15 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'fotos-mascota.html',
 })
 export class FotosMascotaPage {
+  mascota: string;
+  fotos: string[] = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FotosMascotaPage');
+    this.mascota = navParams.get("nombre"),
+    this.fotos = [
+    'assets\\img\\fotos-'+this.mascota+'\\'+this.mascota+'-1.jpeg',
+    'assets\\img\\fotos-'+this.mascota+'\\'+this.mascota+'-2.jpeg'
+    ]
   }
-
 }
