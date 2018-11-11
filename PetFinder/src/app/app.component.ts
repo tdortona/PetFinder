@@ -40,11 +40,8 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Pet Finder', component: HelloIonicPage },
-      { title: 'Lista de perros', component: ListPage },
-      { title: 'Encontre un perro', component: EncontrePage },
-      { title: 'Fotos mascota', component: FotosMascotaPage },
-      { title: 'Mis mascotas', component: MisMascotasPage }
+      { title: 'Mis mascotas', component: MisMascotasPage },
+      { title: 'Encontre un perro', component: EncontrePage }
     ];
     
     this.storage.get('UserImg').then((img) => {

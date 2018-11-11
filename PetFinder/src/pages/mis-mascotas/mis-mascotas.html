@@ -22,7 +22,7 @@
         <ion-card-title>
         <h1>{{ item.Nombre }}</h1> 
         </ion-card-title>
-        <img src="{{ item.FotoPerfil }}" (click)='irAPerfil()' />
+        <img src="{{ item.FotoPerfil }}" (click)='irAPerfil(item.Nombre)' />
       </ion-card-content>
   </ion-card>
 

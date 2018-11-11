@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Perfil Mascota</ion-title>
+    <ion-title>Perfil {{ Nombre }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,12 +17,12 @@
   <ion-grid>
     <div id="imagen-perfil" class="row">
       <div class="col">
-        <h1>Titan</h1>
-        <span>Raza: Caniche</span><br>
-        <span>Edad: 7 años</span>
+        <h1>{{ Nombre }}</h1>
+        <span>Raza: raza</span><br>
+        <span>Edad: edad</span>
       </div>
       <div class="col">
-        <ion-img src="assets/img/fotos-titan/titan-1.jpeg"></ion-img>
+        <img src="{{ FotoPerfil }}" />
       </div>
 
     </div>
@@ -36,7 +36,7 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <button ion-button icon block class="button" (click)="fotos();">Fotos
+          <button ion-button icon block class="button" (click)="IrAFotos(Nombre)">Fotos
             <ion-icon name="fotos"></ion-icon>
           </button>
         </ion-col>

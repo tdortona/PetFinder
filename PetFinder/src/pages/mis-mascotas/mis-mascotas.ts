@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { PerfilMascotaPage } from '../perfil-mascota/perfil-mascota';
 
 /**
  * Generated class for the MisMascotasPage page.
@@ -24,8 +25,10 @@ export class MisMascotasPage {
     console.log('ionViewDidLoad MisMascotasPage');
   }
 
-  irAPerfil(){
-    
+  irAPerfil(Nombre:string){
+    this.navCtrl.push(PerfilMascotaPage, {
+      nombre: Nombre
+    })
   }
 
 
