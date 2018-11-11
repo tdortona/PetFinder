@@ -10,6 +10,7 @@ import { EncontrePage } from '../pages/encontre/encontre';
 import { LoginPage } from '../pages/login/login';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { ConfirmarFotoPage } from '../pages/confirmar-foto/confirmar-foto';
+import { MisMascotasPage} from '../pages/mis-mascotas/mis-mascotas';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,7 +30,8 @@ import { IonicStorageModule } from '@ionic/storage';
     EncontrePage,
     LoginPage,
     EditProfilePage,
-    ConfirmarFotoPage
+    ConfirmarFotoPage,
+    MisMascotasPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { IonicStorageModule } from '@ionic/storage';
     EncontrePage,
     LoginPage,
     EditProfilePage,
-    ConfirmarFotoPage
+    ConfirmarFotoPage,
+    MisMascotasPage
   ],
   providers: [
     StatusBar,
