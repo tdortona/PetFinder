@@ -13,7 +13,6 @@ import { Storage } from '@ionic/storage';
 import { Facebook } from '@ionic-native/facebook';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
-
 @Component({
   templateUrl: 'app.html'
 })

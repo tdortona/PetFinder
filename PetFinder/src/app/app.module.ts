@@ -13,7 +13,7 @@ import { ConfirmarFotoPage } from '../pages/confirmar-foto/confirmar-foto';
 import { MisMascotasPage} from '../pages/mis-mascotas/mis-mascotas';
 import { PerfilMascotaPage } from '../pages/perfil-mascota/perfil-mascota';
 import { FotosMascotaPage } from '../pages/fotos-mascota/fotos-mascota';
- 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServicioProvider } from '../providers/servicio/servicio';
 import { Facebook } from '@ionic-native/facebook';
 import { IonicStorageModule } from '@ionic/storage';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,10 @@ import { IonicStorageModule } from '@ionic/storage';
     Camera,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServicioProvider
+    ServicioProvider,
+    FileTransfer,
+    FileTransferObject,
+    File
   ]
 })
 export class AppModule {}

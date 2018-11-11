@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
-
-/**
- * Generated class for the ConfirmarFotoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+// import { ServicioProvider } from '../../providers/servicio/servicio';
 
 @Component({
   selector: 'page-confirmar-foto',
@@ -18,16 +12,32 @@ export class ConfirmarFotoPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public domSanitizer: DomSanitizer) {
-    debugger;
+              public domSanitizer: DomSanitizer,
+              // private service: ServicioProvider,
+              public alertCtrl: AlertController) {
     this.base64Image = navParams.get('data');
   }
 
   confirmarFoto() {
-
+    // this.service.enviarFotoEncontradoAWatson(this.base64Image);
+    this.showAlert();
   }
 
   cancelarFoto() {
     this.navCtrl.pop();
+  }
+
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Gracias por colaborar!',
+      subTitle: 'Tu foto fue reportada en CanFind!',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.pop();
+        }
+      }]
+    });
+    alert.present();
   }
 }
