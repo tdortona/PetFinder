@@ -4,6 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { ServicioProvider } from '../../providers/servicio/servicio';
+import { PerfilMascotaPage } from '../perfil-mascota/perfil-mascota';
 
 @Component({
     selector: 'page-hello-ionic',
@@ -39,5 +40,9 @@ export class HelloIonicPage {
 
   pegarleAWatson() {
       this.service.pegarleAWatson();
+  }
+
+  verPerfilMascota(){
+    this.navCtrl.push(PerfilMascotaPage);
   }
 }
