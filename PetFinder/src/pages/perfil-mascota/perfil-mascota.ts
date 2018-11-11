@@ -20,7 +20,7 @@ export class PerfilMascotaPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.Nombre = navParams.get("nombre"),
-    this.FotoPerfil = '..\\..\\assets\\img\\fotos-'+this.Nombre+'\\'+this.Nombre+'-1.jpeg'
+    this.FotoPerfil = 'assets\\img\\fotos-'+this.Nombre+'\\'+this.Nombre+'-1.jpeg'
 
   }
 
