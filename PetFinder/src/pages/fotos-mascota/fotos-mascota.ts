@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the FotosMascotaPage page.
@@ -8,18 +8,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-fotos-mascota',
   templateUrl: 'fotos-mascota.html',
 })
 export class FotosMascotaPage {
+  mascota: string = 'Titan';
+  fotos: string[] = [
+    '..\\..\\assets\\img\\fotos-titan\\titan-1.jpeg',
+    '..\\..\\assets\\img\\fotos-titan\\titan-2.jpeg'
+  ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FotosMascotaPage');
   }
-
 }

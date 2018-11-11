@@ -13,12 +13,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'mis-mascotas.html',
 })
 export class MisMascotasPage {
-
+  mascota: any[] = [];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.mascota.push(
+      {Nombre: "titan", FotoPerfil: "..\\..\\assets\\img\\fotos-titan\\titan-1.jpeg"},
+      {Nombre: "francisco", FotoPerfil: "..\\..\\assets\\img\\fotos-francisco\\francisco-1.jpeg"})
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MisMascotasPage');
   }
+
+  irAPerfil(){
+    
+  }
+
 
 }

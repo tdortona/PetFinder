@@ -594,3 +594,7 @@ app/scripts/configuration.js
 PetFinder/www/build/main.js
 PetFinder/www/build/main.js
 PetFinder/www/build/main.js
+PetFinder/.sourcemaps/main.js.map
+*.map
+PetFinder/www/build/main.js
+PetFinder/www/build/main.js
