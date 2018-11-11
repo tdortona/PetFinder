@@ -8,7 +8,6 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-edit-profile',
   templateUrl: 'edit-profile.html',

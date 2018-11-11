@@ -29,4 +29,8 @@ export class ServicioProvider {
              });
   }
 
+  enviarFotoEncontradoAWatson() {
+    // this.http.post(this.URL_DEV + '/api/ImagenMascota/FotoEncontrado', )
+  }
+
 }

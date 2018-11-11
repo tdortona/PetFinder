@@ -574,3 +574,20 @@ PetFinder/platforms/android/.gradle/4.6/fileHashes/fileHashes.lock
 PetFinder/platforms/android/.gradle/4.6/taskHistory/taskHistory.bin
 PetFinder/platforms/android/.gradle/4.6/taskHistory/taskHistory.lock
 PetFinder/.sourcemaps/main.js.map
+
+node_modules
+www
+.idea
+.temp
+.sass-cache
+<%= appPath %>/bower_components
+coverage
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
+
+app/scripts/configuration.js
+/PetFinder/platforms

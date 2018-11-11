@@ -9,6 +9,7 @@ import { ListPage } from '../pages/list/list';
 import { EncontrePage } from '../pages/encontre/encontre';
 import { LoginPage } from '../pages/login/login';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ConfirmarFotoPage } from '../pages/confirmar-foto/confirmar-foto';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +28,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ListPage,
     EncontrePage,
     LoginPage,
-    EditProfilePage
+    EditProfilePage,
+    ConfirmarFotoPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ListPage,
     EncontrePage,
     LoginPage,
-    EditProfilePage
+    EditProfilePage,
+    ConfirmarFotoPage
   ],
   providers: [
     StatusBar,

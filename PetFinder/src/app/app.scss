@@ -539,4 +539,12 @@
   
   .fadeInDown {
     animation-name: fadeInDown;
-  }  
+  }
+
+  .confirm-button {
+    color: color($colors, confirm);
+  }
+
+  .cancel-button {
+    color: color($colors, cancel);
+  }
