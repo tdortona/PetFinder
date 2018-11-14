@@ -26,7 +26,6 @@ export class ServicioProvider {
   pegarleAWatson() {
     this.http.get(this.URL_DEV + '/api/values', )
              .subscribe((result) => {
-                debugger;
                 console.log(result);
                 console.log("Le pegamos a watson");
              },
@@ -36,7 +35,6 @@ export class ServicioProvider {
   }
 
   enviarFotoEncontradoAWatson(imageURI: string) {
-    debugger;
     // this.http.post(this.URL_DEV + '/api/ImagenMascota/FotoEncontrado' )
     let loader = this.loadingCtrl.create({
       content: "Uploading..."
