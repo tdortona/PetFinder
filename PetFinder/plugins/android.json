@@ -19,6 +19,10 @@
       "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
+    "cordova-plugin-googleplus": {
+      "PLAY_SERVICES_VERSION": "11.8.0",
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },

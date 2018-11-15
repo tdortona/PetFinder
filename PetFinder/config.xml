@@ -90,5 +90,9 @@
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="2.5.1" />
     <allow-navigation href="http://192.168.0.10:8100" sessionid="b4a9004d" />
+    <plugin name="cordova-plugin-googleplus" spec="5.3.2">
+        <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    </plugin>
     <engine name="android" spec="7.1.1" />
 </widget>

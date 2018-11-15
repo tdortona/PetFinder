@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServicioProvider } from '../providers/servicio/servicio';
 import { Facebook } from '@ionic-native/facebook';
 import { IonicStorageModule } from '@ionic/storage';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Camera,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServicioProvider
+    ServicioProvider,
+    GooglePlus
   ]
 })
 export class AppModule {}
