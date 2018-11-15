@@ -83,22 +83,18 @@
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
     <plugin name="cordova-plugin-ionic-webview" spec="1.2.1" />
+    <plugin name="cordova-sqlite-storage" spec="2.5.1" />
+    <allow-navigation href="http://192.168.0.10:8100" sessionid="b4a9004d" />
+    <plugin name="cordova-plugin-file" spec="6.0.1" />
+    <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
+    <plugin name="cordova-plugin-googleplus" spec="5.3.2">
+        <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
+        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
+    </plugin>
     <plugin name="cordova-plugin-facebook4" spec="3.1.0">
         <variable name="APP_ID" value="293256888192075" />
         <variable name="APP_NAME" value="IAshley" />
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.37.0" />
     </plugin>
-    <plugin name="cordova-sqlite-storage" spec="2.5.1" />
-    <allow-navigation href="http://192.168.0.10:8100" sessionid="b4a9004d" />
-<<<<<<< HEAD
-    <plugin name="cordova-plugin-googleplus" spec="5.3.2">
-        <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
-        <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
-    </plugin>
-    <engine name="android" spec="7.1.1" />
-=======
-    <plugin name="cordova-plugin-file" spec="6.0.1" />
-    <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
     <engine name="android" spec="7.1.2" />
->>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
 </widget>

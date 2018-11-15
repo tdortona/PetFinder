@@ -61,11 +61,7 @@
       "id": "cordova-plugin-facebook4@3.1.0"
     },
     "is_top_level": true,
-    "variables": {
-      "APP_ID": "293256888192075",
-      "APP_NAME": "IAshley",
-      "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0"
-    }
+    "variables": {}
   },
   "cordova-sqlite-storage": {
     "source": {
@@ -75,17 +71,14 @@
     "is_top_level": true,
     "variables": {}
   },
-<<<<<<< HEAD
   "cordova-plugin-googleplus": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-googleplus"
+      "id": "cordova-plugin-googleplus@5.3.2"
     },
     "is_top_level": true,
-    "variables": {
-      "REVERSED_CLIENT_ID": "myreversedclientid"
-    }
-=======
+    "variables": {}
+  },
   "cordova-plugin-file": {
     "source": {
       "type": "registry",
@@ -101,6 +94,5 @@
     },
     "is_top_level": true,
     "variables": {}
->>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
   }
 }

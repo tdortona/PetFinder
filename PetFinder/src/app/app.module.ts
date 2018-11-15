@@ -22,12 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServicioProvider } from '../providers/servicio/servicio';
 import { Facebook } from '@ionic-native/facebook';
 import { IonicStorageModule } from '@ionic/storage';
-<<<<<<< HEAD
 import { GooglePlus } from '@ionic-native/google-plus';
-=======
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
->>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
+
 
 @NgModule({
   declarations: [
@@ -70,13 +68,10 @@ import { File } from '@ionic-native/file';
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServicioProvider,
-<<<<<<< HEAD
-    GooglePlus
-=======
+    GooglePlus,
     FileTransfer,
     FileTransferObject,
     File
->>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
   ]
 })
 export class AppModule {}
