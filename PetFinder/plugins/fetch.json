@@ -75,6 +75,7 @@
     "is_top_level": true,
     "variables": {}
   },
+<<<<<<< HEAD
   "cordova-plugin-googleplus": {
     "source": {
       "type": "registry",
@@ -84,5 +85,22 @@
     "variables": {
       "REVERSED_CLIENT_ID": "myreversedclientid"
     }
+=======
+  "cordova-plugin-file": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-file@6.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-file-transfer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-file-transfer"
+    },
+    "is_top_level": true,
+    "variables": {}
+>>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
   }
 }

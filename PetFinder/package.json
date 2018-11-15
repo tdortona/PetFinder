@@ -23,15 +23,25 @@
     "@ionic-native/camera": "^4.15.0",
     "@ionic-native/core": "~4.15.0",
     "@ionic-native/facebook": "^4.16.0",
+<<<<<<< HEAD
     "@ionic-native/google-plus": "^4.17.0",
+=======
+    "@ionic-native/file": "^4.17.0",
+    "@ionic-native/file-transfer": "^4.17.0",
+>>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
     "@ionic-native/splash-screen": "~4.15.0",
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic/storage": "^2.2.0",
-    "cordova-android": "7.1.1",
+    "cordova-android": "7.1.2",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-facebook4": "3.1.0",
+<<<<<<< HEAD
     "cordova-plugin-googleplus": "5.3.2",
+=======
+    "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-file-transfer": "1.7.1",
+>>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
     "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "1.2.1",
     "cordova-plugin-splashscreen": "^5.0.2",
@@ -64,10 +74,15 @@
         "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0"
       },
       "cordova-sqlite-storage": {},
+<<<<<<< HEAD
       "cordova-plugin-googleplus": {
         "REVERSED_CLIENT_ID": "myreversedclientid",
         "PLAY_SERVICES_VERSION": "11.8.0"
       }
+=======
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {}
+>>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
     },
     "platforms": [
       "android"

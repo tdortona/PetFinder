@@ -14,7 +14,16 @@
             Sacar Foto!
             <ion-icon name="camera"></ion-icon>
           </button>
-          <img (show)="base64Image !== ''" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)" />
         </ion-card-content>
       </ion-card>
+      Tips:
+        <ul>
+          <h3>
+            <li>Sacale fotos de la siguiente manera:</li> <!-- nGfor -->
+          </h3>
+            <li>De frente</li>
+            <li>De costado</li>
+            <li>De arriba</li>
+            <li>De atrás</li>
+        </ul>
 </ion-content>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.petfinder.iashley" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>IAshley</name>
+    <name>CanFind</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -90,9 +90,15 @@
     </plugin>
     <plugin name="cordova-sqlite-storage" spec="2.5.1" />
     <allow-navigation href="http://192.168.0.10:8100" sessionid="b4a9004d" />
+<<<<<<< HEAD
     <plugin name="cordova-plugin-googleplus" spec="5.3.2">
         <variable name="REVERSED_CLIENT_ID" value="myreversedclientid" />
         <variable name="PLAY_SERVICES_VERSION" value="11.8.0" />
     </plugin>
     <engine name="android" spec="7.1.1" />
+=======
+    <plugin name="cordova-plugin-file" spec="6.0.1" />
+    <plugin name="cordova-plugin-file-transfer" spec="1.7.1" />
+    <engine name="android" spec="7.1.2" />
+>>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
 </widget>

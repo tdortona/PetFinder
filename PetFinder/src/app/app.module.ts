@@ -9,6 +9,10 @@ import { ListPage } from '../pages/list/list';
 import { EncontrePage } from '../pages/encontre/encontre';
 import { LoginPage } from '../pages/login/login';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { ConfirmarFotoPage } from '../pages/confirmar-foto/confirmar-foto';
+import { MisMascotasPage} from '../pages/mis-mascotas/mis-mascotas';
+import { PerfilMascotaPage } from '../pages/perfil-mascota/perfil-mascota';
+import { FotosMascotaPage } from '../pages/fotos-mascota/fotos-mascota';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -18,7 +22,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServicioProvider } from '../providers/servicio/servicio';
 import { Facebook } from '@ionic-native/facebook';
 import { IonicStorageModule } from '@ionic/storage';
+<<<<<<< HEAD
 import { GooglePlus } from '@ionic-native/google-plus';
+=======
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+>>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
 
 @NgModule({
   declarations: [
@@ -28,7 +37,11 @@ import { GooglePlus } from '@ionic-native/google-plus';
     ListPage,
     EncontrePage,
     LoginPage,
-    EditProfilePage
+    EditProfilePage,
+    ConfirmarFotoPage,
+    MisMascotasPage,
+    PerfilMascotaPage,
+    FotosMascotaPage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +57,11 @@ import { GooglePlus } from '@ionic-native/google-plus';
     ListPage,
     EncontrePage,
     LoginPage,
-    EditProfilePage
+    EditProfilePage,
+    ConfirmarFotoPage,
+    MisMascotasPage,
+    PerfilMascotaPage,
+    FotosMascotaPage
   ],
   providers: [
     StatusBar,
@@ -53,7 +70,13 @@ import { GooglePlus } from '@ionic-native/google-plus';
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServicioProvider,
+<<<<<<< HEAD
     GooglePlus
+=======
+    FileTransfer,
+    FileTransferObject,
+    File
+>>>>>>> 8a2a6e3971c704b305970381d36af353040e5318
   ]
 })
 export class AppModule {}

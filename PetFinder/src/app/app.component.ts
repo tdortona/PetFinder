@@ -2,17 +2,14 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
-import { HelloIonicPage } from '../pages/hello-ionic/hello-ionic';
-import { ListPage } from '../pages/list/list';
 import { EncontrePage } from '../pages/encontre/encontre';
 import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
-import { Facebook } from '@ionic-native/facebook';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
-
+import { MisMascotasPage } from '../pages/mis-mascotas/mis-mascotas';
 
 @Component({
   templateUrl: 'app.html'
@@ -31,15 +28,13 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private storage: Storage,
-    private fb: Facebook
+    private storage: Storage
   ) {
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Pet Finder', component: HelloIonicPage },
-      { title: 'Lista de perros', component: ListPage },
+      { title: 'Mis mascotas', component: MisMascotasPage },
       { title: 'Encontre un perro', component: EncontrePage }
     ];
     
@@ -69,7 +64,6 @@ export class MyApp {
   }
 
   logout() {
-    debugger;
     this.storage.set('UserImg', '');
     this.storage.set('UserName', '');
     console.log('deslogueado(?)');
