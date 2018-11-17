@@ -1,4 +1,4 @@
-export class UserFbData {
+export class UserData {
     public email: string;
 
     public first_name: string;

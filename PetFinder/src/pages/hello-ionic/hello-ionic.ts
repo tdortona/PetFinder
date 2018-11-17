@@ -21,6 +21,8 @@ export class HelloIonicPage {
 
   }
 
+  prueba: any;
+
   takePicture() {
     const options: CameraOptions = {
         quality: 100,
@@ -44,5 +46,9 @@ export class HelloIonicPage {
 
   verPerfilMascota(){
     this.navCtrl.push(PerfilMascotaPage);
+  }
+
+  hacerPrueba() {
+    this.service.prueba();
   }
 }
