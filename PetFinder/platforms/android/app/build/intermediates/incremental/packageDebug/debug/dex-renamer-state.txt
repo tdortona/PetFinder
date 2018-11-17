@@ -1,4 +1,0 @@
-#Thu Nov 15 20:42:46 ART 2018
-base.0=/var/www/html/PetFinder/PetFinder/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
-path.0=classes.dex
-renamed.0=classes.dex
