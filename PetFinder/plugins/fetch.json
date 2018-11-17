@@ -58,18 +58,23 @@
   "cordova-plugin-facebook4": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-facebook4"
+      "id": "cordova-plugin-facebook4@3.1.0"
     },
     "is_top_level": true,
-    "variables": {
-      "APP_ID": "293256888192075",
-      "APP_NAME": "IAshley"
-    }
+    "variables": {}
   },
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
-      "id": "cordova-sqlite-storage"
+      "id": "cordova-sqlite-storage@2.5.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-googleplus": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googleplus@5.3.2"
     },
     "is_top_level": true,
     "variables": {}
