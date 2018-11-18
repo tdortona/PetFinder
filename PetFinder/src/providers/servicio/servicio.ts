@@ -67,7 +67,7 @@ export class ServicioProvider {
   }
 
   public prueba() {
-    this.http.get(this.URL_DEV + '/api/Values/5')
+    this.http.get(this.URL_DEV + '/api/Usuario/1')
     .subscribe((result) => {
       debugger;
       console.log("Todo Bien");
