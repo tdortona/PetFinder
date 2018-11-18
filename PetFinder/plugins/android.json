@@ -7,14 +7,23 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-googleplus": {
-      "PLAY_SERVICES_VERSION": "11.8.0",
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
     "cordova-plugin-facebook4": {
       "APP_ID": "293256888192075",
-      "APP_NAME": "IAshley",
+      "APP_NAME": "com.petfinder.iashley",
       "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-googleplus": {
+      "PLAY_SERVICES_VERSION": "11.8.0",
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     }
   },

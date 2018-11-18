@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/camera": "^4.15.0",
     "@ionic-native/core": "~4.15.0",
-    "@ionic-native/facebook": "^4.16.0",
+    "@ionic-native/facebook": "^4.17.0",
     "@ionic-native/file": "^4.17.0",
     "@ionic-native/file-transfer": "^4.17.0",
     "@ionic-native/google-plus": "^4.17.0",
@@ -56,7 +56,6 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-camera": {},
-      "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
@@ -73,10 +72,9 @@
         "PLAY_SERVICES_VERSION": "11.8.0"
       },
       "cordova-plugin-file": {},
-      "cordova-plugin-file-transfer": {}
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-whitelist": {}
     },
-    "platforms": [
-      "android"
-    ]
+    "platforms": []
   }
 }

@@ -32,7 +32,6 @@ export class LoginPage {
     this.nav.setRoot(HelloIonicPage);
   }
 
-
   //Facebook
   loginFb() {
     this.fb.login(['public_profile', 'email'])
@@ -53,10 +52,13 @@ export class LoginPage {
 
   getFbData(access_token: string) {
     let url = 'https://graph.facebook.com/me?fields=id,name,first_name,last_name,email&access_token=' + access_token;
-    this.http.get(url).subscribe(data => {
+    this.http.get(url)
+    .subscribe(data => {
       this.fbUser = data as UserData;
       console.log(this.fbUser);
       this.storage.set('UserName', this.fbUser.name);
+    }, (error) => {
+      console.log(error);
     })
   }
 
