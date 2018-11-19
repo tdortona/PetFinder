@@ -19,6 +19,9 @@
       "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },

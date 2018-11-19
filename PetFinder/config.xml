@@ -96,4 +96,5 @@
         <variable name="FACEBOOK_ANDROID_SDK_VERSION" value="4.37.0" />
     </plugin>
     <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <engine name="android" spec="7.1.2" />
 </widget>
