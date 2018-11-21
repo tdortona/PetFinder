@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoadingController, ToastController } from 'ionic-angular';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { UserData } from '../../app/models/UserData';
 
 /*
   Generated class for the ServicioProvider provider.
@@ -15,6 +16,7 @@ export class ServicioProvider {
   private URL_DEV: string  = "https://localhost:44357";
   // private URL_PROD: string  = "";
   imageFileName: any;
+  pbaPost: UserData = new UserData();
 
   constructor(public http: HttpClient,
               private transfer: FileTransfer,
@@ -76,6 +78,24 @@ export class ServicioProvider {
       debugger;
       console.log("Todo Mal");
     });
+  }
+
+  public pruebaPost() {
+    this.pbaPost.email = 'tdortona@gmail.com';
+    this.pbaPost.first_name = 'Tomas';
+    this.pbaPost.id = '1';
+    this.pbaPost.last_name = 'Dortona';
+    this.pbaPost.name = 'Tomas Dortona';
+    let headers = new HttpHeaders();
+    headers.append('Access-Control-Allow-Origin', '*');
+    return this.http.post(this.URL_DEV + '/api/Usuario', JSON.stringify(this.pbaPost), {headers: headers});
+      // .subscribe((result) => {
+      //   debugger;
+      //   console.log(result);
+      // }, (error) =>{
+      //   debugger;
+      //   console.log(error);
+      // });
   }
 
 }

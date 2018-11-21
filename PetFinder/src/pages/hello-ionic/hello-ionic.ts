@@ -49,6 +49,13 @@ export class HelloIonicPage {
   }
 
   hacerPrueba() {
-    this.service.prueba();
+    this.service.pruebaPost()
+      .subscribe((result) => {
+        debugger;
+        console.log(result);
+      }, (error) =>{
+        debugger;
+        console.log(error);
+      });
   }
 }
