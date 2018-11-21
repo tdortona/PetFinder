@@ -1,33 +1,39 @@
 -- Merging decision tree log ---
+provider#org.apache.cordova.camera.FileProvider
+INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:15:9-17:20
+	android:grantUriPermissions
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:15:92-126
+	android:authorities
+		INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:15:19-66
+	android:exported
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:15:67-91
+	android:name
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:15:127-180
 manifest
-ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
-INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
-INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
-INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
 MERGED from [com.google.android.gms:play-services-auth:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/b7c050107e6ff01c7e00766b6af5cf7a/AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.android.gms:play-services-identity:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-11.8.0.aar/e65f9bee18485f3f835c7d30b6624a5e/AndroidManifest.xml:17:1-24:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.37.0.aar/f7a94efd88721eb8183e349a6662a49b/AndroidManifest.xml:21:1-31:12
-MERGED from [:CordovaLib] /var/www/html/PetFinder/PetFinder/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/2c538312bc9c2ab2b35cb726164adb60/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/1566da3cf43c9497b7b91b19ee4b3b28/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-base:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/ba9ad046d044b53c2a5924723be03fe4/AndroidManifest.xml:17:1-29:12
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/1da96487b05ef41396960b4a2e997fc2/AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/da67deff04b5a24ca82067b4c6ba6595/AndroidManifest.xml:17:1-28:12
-MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:2:1-6:12
 MERGED from [com.facebook.android:facebook-login:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.37.0.aar/8ce1f293388c177d2835b9c96d9ff04f/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-share:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.37.0.aar/7a5980cfebe59aab7450550b11b04bc0/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-common:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.37.0.aar/6ad27fc91e9aed3878fec9ec9f97340f/AndroidManifest.xml:21:1-37:12
+MERGED from [com.android.support:support-v4:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/91c982be0cea3d6facb72979ad825897/AndroidManifest.xml:17:1-22:12
+MERGED from [:CordovaLib] /var/www/html/PetFinder/PetFinder/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:1-27:12
+MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:2:1-6:12
 MERGED from [com.facebook.android:facebook-places:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.37.0.aar/02db5aa4db2ac627614270cccafa7f26/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-applinks:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.37.0.aar/b1abd5ca3106279fe51529287d535fa7/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-messenger:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-messenger-4.37.0.aar/2051b35bd72266acf3c6b1bdf92a424d/AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-marketing:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-marketing-4.37.0.aar/ce008aa63f29a7213fef78ab250a8bd3/AndroidManifest.xml:21:1-35:12
 MERGED from [com.facebook.android:facebook-core:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.37.0.aar/c139a9f0ce39b6fc6a5060e7749fb2b4/AndroidManifest.xml:21:1-53:12
-MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/1d25d0903db99b3512aa990c71ab3562/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/44a714459d5818872132850ca56eb0da/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/461006a9af76355ee501e1acb40887ad/AndroidManifest.xml:2:1-6:12
-MERGED from [com.android.support:support-v4:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/91c982be0cea3d6facb72979ad825897/AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/11b62bcb56ff22690a3e323ba98b55e1/AndroidManifest.xml:2:1-6:12
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/3f6562b726dc7fdbe6bb2eac899c25d3/AndroidManifest.xml:2:1-6:12
 MERGED from [com.android.support:appcompat-v7:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/98450b4d503281fe964a2c4e6840d339/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-fragment:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/b59890ca1e44180c0daf1b9b7275c6cd/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.0.2.aar/c06dbf4ccbe7de2a9d21a6786a1f5b3e/AndroidManifest.xml:17:1-22:12
@@ -38,10 +44,15 @@ MERGED from [com.android.support:support-vector-drawable:27.0.2] /home/vegitojor
 MERGED from [com.android.support:support-core-ui:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.0.2.aar/e802794a824449ea4e784747f47a4a12/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-media-compat:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/b53b17a38a0e955d79de65542a7111f4/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/69085423cde3faf876947ae76374cb75/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/1d25d0903db99b3512aa990c71ab3562/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/44a714459d5818872132850ca56eb0da/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/461006a9af76355ee501e1acb40887ad/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/11b62bcb56ff22690a3e323ba98b55e1/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/3f6562b726dc7fdbe6bb2eac899c25d3/AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/9c2b25fe1d92ae0117cdec481a8fa675/AndroidManifest.xml:17:1-24:12
-INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
-INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
-INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-19:12
+INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:1-23:12
 	package
 		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:2:98-129
 		INJECTED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml
@@ -77,7 +88,7 @@ ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/Andr
 	android:name
 		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:4:22-64
 application
-ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:5:5-15:19
+ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:5:5-18:19
 MERGED from [com.google.android.gms:play-services-auth:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/b7c050107e6ff01c7e00766b6af5cf7a/AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-auth:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/b7c050107e6ff01c7e00766b6af5cf7a/AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-identity:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-11.8.0.aar/e65f9bee18485f3f835c7d30b6624a5e/AndroidManifest.xml:22:5-20
@@ -90,14 +101,14 @@ MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/vegitojor/
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/1da96487b05ef41396960b4a2e997fc2/AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/da67deff04b5a24ca82067b4c6ba6595/AndroidManifest.xml:22:5-26:19
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/da67deff04b5a24ca82067b4c6ba6595/AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:5:5-20
 MERGED from [com.facebook.android:facebook-login:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.37.0.aar/8ce1f293388c177d2835b9c96d9ff04f/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-login:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.37.0.aar/8ce1f293388c177d2835b9c96d9ff04f/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-share:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.37.0.aar/7a5980cfebe59aab7450550b11b04bc0/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-share:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.37.0.aar/7a5980cfebe59aab7450550b11b04bc0/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-common:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.37.0.aar/6ad27fc91e9aed3878fec9ec9f97340f/AndroidManifest.xml:28:5-35:19
 MERGED from [com.facebook.android:facebook-common:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.37.0.aar/6ad27fc91e9aed3878fec9ec9f97340f/AndroidManifest.xml:28:5-35:19
+MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:5:5-20
 MERGED from [com.facebook.android:facebook-places:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.37.0.aar/02db5aa4db2ac627614270cccafa7f26/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-places:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.37.0.aar/02db5aa4db2ac627614270cccafa7f26/AndroidManifest.xml:28:5-29:19
 MERGED from [com.facebook.android:facebook-applinks:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.37.0.aar/b1abd5ca3106279fe51529287d535fa7/AndroidManifest.xml:28:5-29:19
@@ -177,15 +188,13 @@ MERGED from [com.facebook.android:facebook-common:4.37.0] /home/vegitojor/.gradl
 	android:name
 		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:14:139-183
 uses-sdk
-ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:16:5-74
+ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:19:5-74
 MERGED from [com.google.android.gms:play-services-auth:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/b7c050107e6ff01c7e00766b6af5cf7a/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/b7c050107e6ff01c7e00766b6af5cf7a/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-identity:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-11.8.0.aar/e65f9bee18485f3f835c7d30b6624a5e/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-identity:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-11.8.0.aar/e65f9bee18485f3f835c7d30b6624a5e/AndroidManifest.xml:20:5-44
 MERGED from [com.facebook.android:facebook-android-sdk:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.37.0.aar/f7a94efd88721eb8183e349a6662a49b/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-android-sdk:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-android-sdk-4.37.0.aar/f7a94efd88721eb8183e349a6662a49b/AndroidManifest.xml:24:5-26:41
-MERGED from [:CordovaLib] /var/www/html/PetFinder/PetFinder/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
-MERGED from [:CordovaLib] /var/www/html/PetFinder/PetFinder/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/2c538312bc9c2ab2b35cb726164adb60/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-11.8.0.aar/2c538312bc9c2ab2b35cb726164adb60/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-11.8.0.aar/1566da3cf43c9497b7b91b19ee4b3b28/AndroidManifest.xml:5:5-44
@@ -196,14 +205,18 @@ MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/vegitojor/
 MERGED from [com.google.android.gms:play-services-tasks:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-11.8.0.aar/1da96487b05ef41396960b4a2e997fc2/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/da67deff04b5a24ca82067b4c6ba6595/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-basement:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-11.8.0.aar/da67deff04b5a24ca82067b4c6ba6595/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:4:5-43
 MERGED from [com.facebook.android:facebook-login:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.37.0.aar/8ce1f293388c177d2835b9c96d9ff04f/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-login:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-login-4.37.0.aar/8ce1f293388c177d2835b9c96d9ff04f/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-share:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.37.0.aar/7a5980cfebe59aab7450550b11b04bc0/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-share:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-share-4.37.0.aar/7a5980cfebe59aab7450550b11b04bc0/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-common:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.37.0.aar/6ad27fc91e9aed3878fec9ec9f97340f/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-common:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-common-4.37.0.aar/6ad27fc91e9aed3878fec9ec9f97340f/AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:support-v4:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/91c982be0cea3d6facb72979ad825897/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/91c982be0cea3d6facb72979ad825897/AndroidManifest.xml:20:5-44
+MERGED from [:CordovaLib] /var/www/html/PetFinder/PetFinder/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
+MERGED from [:CordovaLib] /var/www/html/PetFinder/PetFinder/platforms/android/CordovaLib/build/intermediates/manifests/full/debug/AndroidManifest.xml:25:5-44
+MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-identity-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-identity-license-11.8.0.aar/98c595eb55cf9908c278e9549c9452bc/AndroidManifest.xml:4:5-43
 MERGED from [com.facebook.android:facebook-places:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.37.0.aar/02db5aa4db2ac627614270cccafa7f26/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-places:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-places-4.37.0.aar/02db5aa4db2ac627614270cccafa7f26/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-applinks:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-applinks-4.37.0.aar/b1abd5ca3106279fe51529287d535fa7/AndroidManifest.xml:24:5-26:41
@@ -214,18 +227,6 @@ MERGED from [com.facebook.android:facebook-marketing:4.37.0] /home/vegitojor/.gr
 MERGED from [com.facebook.android:facebook-marketing:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-marketing-4.37.0.aar/ce008aa63f29a7213fef78ab250a8bd3/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-core:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.37.0.aar/c139a9f0ce39b6fc6a5060e7749fb2b4/AndroidManifest.xml:24:5-26:41
 MERGED from [com.facebook.android:facebook-core:4.37.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/facebook-core-4.37.0.aar/c139a9f0ce39b6fc6a5060e7749fb2b4/AndroidManifest.xml:24:5-26:41
-MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/1d25d0903db99b3512aa990c71ab3562/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/1d25d0903db99b3512aa990c71ab3562/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/44a714459d5818872132850ca56eb0da/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/44a714459d5818872132850ca56eb0da/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/461006a9af76355ee501e1acb40887ad/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/461006a9af76355ee501e1acb40887ad/AndroidManifest.xml:4:5-43
-MERGED from [com.android.support:support-v4:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/91c982be0cea3d6facb72979ad825897/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-v4-27.0.2.aar/91c982be0cea3d6facb72979ad825897/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/11b62bcb56ff22690a3e323ba98b55e1/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/11b62bcb56ff22690a3e323ba98b55e1/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/3f6562b726dc7fdbe6bb2eac899c25d3/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/3f6562b726dc7fdbe6bb2eac899c25d3/AndroidManifest.xml:4:5-43
 MERGED from [com.android.support:appcompat-v7:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/98450b4d503281fe964a2c4e6840d339/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/98450b4d503281fe964a2c4e6840d339/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-fragment-27.0.2.aar/b59890ca1e44180c0daf1b9b7275c6cd/AndroidManifest.xml:20:5-44
@@ -246,20 +247,40 @@ MERGED from [com.android.support:support-media-compat:27.0.2] /home/vegitojor/.g
 MERGED from [com.android.support:support-media-compat:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.0.2.aar/b53b17a38a0e955d79de65542a7111f4/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/69085423cde3faf876947ae76374cb75/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.0.2] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/69085423cde3faf876947ae76374cb75/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/1d25d0903db99b3512aa990c71ab3562/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-api-phone-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-api-phone-license-11.8.0.aar/1d25d0903db99b3512aa990c71ab3562/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/44a714459d5818872132850ca56eb0da/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-auth-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-base-license-11.8.0.aar/44a714459d5818872132850ca56eb0da/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/461006a9af76355ee501e1acb40887ad/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/461006a9af76355ee501e1acb40887ad/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/11b62bcb56ff22690a3e323ba98b55e1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/11b62bcb56ff22690a3e323ba98b55e1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/3f6562b726dc7fdbe6bb2eac899c25d3/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/3f6562b726dc7fdbe6bb2eac899c25d3/AndroidManifest.xml:4:5-43
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/9c2b25fe1d92ae0117cdec481a8fa675/AndroidManifest.xml:20:5-22:41
 MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/runtime-1.0.3.aar/9c2b25fe1d92ae0117cdec481a8fa675/AndroidManifest.xml:20:5-22:41
 	android:targetSdkVersion
-		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:16:42-71
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:19:42-71
 	android:minSdkVersion
-		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:16:15-41
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:19:15-41
 uses-permission#android.permission.GET_ACCOUNTS
-ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:17:5-71
+ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:20:5-71
 	android:name
-		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:17:22-68
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:20:22-68
 uses-permission#android.permission.USE_CREDENTIALS
-ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:18:5-74
+ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:21:5-74
 	android:name
-		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:18:22-71
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:21:22-71
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:22:22-78
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:16:13-123
+	android:resource
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:16:75-120
+	android:name
+		ADDED from /var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/AndroidManifest.xml:16:24-74
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
 ADDED from [com.google.android.gms:play-services-auth:11.8.0] /home/vegitojor/.gradle/caches/transforms-1/files-1.1/play-services-auth-11.8.0.aar/b7c050107e6ff01c7e00766b6af5cf7a/AndroidManifest.xml:23:9-27:75
 	android:excludeFromRecents

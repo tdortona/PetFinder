@@ -304,6 +304,7 @@ var LoginPage = /** @class */ (function () {
             _this.goUser.last_name = res.familyName;
             _this.goUser.name = res.displayName;
             _this.storage.set('UserName', _this.goUser.name);
+            _this.storage.set('UserImg', res.imageUrl);
             _this.nav.setRoot(__WEBPACK_IMPORTED_MODULE_2__hello_ionic_hello_ionic__["a" /* HelloIonicPage */]);
         })
             .catch(function (err) {

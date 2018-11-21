@@ -1656,6 +1656,10 @@
         "source": "/home/vegitojor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/98450b4d503281fe964a2c4e6840d339/res/drawable-hdpi-v4/abc_btn_check_to_on_mtrl_000.png"
     },
     {
+        "merged": "/var/www/html/PetFinder/PetFinder/platforms/android/app/build/intermediates/res/merged/debug/xml_camera_provider_paths.xml.flat",
+        "source": "/var/www/html/PetFinder/PetFinder/platforms/android/app/src/main/res/xml/camera_provider_paths.xml"
+    },
+    {
         "merged": "/var/www/html/PetFinder/PetFinder/platforms/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_primary_mtrl_alpha.9.png.flat",
         "source": "/home/vegitojor/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/98450b4d503281fe964a2c4e6840d339/res/drawable-xhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png"
     },

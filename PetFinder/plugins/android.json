@@ -16,6 +16,15 @@
       "APP_NAME": "IAshley",
       "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
       "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
     }
   },
   "dependent_plugins": {}

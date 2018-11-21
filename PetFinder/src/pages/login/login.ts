@@ -70,6 +70,7 @@ export class LoginPage {
       this.goUser.last_name = res.familyName;
       this.goUser.name = res.displayName;
       this.storage.set('UserName', this.goUser.name);
+      this.storage.set('UserImg', res.imageUrl);
       this.nav.setRoot(HelloIonicPage);
     })
     .catch((err) => {
