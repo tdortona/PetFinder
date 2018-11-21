@@ -8,4 +8,8 @@ export class UserData {
     public last_name: string;
 
     public name: string;
+
+    public idRedSocial: number;
+
+    public avatar: string;
 }

@@ -13,7 +13,7 @@ import { UserData } from '../../app/models/UserData';
 @Injectable()
 export class ServicioProvider {
 
-  private URL_DEV: string  = "https://localhost:44357";
+  private URL_DEV: string  = "https://172.19.101.26:45455";
   // private URL_PROD: string  = "";
   imageFileName: any;
   pbaPost: UserData = new UserData();
@@ -69,7 +69,7 @@ export class ServicioProvider {
   }
 
   public prueba() {
-    this.http.get(this.URL_DEV + '/api/Usuario/1')
+    this.http.get(this.URL_DEV + '/api/Usuario/id1')
     .subscribe((result) => {
       debugger;
       console.log("Todo Bien");
@@ -80,22 +80,18 @@ export class ServicioProvider {
     });
   }
 
-  public pruebaPost() {
-    this.pbaPost.email = 'tdortona@gmail.com';
-    this.pbaPost.first_name = 'Tomas';
-    this.pbaPost.id = '1';
-    this.pbaPost.last_name = 'Dortona';
-    this.pbaPost.name = 'Tomas Dortona';
+  public enviarRdUser(rdUser: UserData) {
     let headers = new HttpHeaders();
-    headers.append('Access-Control-Allow-Origin', '*');
-    return this.http.post(this.URL_DEV + '/api/Usuario', JSON.stringify(this.pbaPost), {headers: headers});
-      // .subscribe((result) => {
-      //   debugger;
-      //   console.log(result);
-      // }, (error) =>{
-      //   debugger;
-      //   console.log(error);
-      // });
+    headers.append('Content-Type', 'application/json');
+    this.http.post(this.URL_DEV + '/api/Usuario/ValidarUsuario', JSON.stringify(rdUser), {headers: headers})
+    .subscribe((result) => {
+      debugger;
+      console.log("usuario logueado");
+      console.log(result);
+    }, (error) => {
+      debugger;
+      console.log("no se pudo loguear");
+    });
   }
 
 }
