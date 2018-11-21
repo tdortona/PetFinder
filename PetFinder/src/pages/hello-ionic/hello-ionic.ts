@@ -47,15 +47,4 @@ export class HelloIonicPage {
   verPerfilMascota(){
     this.navCtrl.push(PerfilMascotaPage);
   }
-
-  hacerPrueba() {
-    this.service.pruebaPost()
-      .subscribe((result) => {
-        debugger;
-        console.log(result);
-      }, (error) =>{
-        debugger;
-        console.log(error);
-      });
-  }
 }
