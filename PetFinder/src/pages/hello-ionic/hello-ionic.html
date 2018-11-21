@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="canfind">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -11,6 +11,7 @@
       <button ion-button tappable> <!-- (click)="goToAccount()" -->
         <ion-icon name="cog"></ion-icon>
       </button>
+      <img class="imagenLogo" src="{{imagepath || 'assets/imgs/logo.png'}}" />
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -34,5 +35,9 @@
   </p>
   <p>
     <button ion-button color="primary" (click)="verPerfilMascota()">Ver perfil mascota</button>
+  </p>
+  <p>
+    <button ion-button color="primary" (click)="hacerPrueba()">Hacer una Prueba</button>
+    <label>{{ prueba }}</label>
   </p>
 </ion-content>

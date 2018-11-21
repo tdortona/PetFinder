@@ -6,6 +6,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from "@angular/common/http";
 import { UserData } from '../../app/models/UserData';
+import { ServicioProvider } from '../../providers/servicio/servicio';
 
 @Component({
   selector: 'page-login',
@@ -13,8 +14,7 @@ import { UserData } from '../../app/models/UserData';
 })
 export class LoginPage {
 
-  fbUser: UserData = new UserData();
-  goUser: UserData = new UserData();
+  rdUser: UserData = new UserData();
 
   constructor(public nav: NavController,
               public forgotCtrl: AlertController,
@@ -23,7 +23,8 @@ export class LoginPage {
               private fb: Facebook,
               private googlePlus: GooglePlus,
               private storage: Storage,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private service: ServicioProvider) {
     this.menu.swipeEnable(false);
   }
 
@@ -32,7 +33,6 @@ export class LoginPage {
     this.nav.setRoot(HelloIonicPage);
   }
 
-
   //Facebook
   loginFb() {
     this.fb.login(['public_profile', 'email'])
@@ -40,7 +40,7 @@ export class LoginPage {
               
               if(res.status === 'connected') {
                 this.storage.set('UserImg', 'https://graph.facebook.com/' + res.authResponse.userID + '/picture?type=square');
-                this.getFbData(res.authResponse.accessToken);
+                this.getFbData(res.authResponse.accessToken, res.authResponse.userID);
               }
               else {
                 alert("Error en login con Facebook");
@@ -51,12 +51,17 @@ export class LoginPage {
            .catch(e => console.log('Error logging into Facebook', e));
   }
 
-  getFbData(access_token: string) {
+  getFbData(access_token: string, userID: string) {
     let url = 'https://graph.facebook.com/me?fields=id,name,first_name,last_name,email&access_token=' + access_token;
-    this.http.get(url).subscribe(data => {
-      this.fbUser = data as UserData;
-      console.log(this.fbUser);
-      this.storage.set('UserName', this.fbUser.name);
+    this.http.get(url)
+    .subscribe(data => {
+      this.rdUser = data as UserData;
+      this.rdUser.idRedSocial = 1;
+      this.rdUser.avatar = 'https://graph.facebook.com/' + userID + '/picture?type=square';
+      console.log(this.rdUser);
+      this.storage.set('UserName', this.rdUser.name);
+    }, (error) => {
+      console.log(error);
     })
   }
 
@@ -64,18 +69,25 @@ export class LoginPage {
     this.googlePlus.login({})
     .then((res) => {
       console.log(res);
-      this.goUser.email = res.email;
-      this.goUser.first_name = res.givenName;
-      this.goUser.id = res.userId;
-      this.goUser.last_name = res.familyName;
-      this.goUser.name = res.displayName;
-      this.storage.set('UserName', this.goUser.name);
-      this.storage.set('UserImg', res.imageUrl);
+      this.rdUser.email = res.email;
+      this.rdUser.first_name = res.givenName;
+      this.rdUser.id = res.userId;
+      this.rdUser.last_name = res.familyName;
+      this.rdUser.name = res.displayName;
+      this.rdUser.idRedSocial = 2;
+      this.rdUser.avatar = res.imageUrl;
+      this.storage.set('UserName', this.rdUser.name);
+      this.storage.set('UserImg', this.rdUser.avatar);
+      this.service.enviarRdUser(this.rdUser);
       this.nav.setRoot(HelloIonicPage);
+      
     })
     .catch((err) => {
       console.error(err);
     });
   }
 
+  enviarRdUser(rdUser: UserData) {
+    this.service.enviarRdUser(rdUser);
+  }
 }

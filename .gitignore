@@ -604,3 +604,5 @@ PetFinder/www/assets/fonts/roboto.scss
 PetFinder/www/build/main.css
 PetFinder/www/build/main.js
 PetFinder/www/build/main.js.map
+/PetFinder/platforms
+PetFinder/plugins/cordova-plugin-whitelist/CONTRIBUTING.md

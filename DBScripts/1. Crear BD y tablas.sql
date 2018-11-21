@@ -14,7 +14,7 @@ BEGIN
 		IdUsuario INT IDENTITY(1,1) NOT NULL,
 		Avatar VARCHAR(MAX),
 		Nombre VARCHAR(100) NOT NULL,
-		Email VARCHAR(100) NOT NULL,
+		Email VARCHAR(100),
 		Direccion VARCHAR(100),
 		CONSTRAINT PK_Usuario PRIMARY KEY (IdUsuario)
 	)

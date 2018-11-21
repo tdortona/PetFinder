@@ -21,6 +21,8 @@ export class HelloIonicPage {
 
   }
 
+  prueba: any;
+
   takePicture() {
     const options: CameraOptions = {
         quality: 100,

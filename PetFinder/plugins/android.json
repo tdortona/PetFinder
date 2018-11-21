@@ -7,8 +7,10 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-googleplus": {
-      "PLAY_SERVICES_VERSION": "11.8.0",
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-device": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
     "cordova-plugin-facebook4": {
@@ -17,15 +19,42 @@
       "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
-    "cordova-plugin-camera": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-googleplus": {
+      "PLAY_SERVICES_VERSION": "11.8.0",
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
-    "cordova-plugin-splashscreen": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-android-support-gradle-release": {
+      "ANDROID_SUPPORT_VERSION": "27.+",
       "PACKAGE_NAME": "com.petfinder.iashley"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    }
+  }
 }
