@@ -1,7 +1,7 @@
 DO $$ 
     BEGIN
         BEGIN
-            AALTER TABLE public."Usuario"
+            ALTER TABLE public."Usuario"
     ADD COLUMN "IdUsuarioRedSocial" character varying;
         EXCEPTION
             WHEN duplicate_column THEN RAISE NOTICE 'column IdUsuarioRedSocial already exist in table Usuario.';
@@ -22,14 +22,14 @@ INSERT INTO public."Usuario" ("Nombre", "Email", "Direccion", "TelefonoContacto"
 SELECT 'Rocio Bareiro', 'bareiro.rsb@gmail.com', '', '1155611126', '1', 'id2'
 WHERE
     NOT EXISTS (
-        SELECT "Email" FROM public."Usuario" WHERE "Email" = 'tdortona@gmail.com'
+        SELECT "Email" FROM public."Usuario" WHERE "Email" = 'bareiro.rsb@gmail.com'
     );
 
 INSERT INTO public."Usuario" ("Nombre", "Email", "Direccion", "TelefonoContacto", "IdRedSocial", "IdUsuarioRedSocial")
 SELECT 'Matias Martinez', 'martinezmsms@gmail.com', 'Maipu 3835', '1150560969', '2', 'id3'
 WHERE
     NOT EXISTS (
-        SELECT "Email" FROM public."Usuario" WHERE "Email" = 'tdortona@gmail.com'
+        SELECT "Email" FROM public."Usuario" WHERE "Email" = 'martinezmsms@gmail.com'
     );
 
 INSERT INTO public."Usuario" ("Nombre", "Email", "Direccion", "TelefonoContacto", "IdRedSocial", "IdUsuarioRedSocial")
