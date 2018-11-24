@@ -1,7 +1,7 @@
 DO $$ 
     BEGIN
         BEGIN
-            ALTER TABLE public."Usuario"
+            AALTER TABLE public."Usuario"
     ADD COLUMN "IdUsuarioRedSocial" character varying;
         EXCEPTION
             WHEN duplicate_column THEN RAISE NOTICE 'column IdUsuarioRedSocial already exist in table Usuario.';
