@@ -71,6 +71,7 @@
       },
       "cordova-sqlite-storage": {},
       "cordova-plugin-googleplus": {
+        "WEB_APPLICATION_CLIENT_ID": "106719103198-d7bi1c55k0kd0d1fros3k16q7a9htjbp.apps.googleusercontent.com",
         "REVERSED_CLIENT_ID": "myreversedclientid",
         "PLAY_SERVICES_VERSION": "11.8.0"
       },
@@ -82,7 +83,8 @@
       }
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

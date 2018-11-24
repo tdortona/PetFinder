@@ -13,7 +13,7 @@ import { UserData } from '../../app/models/UserData';
 @Injectable()
 export class ServicioProvider {
 
-  private URL_DEV: string  = "https://localhost:44357/";
+  private URL_DEV: string  = "https://localhost:5001/";
   // private URL_PROD: string  = "";
   imageFileName: any;
   pbaPost: UserData = new UserData();
