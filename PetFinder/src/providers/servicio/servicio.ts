@@ -82,9 +82,7 @@ export class ServicioProvider {
   }
 
   public enviarRdUser(rdUser: UserData) {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', JSON.stringify(rdUser), {headers: headers})
+    this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', rdUser)
     .subscribe((result) => {
       debugger;
       console.log("usuario logueado");
