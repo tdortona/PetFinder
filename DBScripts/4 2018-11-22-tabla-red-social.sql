@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS public."RedSocial"
     "IdRedSocial" serial NOT NULL,
     "Nombre" character varying NOT NULL,
     PRIMARY KEY ("IdRedSocial")
-)s;
+);
 
 INSERT INTO public."RedSocial" ("Nombre")
 SELECT 'facebook'
