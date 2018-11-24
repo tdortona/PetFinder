@@ -25,10 +25,10 @@
         <ion-card-title>
         <h1>{{ item.Nombre }}</h1> 
         </ion-card-title>
-        <img src="{{ item.FotoPerfil }}" (click)='irAPerfil(item.Nombre)' />
+        <img class="imagenFrame" src="{{ item.FotoPerfil }}" (click)='irAPerfil(item.Nombre)' />
       </ion-card-content>
   </ion-card>
 
-  <ion-icon name="add-circle"></ion-icon>
+  <ion-icon name="add-circle" color="secondary" class="buttonPlus"></ion-icon>
 
 </ion-content>

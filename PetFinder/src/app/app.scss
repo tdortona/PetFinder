@@ -292,10 +292,10 @@
   
   // style for auth pages
   .auth-page {
-    background-color: #fff;
+    background-color: #c4bbc4;
     &::after {
       content: "";
-      background: url("../assets/img/bg2.jpg") no-repeat;
+      background: url("../assets/img/bg.png") no-repeat;
       background-size: cover;
       top: 0;
       left: 0;
