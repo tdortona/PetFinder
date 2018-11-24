@@ -13,7 +13,7 @@ import { UserData } from '../../app/models/UserData';
 @Injectable()
 export class ServicioProvider {
 
-  private URL_DEV: string  = "https://172.19.101.26:45455";
+  private URL_DEV: string  = "https://localhost:44357/";
   // private URL_PROD: string  = "";
   imageFileName: any;
   pbaPost: UserData = new UserData();
@@ -47,7 +47,7 @@ export class ServicioProvider {
     let options: FileUploadOptions = {
       fileKey: 'ionicfile',
       fileName: 'ionicfile',
-      // chunkedMode: false,
+      chunkedMode: false,
       mimeType: 'image/jpeg',
       httpMethod: 'POST',
       headers: {
@@ -55,7 +55,7 @@ export class ServicioProvider {
      }
     }
   
-    return fileTransfer.upload(imageURI, 'http://190.55.164.170/api/ImagenMascota/FotoEncontrado', options)
+    return fileTransfer.upload(imageURI, this.URL_DEV + '/api/', options)
       .then((data) => {
         console.log(data + " Uploaded Successfully");
         // this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
@@ -92,6 +92,19 @@ export class ServicioProvider {
       debugger;
       console.log("no se pudo loguear");
     });
+  }
+
+  public pruebaPost() {
+    this.http.post(this.URL_DEV + '/api/Values/Prueba', {"Value":"hola"})
+    .subscribe((result) => {
+      console.log(result);
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  public agregarUsuario(data: UserData) {
+    return this.http.post(this.URL_DEV + '/api/Usuario/ValidarUsuario', data);
   }
 
 }

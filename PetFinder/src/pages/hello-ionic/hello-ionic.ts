@@ -5,6 +5,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { ServicioProvider } from '../../providers/servicio/servicio';
 import { PerfilMascotaPage } from '../perfil-mascota/perfil-mascota';
+import { UserData } from '../../app/models/UserData';
+import { Usuario } from '../../app/models/Usuario';
 
 @Component({
     selector: 'page-hello-ionic',
@@ -21,7 +23,8 @@ export class HelloIonicPage {
 
   }
 
-  prueba: any;
+  prueba: any = new UserData;
+  usuarioAgregado: Usuario = new Usuario;
 
   takePicture() {
     const options: CameraOptions = {
@@ -46,5 +49,28 @@ export class HelloIonicPage {
 
   verPerfilMascota(){
     this.navCtrl.push(PerfilMascotaPage);
+  }
+
+  pruebaPost() {
+    this.service.pruebaPost();
+  }
+
+  agregarUsuario() {
+    this.prueba.email = 'pruebanuevomail@gmail.com';
+    this.prueba.first_name = 'Usuario';
+    this.prueba.id = 'matigato';
+    this.prueba.last_name = 'Prueba';
+    this.prueba.name = 'Usuario Prueba';
+    this.prueba.idRedSocial = 1;
+    this.prueba.avatar = 'algo';
+
+    this.service.agregarUsuario(this.prueba)
+    .subscribe((result) => {
+      debugger;
+      this.usuarioAgregado = result as Usuario;
+      console.log(result);
+    }, (error) => {
+      console.log(error);
+    });;
   }
 }
