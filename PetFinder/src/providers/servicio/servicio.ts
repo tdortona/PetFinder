@@ -13,8 +13,9 @@ import { UserData } from '../../app/models/UserData';
 @Injectable()
 export class ServicioProvider {
 
-  private URL_DEV: string  = "https://localhost:44357/";
-  // private URL_PROD: string  = "";
+  private URL_SERVER: string = "http://canfind.herokuapp.com";
+  // private URL_SERVER: string = "https://localhost:44357";
+
   imageFileName: any;
   pbaPost: UserData = new UserData();
 
@@ -26,7 +27,7 @@ export class ServicioProvider {
   }
 
   pegarleAWatson() {
-    this.http.get(this.URL_DEV + '/api/values')
+    this.http.get(this.URL_SERVER + '/api/values')
              .subscribe((result) => {
                 console.log(result);
                 console.log("Le pegamos a watson");
@@ -37,7 +38,7 @@ export class ServicioProvider {
   }
 
   public async enviarFotoEncontradoAWatson(imageURI: string) {
-    // this.http.post(this.URL_DEV + '/api/ImagenMascota/FotoEncontrado' )
+    // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado' )
     let loader = this.loadingCtrl.create({
       content: "Cargando..."
     });
@@ -55,7 +56,7 @@ export class ServicioProvider {
      }
     }
   
-    return fileTransfer.upload(imageURI, this.URL_DEV + '/api/', options)
+    return fileTransfer.upload(imageURI, this.URL_SERVER + '/api/', options)
       .then((data) => {
         console.log(data + " Uploaded Successfully");
         // this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
@@ -69,7 +70,7 @@ export class ServicioProvider {
   }
 
   public prueba() {
-    this.http.get(this.URL_DEV + '/api/Usuario/id1')
+    this.http.get(this.URL_SERVER + '/api/Usuario/id1')
     .subscribe((result) => {
       debugger;
       console.log("Todo Bien");
@@ -83,7 +84,7 @@ export class ServicioProvider {
   public enviarRdUser(rdUser: UserData) {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    this.http.post(this.URL_DEV + '/api/Usuario/ValidarUsuario', JSON.stringify(rdUser), {headers: headers})
+    this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', JSON.stringify(rdUser), {headers: headers})
     .subscribe((result) => {
       debugger;
       console.log("usuario logueado");
@@ -95,7 +96,7 @@ export class ServicioProvider {
   }
 
   public pruebaPost() {
-    this.http.post(this.URL_DEV + '/api/Values/Prueba', {"Value":"hola"})
+    this.http.post(this.URL_SERVER + '/api/Values/Prueba', {"Value":"hola"})
     .subscribe((result) => {
       console.log(result);
     }, (error) => {
@@ -104,7 +105,7 @@ export class ServicioProvider {
   }
 
   public agregarUsuario(data: UserData) {
-    return this.http.post(this.URL_DEV + '/api/Usuario/ValidarUsuario', data);
+    return this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', data);
   }
 
 }
