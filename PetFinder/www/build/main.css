@@ -33612,12 +33612,12 @@ ion-navbar.no-border .toolbar-background {
 }
 
 .auth-page {
-  background-color: #fff;
+  background-color: #c4bbc4;
 }
 
 .auth-page::after {
   content: "";
-  background: url("../assets/img/bg2.jpg") no-repeat;
+  background: url("../assets/img/bg.png") no-repeat;
   background-size: cover;
   top: 0;
   left: 0;
@@ -34006,6 +34006,19 @@ page-mis-mascotas .imagenLogo {
   height: 32px;
   width: 45px;
   border: 0;
+}
+
+page-mis-mascotas .imagenFrame {
+  float: right;
+  height: 50%;
+  width: 100%;
+}
+
+page-mis-mascotas .buttonPlus {
+  float: left;
+  margin-left: 20%;
+  height: 20%;
+  width: 20%;
 }
 
 page-perfil-mascota .imagenLogo {
