@@ -34015,7 +34015,7 @@ page-mis-mascotas .imagenFrame {
 }
 
 page-mis-mascotas .buttonPlus {
-  float: left;
+  float: centre;
   margin-left: 20%;
   height: 20%;
   width: 20%;
