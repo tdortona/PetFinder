@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { UserData } from '../../app/models/UserData';
+import { AlertController, LoadingController } from 'ionic-angular';
+import { ResultadoWatson } from '../../app/models/ResultadoWatson';
 
 /*
   Generated class for the ServicioProvider provider.
@@ -13,16 +13,20 @@ import { UserData } from '../../app/models/UserData';
 @Injectable()
 export class ServicioProvider {
 
-  private URL_SERVER: string = "http://canfind.herokuapp.com";
-  // private URL_SERVER: string = "https://localhost:44357";
+  // private URL_SERVER: string = "http://canfind.herokuapp.com";
+  private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
+  resultadoWatson: ResultadoWatson = new ResultadoWatson();
+  
+  loader = this.loadingCtrl.create({
+    content: "Cargando..."
+  });
 
   constructor(public http: HttpClient,
-              private transfer: FileTransfer,
               public loadingCtrl: LoadingController,
-              public toastCtrl: ToastController) {
+              public alertCtrl: AlertController) {
     
   }
 
@@ -38,45 +42,29 @@ export class ServicioProvider {
   }
 
   public async enviarFotoEncontradoAWatson(imageURI: string) {
-    // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado' )
-    let loader = this.loadingCtrl.create({
-      content: "Cargando..."
-    });
-    loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-  
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: 'image/jpeg',
-      httpMethod: 'POST',
-      headers: {
-        Connection: "close"
-     }
-    }
-  
-    return fileTransfer.upload(imageURI, this.URL_SERVER + '/api/', options)
-      .then((data) => {
-        console.log(data + " Uploaded Successfully");
-        // this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-        loader.dismiss();
-        // this.presentToast("Image uploaded successfully");
-    }, (err) => {
-        console.log(err);
-        loader.dismiss();
-        // this.presentToast(err);
+    this.loader.present();
+    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {imageURI: imageURI})
+    .subscribe((response) => {
+      this.loader.dismiss();
+      this.resultadoWatson = response as ResultadoWatson;
+      if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+        this.showAlert(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+      }
+      else {
+
+      }
+    }, (error) => {
+      this.loader.dismiss();
+      console.log(error);
     });
   }
 
   public prueba() {
     this.http.get(this.URL_SERVER + '/api/Usuario/id1')
     .subscribe((result) => {
-      debugger;
       console.log("Todo Bien");
       console.log(result);
     }, (error) => {
-      debugger;
       console.log("Todo Mal");
     });
   }
@@ -84,11 +72,9 @@ export class ServicioProvider {
   public enviarRdUser(rdUser: UserData) {
     this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', rdUser)
     .subscribe((result) => {
-      debugger;
       console.log("usuario logueado");
       console.log(result);
     }, (error) => {
-      debugger;
       console.log("no se pudo loguear");
     });
   }
@@ -105,5 +91,32 @@ export class ServicioProvider {
   public agregarUsuario(data: UserData) {
     return this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', data);
   }
+  
+  showAlert(clase: string, score: number) {
+    const alert = this.alertCtrl.create({
+      title: 'Gracias por colaborar!',
+      subTitle: 'Resultado:<ul><li>Clase: ' + clase + '</li><li>Probabilidad: ' + score * 100 + '%</li></ul>',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
 
+        }
+      }]
+    });
+    alert.present();
+  }
+
+  showError() {
+    const alert = this.alertCtrl.create({
+      title: '',
+      subTitle: 'Por favor, sacá una foto mejor.',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+
+        }
+      }]
+    });
+    alert.present();
+  }
 }

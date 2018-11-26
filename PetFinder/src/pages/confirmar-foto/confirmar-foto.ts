@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ServicioProvider } from '../../providers/servicio/servicio';
 
@@ -13,35 +13,15 @@ export class ConfirmarFotoPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public domSanitizer: DomSanitizer,
-              private service: ServicioProvider,
-              public alertCtrl: AlertController) {
+              private service: ServicioProvider) {
     this.base64Image = navParams.get('data');
   }
 
   confirmarFoto() {
-    this.service.enviarFotoEncontradoAWatson(this.base64Image).then(response => {
-      this.showAlert();
-    }).catch(error => {
-      console.log(error);
-    });
-    // this.showAlert();
+    this.service.enviarFotoEncontradoAWatson(this.base64Image);
   }
 
   cancelarFoto() {
     this.navCtrl.pop();
-  }
-
-  showAlert() {
-    const alert = this.alertCtrl.create({
-      title: 'Gracias por colaborar!',
-      subTitle: 'Tu foto fue reportada en CanFind!',
-      buttons: [{
-        text: 'OK',
-        handler: () => {
-          this.navCtrl.pop();
-        }
-      }]
-    });
-    alert.present();
   }
 }

@@ -66,7 +66,6 @@ export class HelloIonicPage {
 
     this.service.agregarUsuario(this.prueba)
     .subscribe((result) => {
-      debugger;
       this.usuarioAgregado = result as Usuario;
       console.log(result);
     }, (error) => {

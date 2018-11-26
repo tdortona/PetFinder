@@ -91,6 +91,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "../cordova-android-support-gradle-release/iashley-cordova-android-support-gradle-release.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -259,10 +260,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    compile "com.google.android.gms:play-services-auth:11.8.0"
-    compile "com.google.android.gms:play-services-identity:11.8.0"
     compile "com.facebook.android:facebook-android-sdk:4.37.0"
     compile "com.android.support:support-v4:24.1.1+"
+    compile "com.google.android.gms:play-services-auth:11.8.0"
+    compile "com.google.android.gms:play-services-identity:11.8.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 
