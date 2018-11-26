@@ -18,13 +18,17 @@ page-mis-mascotas {
     }
 
     .imagenFrame{
-        float: right;
-        height: 50%;
-        width: 100%;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .imagenFondo{
+       background-image: url(../assets/img/paw.png);
     }
 
     .buttonPlus{
-        float: centre;
         margin-left: 20%;
         height: 20%;
         width: 20%;
