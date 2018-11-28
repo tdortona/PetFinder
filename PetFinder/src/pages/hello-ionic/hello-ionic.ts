@@ -58,9 +58,9 @@ export class HelloIonicPage {
   agregarUsuario() {
     this.prueba.email = 'pruebanuevomail@gmail.com';
     this.prueba.first_name = 'Usuario';
-    this.prueba.id = 'matigato';
+    this.prueba.id = 'nosequeid';
     this.prueba.last_name = 'Prueba';
-    this.prueba.name = 'Usuario Prueba';
+    this.prueba.name = 'ALOHA';
     this.prueba.idRedSocial = 1;
     this.prueba.avatar = 'algo';
 
