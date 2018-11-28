@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { UserData } from '../../app/models/UserData';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { ResultadoWatson } from '../../app/models/ResultadoWatson';
+import { Base64 } from '@ionic-native/base64';
+import { App } from "ionic-angular";
 
 /*
   Generated class for the ServicioProvider provider.
@@ -13,20 +15,18 @@ import { ResultadoWatson } from '../../app/models/ResultadoWatson';
 @Injectable()
 export class ServicioProvider {
 
-  // private URL_SERVER: string = "http://canfind.herokuapp.com";
-  private URL_SERVER: string = "https://localhost:44357";
+  private URL_SERVER: string = "http://canfind.herokuapp.com";
+  // private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
   resultadoWatson: ResultadoWatson = new ResultadoWatson();
-  
-  loader = this.loadingCtrl.create({
-    content: "Cargando..."
-  });
 
   constructor(public http: HttpClient,
               public loadingCtrl: LoadingController,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              private base64: Base64,
+              public app: App) {
     
   }
 
@@ -41,21 +41,31 @@ export class ServicioProvider {
              });
   }
 
-  public async enviarFotoEncontradoAWatson(imageURI: string) {
-    this.loader.present();
-    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {imageURI: imageURI})
-    .subscribe((response) => {
-      this.loader.dismiss();
-      this.resultadoWatson = response as ResultadoWatson;
-      if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-        this.showAlert(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
-      }
-      else {
+  public async enviarFotoEncontradoAWatson(imageURI: string) {  
+    let loader = this.loadingCtrl.create({
+      content: "Cargando...",
+      dismissOnPageChange: true
+    });
 
-      }
-    }, (error) => {
-      this.loader.dismiss();
-      console.log(error);
+    loader.present();
+    this.base64.encodeFile(imageURI).then((base64File: string) => {
+      base64File = base64File.split(',')[1];
+      this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', { imageURI: base64File })
+      .subscribe((response) => {
+        loader.dismiss();
+        this.resultadoWatson = response as ResultadoWatson;
+        if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+          this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+        }
+        else {
+          this.showAlertError();
+        }
+      }, (error) => {
+        loader.dismiss();
+        console.log(error);
+      });
+    }, (err) => {
+      console.log(err);
     });
   }
 
@@ -92,28 +102,30 @@ export class ServicioProvider {
     return this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', data);
   }
   
-  showAlert(clase: string, score: number) {
+  showAlertExito(clase: string, score: number) {
     const alert = this.alertCtrl.create({
       title: 'Gracias por colaborar!',
       subTitle: 'Resultado:<ul><li>Clase: ' + clase + '</li><li>Probabilidad: ' + score * 100 + '%</li></ul>',
       buttons: [{
         text: 'OK',
         handler: () => {
-
+          let nav = this.app.getActiveNav();
+          nav.pop();
         }
       }]
     });
     alert.present();
   }
 
-  showError() {
+  showAlertError() {
     const alert = this.alertCtrl.create({
-      title: '',
-      subTitle: 'Por favor, sacá una foto mejor.',
+      title: 'Gracias por colaborar!',
+      subTitle: 'Por el momento no encontramos un resultado aproximado. Podes intentar con otra foto.',
       buttons: [{
         text: 'OK',
         handler: () => {
-
+          let nav = this.app.getActiveNav();
+          nav.pop();
         }
       }]
     });

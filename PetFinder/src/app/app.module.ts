@@ -14,10 +14,10 @@ import { MisMascotasPage} from '../pages/mis-mascotas/mis-mascotas';
 import { PerfilMascotaPage } from '../pages/perfil-mascota/perfil-mascota';
 import { FotosMascotaPage } from '../pages/fotos-mascota/fotos-mascota';
 
-import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Camera } from '@ionic-native/camera';
+import { Base64 } from '@ionic-native/base64';
 import { HttpClientModule } from '@angular/common/http';
 import { ServicioProvider } from '../providers/servicio/servicio';
 import { Facebook } from '@ionic-native/facebook';
@@ -62,9 +62,9 @@ import { File } from '@ionic-native/file';
     FotosMascotaPage
   ],
   providers: [
-    StatusBar,
     SplashScreen,
     Camera,
+    Base64,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServicioProvider,
