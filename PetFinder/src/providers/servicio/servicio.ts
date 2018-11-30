@@ -5,6 +5,9 @@ import { AlertController, LoadingController } from 'ionic-angular';
 import { ResultadoWatson } from '../../app/models/ResultadoWatson';
 import { Base64 } from '@ionic-native/base64';
 import { App } from "ionic-angular";
+import { Usuario } from '../../app/models/Usuario';
+import { Storage } from '@ionic/storage';
+
 
 /*
   Generated class for the ServicioProvider provider.
@@ -15,19 +18,20 @@ import { App } from "ionic-angular";
 @Injectable()
 export class ServicioProvider {
 
-  private URL_SERVER: string = "http://canfind.herokuapp.com";
-  // private URL_SERVER: string = "https://localhost:44357";
+  // private URL_SERVER: string = "http://canfind.herokuapp.com";
+  private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
   resultadoWatson: ResultadoWatson = new ResultadoWatson();
-
+  usuarioLogueado: Usuario = new Usuario();
+ 
   constructor(public http: HttpClient,
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController,
               private base64: Base64,
-              public app: App) {
-    
+              public app: App,
+              public storage: Storage) {
   }
 
   pegarleAWatson() {
@@ -81,9 +85,13 @@ export class ServicioProvider {
 
   public enviarRdUser(rdUser: UserData) {
     this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', rdUser)
-    .subscribe((result) => {
+    .subscribe((response) => {
       console.log("usuario logueado");
-      console.log(result);
+      console.log(response);
+      this.usuarioLogueado = response as Usuario;
+      this.storage.set('UserName', this.usuarioLogueado.nombre);
+      this.storage.set('UserImg', this.usuarioLogueado.avatar);
+      this.storage.set('idUsuarioLogueado', this.usuarioLogueado.idUsuario);
     }, (error) => {
       console.log("no se pudo loguear");
     });
@@ -130,5 +138,17 @@ export class ServicioProvider {
       }]
     });
     alert.present();
+  }
+
+  public traerMascotas(id: number){
+    return this.http.get(this.URL_SERVER +'/api/Usuario/TraerMisMascotas/'+id)
+  }
+
+  public traerMascota(id: number){
+    return this.http.get(this.URL_SERVER +'/api/Mascota/TraerMascota/'+id)
+  }
+
+  public reportarPerdido(idMascota: number) {
+    return this.http.post(this.URL_SERVER + '/api/Mascota/ReportarPerdida', {"IdMascota":idMascota});
   }
 }

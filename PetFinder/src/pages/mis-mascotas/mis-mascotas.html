@@ -19,13 +19,13 @@
 
 
 <ion-content padding class="backgroundGeneral">
-  <ion-card *ngFor="let item of mascota">
-      <ion-card-content (click)='irAPerfil(item.Nombre)'>
+  <ion-card *ngFor="let item of misMascotas">
+      <ion-card-content (click)='irAPerfil(item.idMascota)'>
         <ion-card-title>
-        <h1>{{ item.Nombre }}</h1> 
+        <h1>{{ item.nombre }} - {{ item.descripcionRaza }}</h1> 
         </ion-card-title>
           <div class="imagenFondo">
-            <img class="imagenFrame" img-fluid src="{{ item.FotoPerfil }}" />
+            <img class="imagenFrame" img-fluid src="{{ item.avatar }}" />
           </div>
         </ion-card-content>
   </ion-card>
