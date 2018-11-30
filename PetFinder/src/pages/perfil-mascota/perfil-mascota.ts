@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FotosMascotaPage } from '../fotos-mascota/fotos-mascota';
+import { VerConsultaPage } from '../ver-consulta/ver-consulta';
 
 /**
  * Generated class for the PerfilMascotaPage page.
@@ -31,7 +32,13 @@ export class PerfilMascotaPage {
   IrAFotos(Nombre: string){
     this.navCtrl.push(FotosMascotaPage, {
       nombre: Nombre
-    })
+    });
   }
 
+  consultar() {
+    this.navCtrl.push(VerConsultaPage, {
+      nombre: this.Nombre,
+      raza: "canichetoyclass"
+    });
+  }
 }

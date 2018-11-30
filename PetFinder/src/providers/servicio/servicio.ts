@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserData } from '../../app/models/UserData';
 import { AlertController, LoadingController } from 'ionic-angular';
@@ -15,8 +15,8 @@ import { App } from "ionic-angular";
 @Injectable()
 export class ServicioProvider {
 
-  private URL_SERVER: string = "http://canfind.herokuapp.com";
-  // private URL_SERVER: string = "https://localhost:44357";
+  // private URL_SERVER: string = "http://canfind.herokuapp.com";
+  private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
@@ -102,6 +102,17 @@ export class ServicioProvider {
     return this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', data);
   }
   
+  public verConsulta(claseRaza: string, claseNombre: string, score: number) {
+    claseRaza = claseRaza == null || claseRaza == "" ? "n|o" : claseRaza;
+    claseNombre = claseNombre == null || claseNombre == "" ? "n|o" : claseNombre;
+
+    return this.http.get(this.URL_SERVER + '/api/ConsultasWatson/ConsultarEncontrados/' + claseNombre + '/' + claseRaza + '/' + score);
+  }
+
+  public contactarUsuario(idUsuario: number) {
+    return this.http.get(this.URL_SERVER + '/api/Usuario/GetUsuarioContacto/' + idUsuario);
+  }
+
   showAlertExito(clase: string, score: number) {
     const alert = this.alertCtrl.create({
       title: 'Gracias por colaborar!',
