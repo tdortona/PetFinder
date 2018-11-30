@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FotosMascotaPage } from '../fotos-mascota/fotos-mascota';
+import { VerConsultaPage } from '../ver-consulta/ver-consulta';
 import { ServicioProvider } from '../../providers/servicio/servicio';
 import { Mascota } from '../../app/models/Mascota';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the PerfilMascotaPage page.
@@ -75,5 +76,12 @@ export class PerfilMascotaPage {
       }]
     });
     alert.present();
+  }
+  
+  consultar() {
+    this.navCtrl.push(VerConsultaPage, {
+      nombre: this.nombre,
+      raza: "canichetoyclass"
+    });
   }
 }
