@@ -84,4 +84,27 @@ export class PerfilMascotaPage {
       raza: "canichetoyclass"
     });
   }
+
+  showAlertEncontrado(idMascota: number) {
+    const alert = this.alertCtrl.create({
+      title: '¿Encontraste a tu mascota?',
+      subTitle: 'Se cancelará la busqueda actual.',
+      buttons: [{
+        text: 'Si',
+        handler: () => {
+          this.service.reportarEncontrada(idMascota).subscribe((result) => {
+            console.log(result);
+            this.perdida = false;
+          }, (error) => {
+            console.log(error);
+          });
+        }
+      },{
+        text: 'No',
+        handler: () => {
+        }
+      }]
+    });
+    alert.present();
+  }
 }

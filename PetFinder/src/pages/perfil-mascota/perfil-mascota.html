@@ -32,31 +32,33 @@
       <ion-row>
         <ion-col col-12>
           <button  *ngIf="!perdida" round ion-button icon block color="danger" class="button" (click)="showAlertPerdido(idMascota);">Perdido
-            <ion-icon name="perdido"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12>
           <button round ion-button icon block class="button" (click)="IrAFotos(idMascota)">Fotos
-            <ion-icon name="fotos"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12>
           <button round ion-button icon block class="button" (click)="compartir();">Compartir
-            <ion-icon name="compartir"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
           <ion-col col-12>
-            <button *ngIf="perdida"  round ion-button icon block class="button" (click)="consultar();">Consultar
-              <ion-icon name="consultar"></ion-icon>
+            <button *ngIf="perdida"  round ion-button icon block color="danger" class="button" (click)="consultar();">Consultar
             </button>
           </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col col-12>
+              <button *ngIf="perdida"  round ion-button icon block class="button" (click)="showAlertEncontrado(idMascota);">Ya la encontré
+              </button>
+            </ion-col>
+          </ion-row>
     </div>
   </ion-grid>
 </ion-content>
