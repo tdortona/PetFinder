@@ -18,18 +18,24 @@
   </ion-header>
 
 
-<ion-content padding>
-  <ion-card *ngFor="let item of mascota">
-      <ion-card-content>
+<ion-content padding class="backgroundGeneral">
+  <ion-card *ngFor="let item of misMascotas">
+      <ion-card-content (click)='irAPerfil(item.idMascota)'>
         <ion-card-title>
-        <h1>{{ item.Nombre }}</h1> 
+        <h1>{{ item.nombre }} - {{ item.descripcionRaza }}</h1> 
         </ion-card-title>
           <div class="imagenFondo">
-            <img class="imagenFrame" img-fluid src="{{ item.FotoPerfil }}" (click)='irAPerfil(item.Nombre)' />
+            <img class="imagenFrame" img-fluid src="{{ item.avatar }}" />
           </div>
         </ion-card-content>
   </ion-card>
 
-  <ion-icon name="add-circle" color="secondary" class="buttonPlus"></ion-icon>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <button round ion-button block color="secondary" (click)="agregarMascota();"> Agregar Mascota
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

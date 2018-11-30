@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PerfilMascotaPage } from '../perfil-mascota/perfil-mascota';
+import { ServicioProvider } from '../../providers/servicio/servicio';
+import { Mascota } from '../../app/models/Mascota';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the MisMascotasPage page.
@@ -14,22 +17,32 @@ import { PerfilMascotaPage } from '../perfil-mascota/perfil-mascota';
   templateUrl: 'mis-mascotas.html',
 })
 export class MisMascotasPage {
-  mascota: any[] = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.mascota.push(
-      {Nombre: "titan", FotoPerfil: "assets\\img\\fotos-titan\\titan-1.jpeg"},
-      {Nombre: "francisco", FotoPerfil: "assets\\img\\fotos-francisco\\francisco-1.jpeg"})
-  }
+  misMascotas: Mascota[];
+  idUsuarioLogueado: number;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MisMascotasPage');
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private service: ServicioProvider,
+    public storage: Storage
+    ) {
+ 
+      this.storage.get("idUsuarioLogueado").then((data)=>{
+        this.idUsuarioLogueado = data;
 
-  irAPerfil(Nombre:string){
-    this.navCtrl.push(PerfilMascotaPage, {
-      nombre: Nombre
+        this.service.traerMascotas(this.idUsuarioLogueado)
+        .subscribe((result) => { 
+            this.misMascotas = result as Array<Mascota>;
+            console.log(result);
+        }, (error) => {
+          console.log(error);
+        });
+      });
+   }
+
+  irAPerfil(idMascota: number){
+    this.navCtrl.push(PerfilMascotaPage, { 
+      idMascota: idMascota
     })
-  }
-
-
+  } 
 }

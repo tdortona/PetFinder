@@ -16,48 +16,47 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="backgroundGeneral">
   <ion-grid>
     <div id="imagen-perfil" class="row">
       <div class="col">
-        <h1>{{ Nombre }}</h1>
-        <span>Raza: raza</span><br>
-        <span>Edad: edad</span>
+        <h1>{{ nombre }}</h1>
+        <span>Raza: {{ descripcionRaza }}</span><br>
       </div>
       <div class="col">
-        <img src="{{ FotoPerfil }}" />
+        <img src="{{ avatar }}" />
       </div>
 
     </div>
     <div id="botones">
       <ion-row>
         <ion-col col-12>
-          <button ion-button icon block color="danger" class="button" (click)="perdido();">Perdido
+          <button  *ngIf="!perdida" round ion-button icon block color="danger" class="button" (click)="showAlertPerdido(idMascota);">Perdido
             <ion-icon name="perdido"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <button ion-button icon block class="button" (click)="IrAFotos(Nombre)">Fotos
+          <button round ion-button icon block class="button" (click)="IrAFotos(idMascota)">Fotos
             <ion-icon name="fotos"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <button ion-button icon block class="button" (click)="consultar();">Consultar
-            <ion-icon name="consultar"></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-12>
-          <button ion-button icon block class="button" (click)="compartir();">Compartir
+          <button round ion-button icon block class="button" (click)="compartir();">Compartir
             <ion-icon name="compartir"></ion-icon>
           </button>
         </ion-col>
       </ion-row>
+      <ion-row>
+          <ion-col col-12>
+            <button *ngIf="perdida"  round ion-button icon block class="button" (click)="consultar();">Consultar
+              <ion-icon name="consultar"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
     </div>
   </ion-grid>
 </ion-content>

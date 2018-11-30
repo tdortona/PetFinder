@@ -548,3 +548,19 @@
   .cancel-button {
     color: color($colors, cancel);
   }
+
+  /*RSB*/
+  .backgroundGeneral{
+      background-color: #c4bbc4;
+      &::after {
+        content: "";
+        background: url("../assets/img/bg2.png") no-repeat;
+        background-size: cover;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: 0;
+  }
+}

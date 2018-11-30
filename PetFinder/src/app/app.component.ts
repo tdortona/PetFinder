@@ -36,6 +36,10 @@ export class MyApp {
       { title: 'Encontre un perro', component: EncontrePage }
     ];
     
+
+  }
+
+  ionViewDidLoad(){
     this.storage.get('UserImg').then((img) => {
       this.UserImg = img;
     });
