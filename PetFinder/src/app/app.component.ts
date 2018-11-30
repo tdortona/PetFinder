@@ -28,6 +28,14 @@ export class MyApp {
     public splashScreen: SplashScreen,
     private storage: Storage
   ) {
+
+    this.storage.get('UserImg').then((img) => {
+      this.UserImg = img;
+    });
+    this.storage.get('UserName').then((name) => {
+      this.UserName = name;
+    });
+    
     this.initializeApp();
 
     // set our app's pages
@@ -35,18 +43,6 @@ export class MyApp {
       { title: 'Mis mascotas', component: MisMascotasPage },
       { title: 'Encontre un perro', component: EncontrePage }
     ];
-    
-
-  }
-
-  ionViewDidLoad(){
-    this.storage.get('UserImg').then((img) => {
-      this.UserImg = img;
-    });
-
-    this.storage.get('UserName').then((name) => {
-      this.UserName = name;
-    });
   }
 
   initializeApp() {

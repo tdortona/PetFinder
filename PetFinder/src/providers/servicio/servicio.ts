@@ -166,4 +166,8 @@ export class ServicioProvider {
   public reportarPerdido(idMascota: number) {
     return this.http.post(this.URL_SERVER + '/api/Mascota/ReportarPerdida', {"IdMascota":idMascota});
   }
+
+  public reportarEncontrada(idMascota: number) {
+    return this.http.post(this.URL_SERVER + '/api/Mascota/ReportarEncontrada', {"IdMascota":idMascota});
+  }
 }
