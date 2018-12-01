@@ -8,12 +8,15 @@
 
   <ion-navbar>
     <ion-title>Perros encontrados</ion-title>
+    <ion-buttons end>
+      <img class="imagenLogo" src="{{imagepath || 'assets/imgs/logo.png'}}" />
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="backgroundGeneral">
     <ion-row>
         <ion-col col-12>
             Precisión: {{ filtroScore }}%
