@@ -1,8 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoadingController, ToastController } from 'ionic-angular';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { UserData } from '../../app/models/UserData';
+import { AlertController, LoadingController } from 'ionic-angular';
+import { ResultadoWatson } from '../../app/models/ResultadoWatson';
+import { Base64 } from '@ionic-native/base64';
+import { App } from "ionic-angular";
 
 /*
   Generated class for the ServicioProvider provider.
@@ -16,14 +18,17 @@ export class ServicioProvider {
   // private URL_SERVER: string = "http://canfind.herokuapp.com";
   // private URL_SERVER: string = "https://localhost:44357";
   private URL_SERVER: string = "https://localhost:5001";
+  // private URL_SERVER: string = "https://192.168.0.8:5001";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
+  resultadoWatson: ResultadoWatson = new ResultadoWatson();
 
   constructor(public http: HttpClient,
-              private transfer: FileTransfer,
               public loadingCtrl: LoadingController,
-              public toastCtrl: ToastController) {
+              public alertCtrl: AlertController,
+              private base64: Base64,
+              public app: App) {
     
   }
 
@@ -38,60 +43,67 @@ export class ServicioProvider {
              });
   }
 
-  public async enviarFotoEncontradoAWatson(imageURI: string) {
-    // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado' )
+  public async enviarFotoEncontradoAWatson(imageURI: string) {  
     let loader = this.loadingCtrl.create({
-      content: "Cargando..."
+      content: "Cargando...",
+      dismissOnPageChange: true
     });
+
     loader.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-  
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: 'image/jpeg',
-      httpMethod: 'POST',
-      headers: {
-        Connection: "close"
-     }
-    }
-  
-    return fileTransfer.upload(imageURI, this.URL_SERVER + '/api/', options)
-      .then((data) => {
-        console.log(data + " Uploaded Successfully");
-        // this.imageFileName = "http://192.168.0.7:8080/static/images/ionicfile.jpg"
-        loader.dismiss();
-        // this.presentToast("Image uploaded successfully");
-    }, (err) => {
-        console.log(err);
-        loader.dismiss();
-        // this.presentToast(err);
+    //para el browser
+    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', { imageURI: imageURI })
+    .subscribe((response) => {
+      loader.dismiss();
+      this.resultadoWatson = response as ResultadoWatson;
+      if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+        this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+      }
+      else {
+        this.showAlertError();
+      }
+    }, (error) => {
+      loader.dismiss();
+      console.log(error);
     });
+
+    //para el celular
+    // this.base64.encodeFile(imageURI).then((base64File: string) => {
+    //   base64File = base64File.split(',')[1];
+    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', { imageURI: base64File })
+    //   .subscribe((response) => {
+    //     loader.dismiss();
+    //     this.resultadoWatson = response as ResultadoWatson;
+    //     if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+    //       this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+    //     }
+    //     else {
+    //       this.showAlertError();
+    //     }
+    //   }, (error) => {
+    //     loader.dismiss();
+    //     console.log(error);
+    //   });
+    // }, (err) => {
+    //   console.log(err);
+    // });
   }
 
   public prueba() {
     this.http.get(this.URL_SERVER + '/api/Usuario/id1')
     .subscribe((result) => {
-      debugger;
       console.log("Todo Bien");
       console.log(result);
     }, (error) => {
-      debugger;
       console.log("Todo Mal");
     });
   }
 
   public enviarRdUser(rdUser: UserData) {
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-    this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', JSON.stringify(rdUser), {headers: headers})
+    this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', rdUser)
     .subscribe((result) => {
-      debugger;
       console.log("usuario logueado");
       console.log(result);
     }, (error) => {
-      debugger;
       console.log("no se pudo loguear");
     });
   }
@@ -108,5 +120,81 @@ export class ServicioProvider {
   public agregarUsuario(data: UserData) {
     return this.http.post(this.URL_SERVER + '/api/Usuario/ValidarUsuario', data);
   }
+  
+  showAlertExito(clase: string, score: number) {
+    const alert = this.alertCtrl.create({
+      title: 'Gracias por colaborar!',
+      subTitle: 'Resultado:<ul><li>Clase: ' + clase + '</li><li>Probabilidad: ' + score * 100 + '%</li></ul>',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          let nav = this.app.getActiveNav();
+          nav.pop();
+        }
+      }]
+    });
+    alert.present();
+  }
 
+  showAlertError() {
+    const alert = this.alertCtrl.create({
+      title: 'Gracias por colaborar!',
+      subTitle: 'Por el momento no encontramos un resultado aproximado. Podes intentar con otra foto.',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          let nav = this.app.getActiveNav();
+          nav.pop();
+        }
+      }]
+    });
+    alert.present();
+  }
+
+  agregarFotoMascota(imageURI: string){
+    let loader = this.loadingCtrl.create({
+      content: "Agregando mascota...",
+      dismissOnPageChange: true
+    });
+
+    loader.present();
+    //esto es para el browser
+    this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { imageURI: imageURI })
+      .subscribe((response) => {
+        loader.dismiss();
+        alert(response);
+
+        alert("Esto es la respuesta" + response);
+      }, (error) => {
+        loader.dismiss();
+        console.log("error al enviar al backend");
+        alert("error al enviar al backend");
+        console.log(error);
+      });
+
+      //esto es para el celu
+    // this.base64.encodeFile(imageURI).then((base64File: string) => {
+    //   base64File = base64File.split(',')[1];
+    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { imageURI: base64File })
+    //   .subscribe((response) => {
+    //     loader.dismiss();
+    //     // this.resultadoWatson = response as ResultadoWatson;
+    //     // if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+    //     //   this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+    //     // }
+    //     // else {
+    //     //   this.showAlertError();
+    //     // }
+
+    //     alert("Esto es la respuesta" + response);
+    //   }, (error) => {
+    //     loader.dismiss();
+    //     console.log("error al enviar al backend");
+    //     alert("error al enviar al backend");
+    //     console.log(error);
+    //   });
+    // }, (err) => {
+    //   console.log(err);
+    // });
+  }
 }

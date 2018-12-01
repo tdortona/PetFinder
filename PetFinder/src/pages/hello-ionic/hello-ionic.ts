@@ -66,11 +66,32 @@ export class HelloIonicPage {
 
     this.service.agregarUsuario(this.prueba)
     .subscribe((result) => {
-      debugger;
       this.usuarioAgregado = result as Usuario;
       console.log(result);
     }, (error) => {
       console.log(error);
     });;
+  }
+
+  agregarFotoMascota(){
+    
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.PNG,
+      mediaType: this.camera.MediaType.PICTURE
+  }
+  
+  this.camera.getPicture(options).then((imageData) => {
+    // imageData is either a base64 encoded string or a file URI
+    // If it's base64 (DATA_URL):
+    this.base64Image = imageData;
+    this.service.agregarFotoMascota(this.base64Image);
+  }, (err) => {
+    // Handle error
+  });
+    
+
+    
   }
 }
