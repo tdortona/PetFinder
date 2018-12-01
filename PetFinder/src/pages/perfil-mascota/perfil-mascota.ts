@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FotosMascotaPage } from '../fotos-mascota/fotos-mascota';
+import { VerConsultaPage } from '../ver-consulta/ver-consulta';
+import { ServicioProvider } from '../../providers/servicio/servicio';
+import { Mascota } from '../../app/models/Mascota';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the PerfilMascotaPage page.
@@ -14,24 +18,93 @@ import { FotosMascotaPage } from '../fotos-mascota/fotos-mascota';
   templateUrl: 'perfil-mascota.html',
 })
 export class PerfilMascotaPage {
-  Nombre: string;
-  FotoPerfil: string;
+  idMascota: number;
+  nombre: string;
+  descripcionRaza: string;
+  avatar: string;
+  perdida: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private service: ServicioProvider,
+    public alertCtrl: AlertController) {
+    this.idMascota = this.navParams.get("idMascota");
 
-    this.Nombre = navParams.get("nombre"),
-    this.FotoPerfil = 'assets\\img\\fotos-'+this.Nombre+'\\'+this.Nombre+'-1.jpeg'
-
+      this.service.traerMascota(this.idMascota)
+      .subscribe((result) => { 
+          let mascotaResult = result as Mascota;
+          this.nombre = mascotaResult.nombre;
+          this.descripcionRaza = mascotaResult.descripcionRaza;
+          this.idMascota = mascotaResult.idMascota;
+          this.perdida = mascotaResult.perdida;
+          this.avatar = mascotaResult.avatar;
+          console.log(result);
+      }, (error) => {
+        console.log(error);
+      });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerfilMascotaPage');
   }
 
-  IrAFotos(Nombre: string){
+  IrAFotos(idMascota: number){
     this.navCtrl.push(FotosMascotaPage, {
-      nombre: Nombre
+      idMascota: idMascota
     })
   }
 
+  showAlertPerdido(idMascota: number) {
+    const alert = this.alertCtrl.create({
+      title: '¿Queres reportarlo perdido?',
+      subTitle: 'Se iniciara la busqueda de tu mascota',
+      buttons: [{
+        text: 'Si',
+        handler: () => {
+          this.service.reportarPerdido(idMascota).subscribe((result) => {
+            console.log(result);
+            this.perdida = true;
+          }, (error) => {
+            console.log(error);
+          });
+        }
+      },{
+        text: 'No',
+        handler: () => {
+        }
+      }]
+    });
+    alert.present();
+  }
+  
+  consultar() {
+    this.navCtrl.push(VerConsultaPage, {
+      nombre: this.nombre,
+      raza: "canichetoyclass"
+    });
+  }
+
+  showAlertEncontrado(idMascota: number) {
+    const alert = this.alertCtrl.create({
+      title: '¿Encontraste a tu mascota?',
+      subTitle: 'Se cancelará la busqueda actual.',
+      buttons: [{
+        text: 'Si',
+        handler: () => {
+          this.service.reportarEncontrada(idMascota).subscribe((result) => {
+            console.log(result);
+            this.perdida = false;
+          }, (error) => {
+            console.log(error);
+          });
+        }
+      },{
+        text: 'No',
+        handler: () => {
+        }
+      }]
+    });
+    alert.present();
+  }
 }

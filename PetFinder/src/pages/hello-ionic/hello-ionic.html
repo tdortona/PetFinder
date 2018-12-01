@@ -17,33 +17,26 @@
 </ion-header>
 
 
-<ion-content padding>
-
-  <h3>¡Bienvenidos a CanFind!</h3>
-
-  <p>
-    This starter project is our way of helping you get a functional app running in record time.
-  </p>
-  <p>
-    Follow along on the tutorial section of the Ionic docs!
-  </p>
-  <p>
-    <button ion-button color="primary" menuToggle>Toggle Menu</button>
-  </p>
-  <p>
-    <button ion-button color="primary" (click)="pegarleAWatson()">Pegarle a Watson</button>
-  </p>
-  <p>
-    <button ion-button color="primary" (click)="verPerfilMascota()">Ver perfil mascota</button>
-  </p>
-  <p>
-    <button ion-button color="primary" (click)="pruebaPost()">Hacer una Prueba</button>
-  </p>
-  <p>
-    <button ion-button color="primary" (click)="agregarUsuario()">Agregar Usuario</button>
-    <label>Se agrego al usuario "{{ usuarioAgregado.nombre }}"</label>
-  </p>
-  <p>
-    <button ion-button color="primary" (click)="agregarFotoMascota()">Agregar Foto Mascota</button>
-  </p>
+<ion-content padding class="backgroundGeneral">
+    <h3>¡Bienvenidos a CanFind!</h3>
+  <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <button round block ion-button color="primary" (click)="pegarleAWatson()">Pegarle a Watson</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <button round block ion-button color="primary" (click)="pruebaPost()">Hacer una Prueba</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <button round block ion-button color="primary" (click)="agregarUsuario()">Agregar Usuario</button>
+            <label>Se agrego al usuario "{{ usuarioAgregado.nombre }}"</label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
 </ion-content>
