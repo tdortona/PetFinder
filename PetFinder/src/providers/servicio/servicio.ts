@@ -1,4 +1,4 @@
-import { HttpParams, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserData } from '../../app/models/UserData';
 import { AlertController, LoadingController } from 'ionic-angular';
@@ -48,7 +48,7 @@ export class ServicioProvider {
              });
   }
 
-  public async enviarFotoEncontradoAWatson(imageURI: string) {  
+  public async enviarFotoEncontradoAWatson(imageURI: string, idUsuario: number) {  
     let loader = this.loadingCtrl.create({
       content: "Cargando...",
       dismissOnPageChange: true
@@ -56,7 +56,11 @@ export class ServicioProvider {
 
     loader.present();
     //para el browser
-    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', { imageURI: imageURI, idUsuario: this.storage.get("idUsuarioLogueado") })
+    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+      idUsuario: idUsuario,
+      imageURI: imageURI,
+      localizacion: "prueba"
+    })
     .subscribe((response) => {
       loader.dismiss();
       this.resultadoWatson = response as ResultadoWatson;
@@ -74,7 +78,11 @@ export class ServicioProvider {
     //para el celular
     // this.base64.encodeFile(imageURI).then((base64File: string) => {
     //   base64File = base64File.split(',')[1];
-    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', { imageURI: base64File })
+    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+    //     idUsuario: idUsuario,
+    //     imageURI: base64File,
+    //     localizacion: "prueba"
+    //   })
     //   .subscribe((response) => {
     //     loader.dismiss();
     //     this.resultadoWatson = response as ResultadoWatson;

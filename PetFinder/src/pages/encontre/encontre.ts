@@ -36,4 +36,24 @@ export class EncontrePage {
     });
   }
 
+  //Slide
+
+  slides = [
+    {
+      title: "Frente",
+      image: 'assets/img/frente.jpg'
+    },
+    {
+      title: "Costado",
+      image: 'assets/img/costado.jpg'
+    },
+    {
+      title: "Arriba",
+      image: 'assets/img/arriba.jpg'
+    },
+    {
+      title: "Atras",
+      image: 'assets/img/atras.jpg'
+    },
+  ];
 }
