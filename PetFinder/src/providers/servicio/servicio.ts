@@ -56,7 +56,7 @@ export class ServicioProvider {
 
     loader.present();
     //para el browser
-    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', { imageURI: imageURI })
+    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', { imageURI: imageURI, idUsuario: this.storage.get("idUsuarioLogueado") })
     .subscribe((response) => {
       loader.dismiss();
       this.resultadoWatson = response as ResultadoWatson;
