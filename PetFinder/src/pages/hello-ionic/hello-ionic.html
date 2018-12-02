@@ -12,9 +12,45 @@
 
 
 <ion-content padding class="backgroundGeneral">
-    <h3 class="titulo">¡Bienvenidos a CanFind!</h3>
   <div>
       <ion-grid>
+        <ion-card>
+            <ion-card-content>
+            <br/>  
+              <span>
+                <h1 class="titulo">¡Bienvenidos a CANFIND!</h1>
+              </span>
+            <br/>
+              <img src="{{imagepath || 'assets/imgs/reencuentro.jpg'}}" />   
+            </ion-card-content>
+            <br/>
+            <div> <!--contenedor de los tips-->
+              <div>
+                <div class="tipImagen">
+                  <img src="{{imagepath || 'assets/imgs/perro.png'}}"/>
+                </div>
+                <div>
+                <h2 class="tipTexto">
+                  <p><b>Los que integramos la comunidad CANFIND nos solidarizamos para que las mascotas regresen lo antes posible a sus hogares.</b></p>
+                </h2>
+                </div>
+              </div>
+              <br/>
+
+              <div>
+                <div class="tipImagen">
+                  <img src="{{imagepath || 'assets/imgs/binoculares.png'}}"/>
+                </div>
+                <div>
+                  <h2 class="tipTexto">
+                    <p><b>CANFIND te ayuda a encontrar a tu mascota mediante el reconocimiento de imágenes.</b></p>
+                  </h2>
+                </div>
+              </div>
+            </div> <!--contenedor de los tips-->
+            <br/>            
+        </ion-card>
+        <!--
         <ion-row>
           <ion-col col-12>
             <button round block ion-button color="primary" (click)="pegarleAWatson()">Pegarle a Watson</button>
@@ -30,7 +66,7 @@
             <button round block ion-button color="primary" (click)="agregarUsuario()">Agregar Usuario</button>
             <label>Se agrego al usuario "{{ usuarioAgregado.nombre }}"</label>
           </ion-col>
-        </ion-row>
+        </ion-row> -->
       </ion-grid>
     </div>
 </ion-content>
