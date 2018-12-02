@@ -5,6 +5,7 @@ import { ServicioProvider } from '../../providers/servicio/servicio';
 import { MisMascotasPage } from '../mis-mascotas/mis-mascotas';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { Raza } from '../../app/models/Raza';
 
 
 /**
@@ -23,6 +24,7 @@ export class AgregaMascotaPage {
 
   mascota: MascotaNueva = new MascotaNueva;
   idUsuarioLogueado: number;
+  razas: Raza[];
 
   constructor(
     public navCtrl: NavController, 
@@ -30,13 +32,22 @@ export class AgregaMascotaPage {
     private service: ServicioProvider,
     public storage: Storage,
     public alertCtrl: AlertController) {
+
+      this.service.traerRazas()
+        .subscribe((result) => { 
+            this.razas = result as Array<Raza>;
+            console.log(result);
+        }, (error) => {
+          console.log(error);
+        });
+
   }
 
   logForm() {
     this.storage.get("idUsuarioLogueado").then((data)=>{
       this.idUsuarioLogueado = data;
       this.mascota.idUsuario = this.idUsuarioLogueado;
-      
+
       this.service.agregaMascota(this.mascota)
       .subscribe((result) => {
           console.log(result);

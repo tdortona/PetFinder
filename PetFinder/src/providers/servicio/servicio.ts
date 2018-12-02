@@ -179,4 +179,8 @@ export class ServicioProvider {
       "IdRaza":mascota.raza
     })
   }
+
+  public traerRazas(){
+    return this.http.get(this.URL_SERVER +'/api/Mascota/TraerRazas/')
+  } 
 }
