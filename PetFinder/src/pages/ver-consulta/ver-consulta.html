@@ -5,15 +5,15 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
+  <ion-navbar color="barra">
     <ion-title>Perros encontrados</ion-title>
+    <ion-buttons end>
+        <!-- <img class="imagenLogo" src="{{imagepath || 'assets/imgs/logo.png'}}" /> -->
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
+<ion-content padding class="backgroundGeneral">
     <ion-row>
         <ion-col col-12>
             Precisión: {{ filtroScore }}%
@@ -40,20 +40,28 @@
     </ion-row>
     <ion-row>
         <ion-col col-12>
-            <button ion-button icon block class="button" (click)="consultar();">Consultar</button>
+            <button round ion-button icon block class="button" (click)="consultar();">Consultar</button>
         </ion-col>
     </ion-row>
-    <ion-card *ngFor="let item of resultados">
+    <ng-container *ngIf="resultados.length > 0">
+        <ion-card *ngFor="let item of resultados">
+            <ion-card-content>
+              <ion-card-title>
+                <h1>{{ item.clase }} - {{ item.score }}</h1> 
+              </ion-card-title>
+              <div class="imagenFondo">
+                <img class="imagenFrame" img-fluid src="{{ item.imagen }}" />
+              </div>
+              <div>
+                <button round ion-button icon block class="button" (click)="contactarUsuario(item.idUsuario);">Contactar usuario</button>
+              </div>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+
+    <ion-card *ngIf="consultaRealizada && resultados.length == 0">
         <ion-card-content>
-          <ion-card-title>
-            <h1>{{ item.clase }} - {{ item.score }}</h1> 
-          </ion-card-title>
-          <div class="imagenFondo">
-            <img class="imagenFrame" img-fluid src="{{ item.imagen }}" />
-          </div>
-          <div>
-            <button ion-button icon block class="button" (click)="contactarUsuario(item.idUsuario);">Contactar usuario</button>
-          </div>
+          No se encontraron resultados!
         </ion-card-content>
     </ion-card>
 </ion-content>
