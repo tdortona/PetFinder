@@ -9,15 +9,11 @@ page-hello-ionic {
         border: 0;
     }
 
-    .texto{
-        margin-left: 5%;
-    }
-
     .tipImagen{
         margin-left: 5%;
         margin-right: 5%;
-        width: 20%;
-        height: 20%;
+        width: 25%;
+        height: 25%;
         float: left;
     }
 
@@ -28,5 +24,7 @@ page-hello-ionic {
 
     .grupo{
         margin-bottom: 5%;
+        width: auto;
+        height: 10%;
     }
 }
