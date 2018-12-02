@@ -18,15 +18,27 @@
             <ion-icon name="camera"></ion-icon>
           </button>
         </ion-card-content>
-      </ion-card>
-      Tips:
+
+        <h2 class="titulo">Tips para sacarle una foto</h2>
+        <ion-slides>
+            <ion-slide *ngFor = "let slide of slides">
+              <ion-card>
+              <p [innerHTML]="slide.title"></p>
+              <img [src]="slide.image" />
+              </ion-card>
+            </ion-slide>
+        </ion-slides> 
+    </ion-card>
+
+<!--      Tips:
         <ul>
           <h3>
-            <li>Sacale fotos de la siguiente manera:</li> <!-- nGfor -->
+            <li>Sacale fotos de la siguiente manera:</li> 
           </h3>
             <li>De frente</li>
             <li>De costado</li>
             <li>De arriba</li>
             <li>De atrás</li>
         </ul>
+  -->
 </ion-content>
