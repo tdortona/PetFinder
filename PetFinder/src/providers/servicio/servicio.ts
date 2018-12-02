@@ -128,8 +128,8 @@ export class ServicioProvider {
 
   showAlertExito(clase: string, score: number) {
     const alert = this.alertCtrl.create({
-      title: 'Gracias por colaborar!',
-      subTitle: 'Resultado:<ul><li>Clase: ' + clase + '</li><li>Probabilidad: ' + score * 100 + '%</li></ul>',
+      title: '¡Ya recibimos tu foto!',
+      subTitle: 'Gracias por colaborar con CanFind.',
       buttons: [{
         text: 'OK',
         handler: () => {
@@ -143,8 +143,8 @@ export class ServicioProvider {
 
   showAlertError() {
     const alert = this.alertCtrl.create({
-      title: 'Gracias por colaborar!',
-      subTitle: 'Por el momento no encontramos un resultado aproximado. Podes intentar con otra foto.',
+      title: '¡Ya recibimos tu foto!',
+      subTitle: 'Gracias por colaborar con CanFind.',
       buttons: [{
         text: 'OK',
         handler: () => {
