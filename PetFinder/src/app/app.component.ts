@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { MisMascotasPage } from '../pages/mis-mascotas/mis-mascotas';
 
+
 @Component({
   templateUrl: 'app.html'
 })

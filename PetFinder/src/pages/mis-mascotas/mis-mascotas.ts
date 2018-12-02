@@ -4,6 +4,7 @@ import { PerfilMascotaPage } from '../perfil-mascota/perfil-mascota';
 import { ServicioProvider } from '../../providers/servicio/servicio';
 import { Mascota } from '../../app/models/Mascota';
 import { Storage } from '@ionic/storage';
+import { AgregaMascotaPage } from '../agrega-mascota/agrega-mascota';
 
 /**
  * Generated class for the MisMascotasPage page.
@@ -45,4 +46,9 @@ export class MisMascotasPage {
       idMascota: idMascota
     })
   } 
+
+  agregarMascota(){
+      this.navCtrl.push(AgregaMascotaPage, { 
+    })
+  }
 }

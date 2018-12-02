@@ -7,6 +7,7 @@ import { Base64 } from '@ionic-native/base64';
 import { App } from "ionic-angular";
 import { Usuario } from '../../app/models/Usuario';
 import { Storage } from '@ionic/storage';
+import { MascotaNueva } from '../../app/models/MascotaNueva';
 
 
 /*
@@ -169,5 +170,13 @@ export class ServicioProvider {
 
   public reportarEncontrada(idMascota: number) {
     return this.http.post(this.URL_SERVER + '/api/Mascota/ReportarEncontrada', {"IdMascota":idMascota});
+  }
+
+  public agregaMascota(mascota: MascotaNueva){
+    return this.http.post(this.URL_SERVER + '/api/Mascota/AgregarMascotaNueva', 
+    { "IdUsuario":mascota.idUsuario,
+      "Nombre":mascota.nombre,
+      "IdRaza":mascota.raza
+    })
   }
 }

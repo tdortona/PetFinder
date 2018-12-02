@@ -1,0 +1,31 @@
+<!--
+  Generated template for the AgregaMascotaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agregá una mascota nueva</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label color="primary">Nombre</ion-label>
+      <ion-input [(ngModel)]="mascota.nombre" name="nombre" placeholder="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Raza</ion-label>
+      <ion-select [(ngModel)]="mascota.raza" name="raza">
+        <ion-option value="1">1</ion-option>
+        <ion-option value="2">2</ion-option>
+      </ion-select>
+    </ion-item>
+    <button ion-button type="submit" block>Agregar</button>
+  </form>
+</ion-content>
