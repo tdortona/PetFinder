@@ -22,8 +22,9 @@ export class VerConsultaPage {
   filtroRaza: string = "";
   chkNombre: boolean = false;
   chkRaza: boolean = false;
-  resultados: Array<ResultadoBusqueda>;
+  resultados: Array<ResultadoBusqueda> = [];
   usuarioContacto: ContactarUsuario;
+  consultaRealizada: boolean = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -56,7 +57,10 @@ export class VerConsultaPage {
       this.resultados = result as Array<ResultadoBusqueda>;
     }, (error) => {
       console.log(error);
+      this.resultados = [];
     });
+
+    this.consultaRealizada = true;
   }
 
   contactarUsuario(idUsuario: number) {
