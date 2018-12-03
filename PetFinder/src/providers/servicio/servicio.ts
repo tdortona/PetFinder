@@ -18,8 +18,8 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class ServicioProvider {
 
-  // private URL_SERVER: string = "http://canfind.herokuapp.com";
-  private URL_SERVER: string = "https://localhost:44357";
+  private URL_SERVER: string = "http://canfind.herokuapp.com";
+  // private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
