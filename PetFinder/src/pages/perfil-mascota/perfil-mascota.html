@@ -18,6 +18,7 @@
 
 <ion-content padding class="backgroundGeneral">
   <ion-grid>
+    <ion-card>
     <div id="imagen-perfil" class="row">
       <div class="col">
         <h1>{{ nombre }}</h1>
@@ -25,11 +26,11 @@
       </div>
       <div class="col">
           <img *ngIf="avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ avatar }}.jpg" />
-          <img *ngIf="avatar == null" src="../../assets/img/arriba.jpg" />
+          <img *ngIf="avatar == null" src="../../assets/img/avatarPerro.png" />
         <!-- <img src="{{ avatar }}" /> -->
       </div>
-
     </div>
+  </ion-card>
     <div id="botones">
       <ion-row>
         <ion-col col-12>

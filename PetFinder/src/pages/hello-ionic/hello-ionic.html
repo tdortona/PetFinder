@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>CanFind</ion-title>
+    <ion-title>CANFIND</ion-title>
     <ion-buttons end>
       <img class="imagenLogo" src="{{imagepath || 'assets/imgs/logo.png'}}" />
     </ion-buttons>
@@ -12,25 +12,51 @@
 
 
 <ion-content padding class="backgroundGeneral">
-    <h3 class="titulo">¡Bienvenidos a CanFind!</h3>
   <div>
       <ion-grid>
-        <ion-row>
-          <ion-col col-12>
-            <button round block ion-button color="primary" (click)="pegarleAWatson()">Pegarle a Watson</button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-12>
-            <button round block ion-button color="primary" (click)="pruebaPost()">Hacer una Prueba</button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col col-12>
-            <button round block ion-button color="primary" (click)="agregarUsuario()">Agregar Usuario</button>
-            <label>Se agrego al usuario "{{ usuarioAgregado.nombre }}"</label>
-          </ion-col>
-        </ion-row>
+        <ion-card>
+            <ion-card-content>
+            <br/>  
+              <span>
+                <h1 class="titulo">¡Bienvenidos a CANFIND!</h1>
+              </span>
+            <br/>
+              <img src="{{imagepath || 'assets/imgs/reencuentro.jpg'}}" />   
+            </ion-card-content>
+            <br/>
+            <div> <!--contenedor de los tips-->
+              <ion-row>
+                <ion-col col-12>
+                  <div>
+                    <div class="tipImagen">
+                      <img src="{{imagepath || 'assets/imgs/perro.png'}}"/>
+                    </div>
+                    <div class="tipTexto">
+                      <h2>
+                        <p><b>En esta comunidad nos solidarizamos para que las mascotas regresen lo antes posible a sus hogares.</b></p>
+                      </h2>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <br/>
+              <ion-row>
+                <ion-col col-12>
+                  <div>
+                    <div class="tipImagen">
+                      <img src="{{imagepath || 'assets/imgs/binoculares.png'}}"/>
+                    </div>
+                  <div class="tipTexto">
+                    <h2>
+                      <p><b>CANFIND te ayuda a encontrar a tu mascota mediante el reconocimiento de imágenes.</b></p>
+                    </h2>
+                  </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </div> <!--contenedor de los tips-->
+          <br/>            
+        </ion-card>
       </ion-grid>
     </div>
 </ion-content>

@@ -35,12 +35,6 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.petfinder.iashley"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.petfinder.iashley"
-    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
