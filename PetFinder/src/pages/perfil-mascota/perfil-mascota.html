@@ -24,7 +24,9 @@
         <span>Raza: {{ descripcionRaza }}</span><br>
       </div>
       <div class="col">
-        <img src="{{ avatar }}" />
+          <img *ngIf="avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ avatar }}.jpg" />
+          <img *ngIf="avatar == null" src="../../assets/img/arriba.jpg" />
+        <!-- <img src="{{ avatar }}" /> -->
       </div>
 
     </div>

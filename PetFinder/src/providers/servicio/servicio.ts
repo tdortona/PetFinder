@@ -179,26 +179,36 @@ export class ServicioProvider {
     alert.present();
   }
 
-  agregarFotoMascota(imageURI: string){
-    let loader = this.loadingCtrl.create({
-      content: "Agregando mascota...",
-      dismissOnPageChange: true
-    });
+   agregarFotoMascota(imageURI: string, idMascota: number, idUsuario: number){
+      return new Promise((resolve, reject) => {
+        let loader = this.loadingCtrl.create({
+          content: "Agregando mascota...",
+          dismissOnPageChange: true
+        });
 
-    loader.present();
-    //esto es para el browser
-    this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { imageURI: imageURI })
-      .subscribe((response) => {
-        loader.dismiss();
-        alert(response);
-
-        alert("Esto es la respuesta" + response);
-      }, (error) => {
-        loader.dismiss();
-        console.log("error al enviar al backend");
-        alert("error al enviar al backend");
-        console.log(error);
+        loader.present();
+        //esto es para el browser
+        this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
+          imageURI: imageURI,
+          idMascota: idMascota,
+          localizacion: "prueba",
+          idUsuario: idUsuario
+         })
+          .subscribe((response) => {
+            loader.dismiss();
+            resolve("ok");
+          }, (error) => {
+            loader.dismiss();
+            console.log("error al enviar al backend");
+            console.log(error);
+            reject("");
+          });
       });
+
+
+    
+    
+    
 
       //esto es para el celu
     // this.base64.encodeFile(imageURI).then((base64File: string) => {
@@ -240,5 +250,9 @@ export class ServicioProvider {
 
   public reportarEncontrada(idMascota: number) {
     return this.http.post(this.URL_SERVER + '/api/Mascota/ReportarEncontrada', {"IdMascota":idMascota});
+  }
+
+  public traerImagenMascota(idMascota: number){
+    return this.http.post(this.URL_SERVER + '/api/ImagenMascota/TraerFotos', {"IdMascota":idMascota});
   }
 }

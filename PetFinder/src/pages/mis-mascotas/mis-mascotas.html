@@ -25,7 +25,8 @@
         <h1>{{ item.nombre }} - {{ item.descripcionRaza }}</h1> 
         </ion-card-title>
           <div class="imagenFondo">
-            <img class="imagenFrame" img-fluid src="{{ item.avatar }}" />
+            <img class="imagenFrame" img-fluid *ngIf="item.avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item.avatar }}.jpg" />
+            <img class="imagenFrame" img-fluid *ngIf="item.avatar == null" src="../../assets/img/arriba.jpg" />
           </div>
         </ion-card-content>
   </ion-card>
