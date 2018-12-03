@@ -20,17 +20,16 @@
     "@angular/http": "^5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
-    "@ionic-native/base64": "^4.17.0",
-    "@ionic-native/camera": "^4.17.0",
+    "@ionic-native/camera": "^4.15.0",
     "@ionic-native/core": "~4.15.0",
     "@ionic-native/facebook": "^4.17.0",
     "@ionic-native/file": "^4.17.0",
     "@ionic-native/file-transfer": "^4.17.0",
     "@ionic-native/google-plus": "^4.17.0",
     "@ionic-native/splash-screen": "~4.15.0",
+    "@ionic-native/status-bar": "~4.15.0",
     "@ionic/storage": "^2.2.0",
-    "com-badrit-base64": "0.2.0",
-    "cordova-android": "7.1.4",
+    "cordova-android": "^7.1.2",
     "cordova-android-support-gradle-release": "^2.0.1",
     "cordova-browser": "5.0.4",
     "cordova-plugin-camera": "4.0.3",
@@ -38,11 +37,10 @@
     "cordova-plugin-facebook4": "3.1.0",
     "cordova-plugin-file": "^6.0.1",
     "cordova-plugin-file-transfer": "^1.7.1",
-    "cordova-plugin-googleplus": "5.3.2",
+    "cordova-plugin-googleplus": "^5.3.2",
     "cordova-plugin-headercolor": "1.0.0",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "1.2.1",
-    "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sqlite-storage": "2.5.1",
     "ionic-angular": "3.9.2",
@@ -59,8 +57,8 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-camera": {},
+      "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-facebook4": {
@@ -69,20 +67,21 @@
         "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0"
       },
       "cordova-sqlite-storage": {},
+      "cordova-plugin-googleplus": {
+        "WEB_APPLICATION_CLIENT_ID": "106719103198-d7bi1c55k0kd0d1fros3k16q7a9htjbp.apps.googleusercontent.com",
+        "REVERSED_CLIENT_ID": "myreversedclientid",
+        "PLAY_SERVICES_VERSION": "11.8.0"
+      },
       "cordova-plugin-file": {},
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-whitelist": {},
       "cordova-android-support-gradle-release": {
         "ANDROID_SUPPORT_VERSION": "27.+"
-      },
-      "cordova-plugin-googleplus": {
-        "WEB_APPLICATION_CLIENT_ID": "106719103198-d7bi1c55k0kd0d1fros3k16q7a9htjbp.apps.googleusercontent.com",
-        "PLAY_SERVICES_VERSION": "11.8.0"
-      },
-      "com-badrit-base64": {}
+      }
     },
     "platforms": [
-      "android"
+      "android",
+      "browser"
     ]
   }
 }

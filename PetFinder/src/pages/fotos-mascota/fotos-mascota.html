@@ -23,14 +23,14 @@
 
     <ion-card *ngFor="let item of fotos">
           <ion-card-content>
-            <img src="{{ item }}" />
+            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />
           </ion-card-content>
       </ion-card>
 
       <ion-grid>
           <ion-row>
             <ion-col col-12>
-              <button round ion-button block color="secondary" (click)="agregarMascota();"> Agregar Foto
+              <button round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto
               </button>
             </ion-col>
           </ion-row>

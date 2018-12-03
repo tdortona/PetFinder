@@ -7,18 +7,18 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-device": {
+  "cordova-plugin-statusbar": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-device@2.0.2"
+      "id": "cordova-plugin-statusbar@^2.4.2"
     },
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-splashscreen": {
+  "cordova-plugin-device": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-splashscreen@^5.0.2"
+      "id": "cordova-plugin-device@2.0.2"
     },
     "is_top_level": true,
     "variables": {}
@@ -58,6 +58,17 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-googleplus": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googleplus@5.3.2"
+    },
+    "is_top_level": true,
+    "variables": {
+      "REVERSED_CLIENT_ID": "myreversedclientid",
+      "PLAY_SERVICES_VERSION": "11.8.0"
+    }
   },
   "cordova-plugin-file": {
     "source": {

@@ -7,6 +7,7 @@ import { Base64 } from '@ionic-native/base64';
 import { App } from "ionic-angular";
 import { Usuario } from '../../app/models/Usuario';
 import { Storage } from '@ionic/storage';
+import { MascotaNueva } from '../../app/models/MascotaNueva';
 
 
 /*
@@ -18,7 +19,14 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class ServicioProvider {
 
+<<<<<<< HEAD
   private URL_SERVER: string = "http://canfind.herokuapp.com";
+=======
+  // private URL_SERVER: string = "http://canfind.herokuapp.com";
+  // private URL_SERVER: string = "https://localhost:44357";
+  private URL_SERVER: string = "https://localhost:5001";
+  // private URL_SERVER: string = "https://192.168.0.8:5001";
+>>>>>>> be8aead4db1d014c5c26ede3663376924f99e3e7
   // private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
@@ -52,29 +60,50 @@ export class ServicioProvider {
     });
 
     loader.present();
-    this.base64.encodeFile(imageURI).then((base64File: string) => {
-      base64File = base64File.split(',')[1];
-      this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
-        idUsuario: idUsuario,
-        imageURI: base64File,
-        localizacion: "prueba"
-      })
-      .subscribe((response) => {
-        loader.dismiss();
-        this.resultadoWatson = response as ResultadoWatson;
-        if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-          this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
-        }
-        else {
-          this.showAlertError();
-        }
-      }, (error) => {
-        loader.dismiss();
-        console.log(error);
-      });
-    }, (err) => {
-      console.log(err);
+    //para el browser
+    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+      idUsuario: idUsuario,
+      imageURI: imageURI,
+      localizacion: "prueba"
+    })
+    .subscribe((response) => {
+      loader.dismiss();
+      this.resultadoWatson = response as ResultadoWatson;
+      if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+        this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+      }
+      else {
+        this.showAlertError();
+      }
+    }, (error) => {
+      loader.dismiss();
+      console.log(error);
     });
+
+    //para el celular
+    // this.base64.encodeFile(imageURI).then((base64File: string) => {
+    //   base64File = base64File.split(',')[1];
+    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+    //     idUsuario: idUsuario,
+    //     imageURI: base64File,
+    //     localizacion: "prueba"
+    //   })
+    //   .subscribe((response) => {
+    //     loader.dismiss();
+    //     this.resultadoWatson = response as ResultadoWatson;
+    //     if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+    //       this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+    //     }
+    //     else {
+    //       this.showAlertError();
+    //     }
+    //   }, (error) => {
+    //     loader.dismiss();
+    //     console.log(error);
+    //   });
+    // }, (err) => {
+    //   console.log(err);
+    // });
   }
 
   public prueba() {
@@ -155,6 +184,63 @@ export class ServicioProvider {
     alert.present();
   }
 
+   agregarFotoMascota(imageURI: string, idMascota: number, idUsuario: number){
+      return new Promise((resolve, reject) => {
+        let loader = this.loadingCtrl.create({
+          content: "Agregando mascota...",
+          dismissOnPageChange: true
+        });
+
+        loader.present();
+        //esto es para el browser
+        this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
+          imageURI: imageURI,
+          idMascota: idMascota,
+          localizacion: "prueba",
+          idUsuario: idUsuario
+         })
+          .subscribe((response) => {
+            loader.dismiss();
+            resolve("ok");
+          }, (error) => {
+            loader.dismiss();
+            console.log("error al enviar al backend");
+            console.log(error);
+            reject("");
+          });
+      });
+
+
+    
+    
+    
+
+      //esto es para el celu
+    // this.base64.encodeFile(imageURI).then((base64File: string) => {
+    //   base64File = base64File.split(',')[1];
+    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { imageURI: base64File })
+    //   .subscribe((response) => {
+    //     loader.dismiss();
+    //     // this.resultadoWatson = response as ResultadoWatson;
+    //     // if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+    //     //   this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+    //     // }
+    //     // else {
+    //     //   this.showAlertError();
+    //     // }
+
+    //     alert("Esto es la respuesta" + response);
+    //   }, (error) => {
+    //     loader.dismiss();
+    //     console.log("error al enviar al backend");
+    //     alert("error al enviar al backend");
+    //     console.log(error);
+    //   });
+    // }, (err) => {
+    //   console.log(err);
+    // });
+  }
+  
   public traerMascotas(id: number){
     return this.http.get(this.URL_SERVER +'/api/Usuario/TraerMisMascotas/'+id)
   }
@@ -170,4 +256,20 @@ export class ServicioProvider {
   public reportarEncontrada(idMascota: number) {
     return this.http.post(this.URL_SERVER + '/api/Mascota/ReportarEncontrada', {"IdMascota":idMascota});
   }
+
+  public traerImagenMascota(idMascota: number){
+    return this.http.post(this.URL_SERVER + '/api/ImagenMascota/TraerFotos', {"IdMascota":idMascota});
+  }
+  
+  public agregaMascota(mascota: MascotaNueva){
+    return this.http.post(this.URL_SERVER + '/api/Mascota/AgregarMascotaNueva', 
+    { "IdUsuario":mascota.idUsuario,
+      "Nombre":mascota.nombre,
+      "IdRaza":mascota.raza
+    })
+  }
+
+  public traerRazas(){
+    return this.http.get(this.URL_SERVER +'/api/Mascota/TraerRazas/')
+  } 
 }

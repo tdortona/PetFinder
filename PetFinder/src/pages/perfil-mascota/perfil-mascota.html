@@ -18,16 +18,19 @@
 
 <ion-content padding class="backgroundGeneral">
   <ion-grid>
+    <ion-card>
     <div id="imagen-perfil" class="row">
       <div class="col">
         <h1>{{ nombre }}</h1>
         <span>Raza: {{ descripcionRaza }}</span><br>
       </div>
       <div class="col">
-        <img src="{{ avatar }}" />
+          <img *ngIf="avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ avatar }}.jpg" />
+          <img *ngIf="avatar == null" src="../../assets/img/avatarPerro.png" />
+        <!-- <img src="{{ avatar }}" /> -->
       </div>
-
     </div>
+  </ion-card>
     <div id="botones">
       <ion-row>
         <ion-col col-12>
@@ -37,25 +40,25 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <button round ion-button icon block class="button" (click)="IrAFotos(idMascota)">Fotos
+          <button round ion-button icon block class="button" color="primary"  (click)="IrAFotos(idMascota)">Fotos
           </button>
         </ion-col>
       </ion-row>
-      <ion-row>
+  <!--<ion-row>
         <ion-col col-12>
           <button round ion-button icon block class="button" (click)="compartir();">Compartir
           </button>
         </ion-col>
-      </ion-row>
-      <ion-row>
+      </ion-row> -->
+        <ion-row>
           <ion-col col-12>
-            <button *ngIf="perdida"  round ion-button icon block color="danger" class="button" (click)="consultar();">Consultar
+            <button *ngIf="perdida" round ion-button icon block color="energized" class="button" (click)="consultar();">Consultar
             </button>
           </ion-col>
         </ion-row>
         <ion-row>
             <ion-col col-12>
-              <button *ngIf="perdida"  round ion-button icon block class="button" (click)="showAlertEncontrado(idMascota);">Ya la encontré
+              <button *ngIf="perdida"  round ion-button icon block color="secondary" class="button" (click)="showAlertEncontrado(idMascota);">Ya la encontré
               </button>
             </ion-col>
           </ion-row>

@@ -72,4 +72,5 @@ export class HelloIonicPage {
       console.log(error);
     });;
   }
+
 }

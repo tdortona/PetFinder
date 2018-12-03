@@ -14,6 +14,7 @@ import { MisMascotasPage} from '../pages/mis-mascotas/mis-mascotas';
 import { PerfilMascotaPage } from '../pages/perfil-mascota/perfil-mascota';
 import { FotosMascotaPage } from '../pages/fotos-mascota/fotos-mascota';
 import { VerConsultaPage } from '../pages/ver-consulta/ver-consulta';
+import { AgregaMascotaPage } from '../pages/agrega-mascota/agrega-mascota';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -41,7 +42,8 @@ import { File } from '@ionic-native/file';
     MisMascotasPage,
     PerfilMascotaPage,
     FotosMascotaPage,
-    VerConsultaPage
+    VerConsultaPage,
+    AgregaMascotaPage
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,8 @@ import { File } from '@ionic-native/file';
     MisMascotasPage,
     PerfilMascotaPage,
     FotosMascotaPage,
-    VerConsultaPage
+    VerConsultaPage,
+    AgregaMascotaPage
   ],
   providers: [
     SplashScreen,
