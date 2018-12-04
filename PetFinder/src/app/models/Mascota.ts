@@ -10,4 +10,6 @@ export class Mascota {
     public perdida: boolean;
 
     public avatar: string;
+
+    public entrenado: number;
 }

@@ -22,7 +22,8 @@
   <ion-card *ngFor="let item of misMascotas">
       <ion-card-content (click)='irAPerfil(item.idMascota)'>
         <ion-card-title>
-        <h1>{{ item.nombre }} - {{ item.descripcionRaza }}</h1> 
+        <h1>{{ item.nombre }} - <small>{{ item.descripcionRaza }}</small></h1> 
+        <ion-badge *ngIf="item.entrenado < 10" color="danger">perfil incompleto</ion-badge>
         </ion-card-title>
           <div class="imagenFondo">
             <img class="imagenFrame" img-fluid *ngIf="item.avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item.avatar }}.jpg" />
@@ -39,4 +40,9 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  
+
+  
+
 </ion-content>

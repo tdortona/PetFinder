@@ -20,6 +20,7 @@ export class FotosMascotaPage {
   fotos: string[] = [];
   idMascota: number;
   base64Image: string = "";
+  entrenado: number;
 
   constructor(
     public navCtrl: NavController, 
@@ -30,6 +31,7 @@ export class FotosMascotaPage {
     
     this.idMascota = navParams.get("idMascota");
     this.mascota = navParams.get("nombreMascota");
+    this.entrenado = navParams.get("entrenado");
     this.traerImagenesMascotas(this.idMascota);
   }
 

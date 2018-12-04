@@ -19,15 +19,20 @@
 <ion-content padding class="backgroundGeneral">
   <ion-grid>
     <ion-card>
-    <div id="imagen-perfil" class="row">
-      <div class="col">
-        <h1>{{ nombre }}</h1>
-        <span>Raza: {{ descripcionRaza }}</span><br>
-      </div>
-      <div class="col">
-          <img *ngIf="avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ avatar }}.jpg" />
-          <img *ngIf="avatar == null" src="assets/img/avatarPerro.png" />
-        <!-- <img src="{{ avatar }}" /> -->
+      <div id="imagen-perfil" class="row">
+        <div class="col">
+          <h1>{{ nombre }}</h1>
+          <span>Raza: {{ descripcionRaza }}</span><br>
+          <br>
+          <div *ngIf="entrenado < 10">
+            <h3><ion-badge color="danger">Perfil incompleto</ion-badge></h3>
+            <p>Debes agregar fotos de tu mascota para mejorar las probabilidades de reconocerla por la I.A.</p>
+          </div>
+        </div>
+        <div class="col">
+            <img *ngIf="avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ avatar }}.jpg" />
+            <img *ngIf="avatar == null" src="assets/img/avatarPerro.png " />
+        </div>
       </div>
     </div>
   </ion-card>
@@ -40,7 +45,7 @@
       </ion-row>
       <ion-row>
         <ion-col col-12>
-          <button round ion-button icon block class="button" color="primary"  (click)="IrAFotos(idMascota)">Fotos
+          <button round ion-button icon block class="button" color="primary"  (click)="IrAFotos(idMascota)">Fotos -&nbsp;<ion-badge color="light">{{entrenado}}</ion-badge>
           </button>
         </ion-col>
       </ion-row>
