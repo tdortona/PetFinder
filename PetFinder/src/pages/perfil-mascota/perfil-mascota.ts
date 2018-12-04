@@ -51,7 +51,8 @@ export class PerfilMascotaPage {
 
   IrAFotos(idMascota: number){
     this.navCtrl.push(FotosMascotaPage, {
-      idMascota: idMascota
+      idMascota: idMascota,
+      nombreMascota: this.nombre
     })
   }
 

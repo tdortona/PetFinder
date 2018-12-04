@@ -53,6 +53,9 @@
                 <img class="imagenFrame" img-fluid src="{{ item.imagen }}" />
               </div>
               <div>
+                La foto fue tomada en: {{ item.localizacion }}
+              </div>
+              <div>
                 <button round ion-button icon block class="button" (click)="contactarUsuario(item.idUsuario);">Contactar usuario</button>
               </div>
             </ion-card-content>

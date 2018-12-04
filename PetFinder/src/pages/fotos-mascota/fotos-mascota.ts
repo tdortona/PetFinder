@@ -29,6 +29,7 @@ export class FotosMascotaPage {
     public navParams: NavParams) {
     
     this.idMascota = navParams.get("idMascota");
+    this.mascota = navParams.get("nombreMascota");
     this.traerImagenesMascotas(this.idMascota);
   }
 
@@ -46,8 +47,10 @@ export class FotosMascotaPage {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 720,
+      correctOrientation: true
     }
     
     this.camera.getPicture(options).then((imageData) => {

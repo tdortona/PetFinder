@@ -25,6 +25,7 @@ export class HelloIonicPage {
 
   prueba: any = new UserData;
   usuarioAgregado: Usuario = new Usuario;
+  imagenesPrueba: string[] = [];
 
   takePicture() {
     const options: CameraOptions = {

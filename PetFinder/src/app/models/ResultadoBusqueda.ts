@@ -6,4 +6,6 @@ export class ResultadoBusqueda {
     public score: number;
 
     public imagen: string;
+
+    public localizacion: string;
 }
