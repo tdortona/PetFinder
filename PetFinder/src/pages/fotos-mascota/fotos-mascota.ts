@@ -21,6 +21,7 @@ export class FotosMascotaPage {
   idMascota: number;
   base64Image: string = "";
   entrenado: number;
+  claseEntrenada: boolean;
 
   constructor(
     public navCtrl: NavController, 
@@ -32,6 +33,7 @@ export class FotosMascotaPage {
     this.idMascota = navParams.get("idMascota");
     this.mascota = navParams.get("nombreMascota");
     this.entrenado = navParams.get("entrenado");
+    this.claseEntrenada = navParams.get("claseEntrenada");
     this.traerImagenesMascotas(this.idMascota);
   }
 
@@ -72,9 +74,19 @@ export class FotosMascotaPage {
     }, (err) => {
       // Handle error
       console.log(err);
-    });
-    
+    });    
+  }
 
-    
+  entrenarIA() {
+    let imageUris = [];
+    this.fotos.forEach(function (value) {
+      imageUris.push('http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/' + value + '.jpg');
+    });
+    this.service.crearClaseWatson(this.idMascota, this.mascota, imageUris)
+    .subscribe((result) => {
+      console.log(result);
+    }, (error) => {
+      console.log(error);
+    });
   }
 }

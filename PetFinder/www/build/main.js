@@ -82,6 +82,7 @@ var AgregaMascotaPage = /** @class */ (function () {
                 });
                 alert.present();
                 console.log(error);
+                alert.present();
             });
         });
     };
@@ -203,6 +204,8 @@ var FotosMascotaPage = /** @class */ (function () {
         this.base64Image = "";
         this.idMascota = navParams.get("idMascota");
         this.mascota = navParams.get("nombreMascota");
+        this.entrenado = navParams.get("entrenado");
+        this.claseEntrenada = navParams.get("claseEntrenada");
         this.traerImagenesMascotas(this.idMascota);
     }
     FotosMascotaPage.prototype.traerImagenesMascotas = function (idMascota) {
@@ -244,9 +247,21 @@ var FotosMascotaPage = /** @class */ (function () {
             console.log(err);
         });
     };
+    FotosMascotaPage.prototype.entrenarIA = function () {
+        var imageUris = [];
+        this.fotos.forEach(function (value) {
+            imageUris.push('http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/' + value + '.jpg');
+        });
+        this.service.crearClaseWatson(this.idMascota, this.mascota, imageUris)
+            .subscribe(function (result) {
+            console.log(result);
+        }, function (error) {
+            console.log(error);
+        });
+    };
     FotosMascotaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n\n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n      </ion-card>\n\n\n\n      <ion-grid>\n\n          <ion-row>\n\n            <ion-col col-12>\n\n              <button round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n              </button>\n\n            </ion-col>\n\n          </ion-row>\n\n      </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
+            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-grid>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button *ngIf="fotos.length < 10" round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n            </button>\n\n            <button *ngIf="fotos.length >= 10 && !claseEntrenada" round ion-button block color="secondary" (click)="entrenarIA();"> Entrenar IA\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n\n\n      <!-- <ion-grid *ngIf="fotos.length < 10">\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <p>Total de fotos para completar el perfil:</p>\n\n            <h1><span>{{10 - fotos.length}}</span></h1>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid> -->\n\n\n\n    <ion-card *ngIf="fotos.length < 10">\n\n        <ion-card-header>\n\n          <h1 color="canfind">{{10 - fotos.length}}</h1>\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <p>Fotos restantes para completar el perfil.</p>\n\n        </ion-card-content>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_servicio_servicio__["a" /* ServicioProvider */],
@@ -619,7 +634,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/'<ion-content padding class="animated fadeIn login auth-page">\n\n  <div class="login-content">\n\n\n\n    <!-- Logo -->\n\n    <div padding-horizontal text-center class="animated fadeInDown">\n\n      <div class="logo"></div>\n\n    </div>\n\n\n\n    <div>\n\n    <ion-grid>\n\n <!--  <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-facebook" (click)="loginFb();">Iniciar sesión con Facebook \n\n              <ion-icon name="logo-facebook"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>  -->\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-twitter" (click)="login();">Iniciar sesión con Twitter \n\n              <ion-icon name="logo-twitter"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-gplus" (click)="loginGoogle();">\n\n              &nbsp;Iniciar sesión con Google\n\n              <ion-icon name="logo-googleplus"></ion-icon> \n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/
+            selector: 'page-login',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/'<ion-content padding class="animated fadeIn login auth-page">\n\n  <div class="login-content">\n\n\n\n    <!-- Logo -->\n\n    <div padding-horizontal text-center class="animated fadeInDown">\n\n      <div class="logo"></div>\n\n    </div>\n\n\n\n    <div>\n\n    <ion-grid>\n\n <!--  <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-facebook" (click)="loginFb();">Iniciar sesión con Facebook \n\n              <ion-icon name="logo-facebook"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-twitter" (click)="login();">Iniciar sesión con Twitter \n\n              <ion-icon name="logo-twitter"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>  -->\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-gplus" (click)="loginGoogle();">\n\n              &nbsp;Iniciar sesión con Google\n\n              <ion-icon name="logo-googleplus"></ion-icon> \n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
@@ -723,29 +738,9 @@ var HelloIonicPage = /** @class */ (function () {
         });
         ;
     };
-    HelloIonicPage.prototype.crearClase = function () {
-        this.imagenesPrueba = [
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/11223344.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/1122334455.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/112233445566.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/636794411916820397.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/636794825376765190.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/636795339629667302.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/636795337839444967.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/636795330125011742.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/112233445566.jpg",
-            "http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/636794440565024513.jpg"
-        ];
-        this.service.crearClaseWatson(1, "FranciscoClaseNueva", this.imagenesPrueba)
-            .subscribe(function (result) {
-            console.log(result);
-        }, function (error) {
-            console.log(error);
-        });
-    };
     HelloIonicPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-hello-ionic',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\hello-ionic\hello-ionic.html"*/'<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>CANFIND</ion-title>\n\n    <ion-buttons end>\n\n      <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <div>\n\n      <ion-grid>\n\n        <ion-card>\n\n            <ion-card-content>\n\n            <br/>  \n\n              <span>\n\n                <h1 class="titulo">¡Bienvenidos a CANFIND!</h1>\n\n              </span>\n\n            <br/>\n\n              <img src="{{imagepath || \'assets/imgs/reencuentro.jpg\'}}" />   \n\n            </ion-card-content>\n\n            <br/>\n\n            <button round ion-button icon-only block class="btn-gplus" (click)="crearClase();">\n\n                Crear clase\n\n              </button>\n\n            <div> <!--contenedor de los tips-->\n\n              <ion-row>\n\n                <ion-col col-12>\n\n                  <div>\n\n                    <div class="tipImagen">\n\n                      <img src="{{imagepath || \'assets/imgs/perro.png\'}}"/>\n\n                    </div>\n\n                    <div class="tipTexto">\n\n                      <h2>\n\n                        <p><b>En esta comunidad nos solidarizamos para que las mascotas regresen lo antes posible a sus hogares.</b></p>\n\n                      </h2>\n\n                    </div>\n\n                  </div>\n\n                </ion-col>\n\n              </ion-row>\n\n              <br/>\n\n              <ion-row>\n\n                <ion-col col-12>\n\n                  <div>\n\n                    <div class="tipImagen">\n\n                      <img src="{{imagepath || \'assets/imgs/binoculares.png\'}}"/>\n\n                    </div>\n\n                  <div class="tipTexto">\n\n                    <h2>\n\n                      <p><b>CANFIND te ayuda a encontrar a tu mascota mediante el reconocimiento de imágenes.</b></p>\n\n                    </h2>\n\n                  </div>\n\n                  </div>\n\n                </ion-col>\n\n              </ion-row>\n\n            </div> <!--contenedor de los tips-->\n\n          <br/>            \n\n        </ion-card>\n\n      </ion-grid>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\hello-ionic\hello-ionic.html"*/
+            selector: 'page-hello-ionic',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\hello-ionic\hello-ionic.html"*/'<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>CANFIND</ion-title>\n\n    <ion-buttons end>\n\n      <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <div>\n\n      <ion-grid>\n\n        <ion-card>\n\n            <ion-card-content>\n\n            <br/>  \n\n              <span>\n\n                <h1 class="titulo">¡Bienvenidos a CANFIND!</h1>\n\n              </span>\n\n            <br/>\n\n              <img src="{{imagepath || \'assets/imgs/reencuentro.jpg\'}}" />   \n\n            </ion-card-content>\n\n            <br/>\n\n            <div> <!--contenedor de los tips-->\n\n              <ion-row>\n\n                <ion-col col-12>\n\n                  <div>\n\n                    <div class="tipImagen">\n\n                      <img src="{{imagepath || \'assets/imgs/perro.png\'}}"/>\n\n                    </div>\n\n                    <div class="tipTexto">\n\n                      <h2>\n\n                        <p><b>En esta comunidad nos solidarizamos para que las mascotas regresen lo antes posible a sus hogares.</b></p>\n\n                      </h2>\n\n                    </div>\n\n                  </div>\n\n                </ion-col>\n\n              </ion-row>\n\n              <br/>\n\n              <ion-row>\n\n                <ion-col col-12>\n\n                  <div>\n\n                    <div class="tipImagen">\n\n                      <img src="{{imagepath || \'assets/imgs/binoculares.png\'}}"/>\n\n                    </div>\n\n                  <div class="tipTexto">\n\n                    <h2>\n\n                      <p><b>CANFIND te ayuda a encontrar a tu mascota mediante el reconocimiento de imágenes.</b></p>\n\n                    </h2>\n\n                  </div>\n\n                  </div>\n\n                </ion-col>\n\n              </ion-row>\n\n            </div> <!--contenedor de los tips-->\n\n          <br/>            \n\n        </ion-card>\n\n      </ion-grid>\n\n    </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\hello-ionic\hello-ionic.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */],
             __WEBPACK_IMPORTED_MODULE_5__providers_servicio_servicio__["a" /* ServicioProvider */],
@@ -971,47 +966,23 @@ var ServicioProvider = /** @class */ (function () {
                 });
                 loader.present();
                 //para el browser
-                // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
-                //   idUsuario: idUsuario,
-                //   imageURI: imageURI,
-                //   localizacion: localizacion
-                // })
-                // .subscribe((response) => {
-                //   loader.dismiss();
-                //   this.resultadoWatson = response as ResultadoWatson;
-                //   if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-                //     this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
-                //   }
-                //   else {
-                //     this.showAlertError();
-                //   }
-                // }, (error) => {
-                //   loader.dismiss();
-                //   console.log(error);
-                // });
-                //para el celular
-                this.base64.encodeFile(imageURI).then(function (base64File) {
-                    base64File = base64File.split(',')[1];
-                    _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
-                        idUsuario: idUsuario,
-                        imageURI: base64File,
-                        localizacion: localizacion
-                    })
-                        .subscribe(function (response) {
-                        loader.dismiss();
-                        _this.resultadoWatson = response;
-                        if (_this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-                            _this.showAlertExito();
-                        }
-                        else {
-                            _this.showAlertError();
-                        }
-                    }, function (error) {
-                        loader.dismiss();
-                        console.log(error);
-                    });
-                }, function (err) {
-                    console.log(err);
+                this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+                    idUsuario: idUsuario,
+                    imageURI: imageURI,
+                    localizacion: localizacion
+                })
+                    .subscribe(function (response) {
+                    loader.dismiss();
+                    _this.resultadoWatson = response;
+                    if (_this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+                        _this.showAlertExito();
+                    }
+                    else {
+                        _this.showAlertError();
+                    }
+                }, function (error) {
+                    loader.dismiss();
+                    console.log(error);
                 });
                 return [2 /*return*/];
             });
@@ -1098,41 +1069,41 @@ var ServicioProvider = /** @class */ (function () {
             });
             loader.present();
             //esto es para el browser
-            // this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
-            //   imageURI: imageURI,
-            //   idMascota: idMascota,
-            //   localizacion: "",
-            //   idUsuario: idUsuario
-            //  })
+            _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', {
+                imageURI: imageURI,
+                idMascota: idMascota,
+                localizacion: "",
+                idUsuario: idUsuario
+            })
+                .subscribe(function (response) {
+                loader.dismiss();
+                var nav = _this.app.getActiveNav();
+                nav.pop();
+            }, function (error) {
+                loader.dismiss();
+                _this.showAlertErrorGenerico();
+                console.log(error);
+            });
+            //esto es para el celu
+            // this.base64.encodeFile(imageURI).then((base64File: string) => {
+            //   base64File = base64File.split(',')[1];
+            //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
+            //     imageURI: base64File,
+            //     idMascota: idMascota,
+            //     localizacion: "",
+            //     idUsuario: idUsuario
+            //   })
             //   .subscribe((response) => {
             //     loader.dismiss();
-            //      let nav = this.app.getActiveNav();
-            //      nav.pop();
+            //     this.showAlertFotoAgregada();
             //   }, (error) => {
-            //      loader.dismiss();
-            //      this.showAlertErrorGenerico();
-            //      console.log(error);
+            //     loader.dismiss();
+            //     this.showAlertErrorGenerico();
+            //     console.log(error);
             //   });
-            //esto es para el celu
-            _this.base64.encodeFile(imageURI).then(function (base64File) {
-                base64File = base64File.split(',')[1];
-                _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', {
-                    imageURI: base64File,
-                    idMascota: idMascota,
-                    localizacion: "",
-                    idUsuario: idUsuario
-                })
-                    .subscribe(function (response) {
-                    loader.dismiss();
-                    _this.showAlertFotoAgregada();
-                }, function (error) {
-                    loader.dismiss();
-                    _this.showAlertErrorGenerico();
-                    console.log(error);
-                });
-            }, function (err) {
-                console.log(err);
-            });
+            // }, (err) => {
+            //   console.log(err);
+            // });
         });
     };
     ServicioProvider.prototype.showAlertErrorGenerico = function () {
@@ -1603,7 +1574,7 @@ var MisMascotasPage = /** @class */ (function () {
     };
     MisMascotasPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-mis-mascotas',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\mis-mascotas\mis-mascotas.html"*/'<!--\n\n  Generated template for the MisMascotasPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n    <ion-navbar color="barra">\n\n      <button ion-button menuToggle>\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n      <ion-title>Mis mascotas</ion-title>\n\n      <ion-buttons end>\n\n          <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n    </ion-navbar>\n\n  </ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-card *ngFor="let item of misMascotas">\n\n      <ion-card-content (click)=\'irAPerfil(item.idMascota)\'>\n\n        <ion-card-title>\n\n        <h1>{{ item.nombre }} - {{ item.descripcionRaza }}</h1> \n\n        </ion-card-title>\n\n          <div class="imagenFondo">\n\n            <img class="imagenFrame" img-fluid *ngIf="item.avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item.avatar }}.jpg" />\n\n            <img class="imagenFrame" img-fluid *ngIf="item.avatar == null" src="assets/img/avatarPerro.png" />\n\n          </div>\n\n        </ion-card-content>\n\n  </ion-card>\n\n\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <button round ion-button block color="secondary" (click)="agregarMascota();"> Agregar Mascota\n\n        </button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\mis-mascotas\mis-mascotas.html"*/,
+            selector: 'page-mis-mascotas',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\mis-mascotas\mis-mascotas.html"*/'<!--\n\n  Generated template for the MisMascotasPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n    <ion-navbar color="barra">\n\n      <button ion-button menuToggle>\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n      <ion-title>Mis mascotas</ion-title>\n\n      <ion-buttons end>\n\n          <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n    </ion-navbar>\n\n  </ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-card *ngFor="let item of misMascotas">\n\n      <ion-card-content (click)=\'irAPerfil(item.idMascota)\'>\n\n        <ion-card-title>\n\n        <h1>{{ item.nombre }} - <small>{{ item.descripcionRaza }}</small></h1> \n\n        <ion-badge *ngIf="item.entrenado < 10" color="danger">perfil incompleto</ion-badge>\n\n        </ion-card-title>\n\n          <div class="imagenFondo">\n\n            <img class="imagenFrame" img-fluid *ngIf="item.avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item.avatar }}.jpg" />\n\n            <img class="imagenFrame" img-fluid *ngIf="item.avatar == null" src="assets/img/avatarPerro.png" />\n\n          </div>\n\n        </ion-card-content>\n\n  </ion-card>\n\n\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col col-12>\n\n        <button round ion-button block color="secondary" (click)="agregarMascota();"> Agregar Mascota\n\n        </button>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n\n\n  \n\n\n\n  \n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\mis-mascotas\mis-mascotas.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -1664,6 +1635,8 @@ var PerfilMascotaPage = /** @class */ (function () {
             _this.idMascota = mascotaResult.idMascota;
             _this.perdida = mascotaResult.perdida;
             _this.avatar = mascotaResult.avatar;
+            _this.entrenado = mascotaResult.entrenado;
+            _this.claseEntrenada = mascotaResult.claseEntrenada;
             console.log(result);
         }, function (error) {
             console.log(error);
@@ -1675,7 +1648,9 @@ var PerfilMascotaPage = /** @class */ (function () {
     PerfilMascotaPage.prototype.IrAFotos = function (idMascota) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fotos_mascota_fotos_mascota__["a" /* FotosMascotaPage */], {
             idMascota: idMascota,
-            nombreMascota: this.nombre
+            nombreMascota: this.nombre,
+            entrenado: this.entrenado,
+            claseEntrenada: this.claseEntrenada
         });
     };
     PerfilMascotaPage.prototype.showAlertPerdido = function (idMascota) {
@@ -1732,7 +1707,7 @@ var PerfilMascotaPage = /** @class */ (function () {
     };
     PerfilMascotaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-perfil-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\perfil-mascota\perfil-mascota.html"*/'<!--\n\n  Generated template for the PerfilMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="barra">\n\n    <ion-title>Perfil {{ Nombre }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-grid>\n\n    <ion-card>\n\n    <div id="imagen-perfil" class="row">\n\n      <div class="col">\n\n        <h1>{{ nombre }}</h1>\n\n        <span>Raza: {{ descripcionRaza }}</span><br>\n\n      </div>\n\n      <div class="col">\n\n          <img *ngIf="avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ avatar }}.jpg" />\n\n          <img *ngIf="avatar == null" src="assets/img/avatarPerro.png" />\n\n        <!-- <img src="{{ avatar }}" /> -->\n\n      </div>\n\n    </div>\n\n  </ion-card>\n\n    <div id="botones">\n\n      <ion-row>\n\n        <ion-col col-12>\n\n          <button *ngIf="!perdida" round ion-button icon block color="danger" class="button" (click)="showAlertPerdido(idMascota);">Perdido\n\n          </button>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12>\n\n          <button round ion-button icon block class="button" color="primary"  (click)="IrAFotos(idMascota)">Fotos\n\n          </button>\n\n        </ion-col>\n\n      </ion-row>\n\n  <!--<ion-row>\n\n        <ion-col col-12>\n\n          <button round ion-button icon block class="button" (click)="compartir();">Compartir\n\n          </button>\n\n        </ion-col>\n\n      </ion-row> -->\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button *ngIf="perdida" round ion-button icon block color="energized" class="button" (click)="consultar();">Consultar\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n            <ion-col col-12>\n\n              <button *ngIf="perdida"  round ion-button icon block color="secondary" class="button" (click)="showAlertEncontrado(idMascota);">Ya la encontré\n\n              </button>\n\n            </ion-col>\n\n          </ion-row>\n\n    </div>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\perfil-mascota\perfil-mascota.html"*/,
+            selector: 'page-perfil-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\perfil-mascota\perfil-mascota.html"*/'<!--\n\n  Generated template for the PerfilMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="barra">\n\n    <ion-title>Perfil {{ Nombre }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-grid>\n\n    <ion-card>\n\n      <div id="imagen-perfil" class="row">\n\n        <div class="col">\n\n          <h1>{{ nombre }}</h1>\n\n          <span>Raza: {{ descripcionRaza }}</span><br>\n\n          <br>\n\n          <div *ngIf="entrenado < 10">\n\n            <h3><ion-badge color="danger">Perfil incompleto</ion-badge></h3>\n\n            <p>Debes agregar fotos de tu mascota para mejorar las probabilidades de reconocerla por la I.A.</p>\n\n          </div>\n\n        </div>\n\n        <div class="col">\n\n            <img *ngIf="avatar != null" src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ avatar }}.jpg" />\n\n            <img *ngIf="avatar == null" src="assets/img/avatarPerro.png " />\n\n        </div>\n\n      </div>\n\n  </ion-card>\n\n    <div id="botones">\n\n      <ion-row>\n\n        <ion-col col-12>\n\n          <button *ngIf="!perdida" round ion-button icon block color="danger" class="button" (click)="showAlertPerdido(idMascota);">Perdido\n\n          </button>\n\n        </ion-col>\n\n      </ion-row>\n\n      <ion-row>\n\n        <ion-col col-12>\n\n          <button round ion-button icon block class="button" color="primary"  (click)="IrAFotos(idMascota)">Fotos -&nbsp;<ion-badge color="light">{{entrenado}}</ion-badge>\n\n          </button>\n\n        </ion-col>\n\n      </ion-row>\n\n  <!--<ion-row>\n\n        <ion-col col-12>\n\n          <button round ion-button icon block class="button" (click)="compartir();">Compartir\n\n          </button>\n\n        </ion-col>\n\n      </ion-row> -->\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button *ngIf="perdida" round ion-button icon block color="energized" class="button" (click)="consultar();">Consultar\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n            <ion-col col-12>\n\n              <button *ngIf="perdida"  round ion-button icon block color="secondary" class="button" (click)="showAlertEncontrado(idMascota);">Ya la encontré\n\n              </button>\n\n            </ion-col>\n\n          </ion-row>\n\n    </div>\n\n  </ion-grid>\n\n</ion-content>'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\perfil-mascota\perfil-mascota.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],

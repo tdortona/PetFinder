@@ -19,8 +19,8 @@ import { MascotaNueva } from '../../app/models/MascotaNueva';
 @Injectable()
 export class ServicioProvider {
 
-  // private URL_SERVER: string = "http://canfind.herokuapp.com";
-  private URL_SERVER: string = "https://localhost:44357";
+  private URL_SERVER: string = "http://canfind.herokuapp.com";
+  // private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
@@ -63,7 +63,7 @@ export class ServicioProvider {
     //   loader.dismiss();
     //   this.resultadoWatson = response as ResultadoWatson;
     //   if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-    //     this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+    //     this.showAlertExito();
     //   }
     //   else {
     //     this.showAlertError();
