@@ -74,6 +74,7 @@ export class AgregaMascotaPage {
             }]
           });
           console.log(error);
+          alert.present();
       })
     });
   }

@@ -21,18 +21,39 @@
 
 <ion-content padding class="backgroundGeneral">
 
+    
     <ion-card *ngFor="let item of fotos">
           <ion-card-content>
             <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />
           </ion-card-content>
-      </ion-card>
+    </ion-card>
 
-      <ion-grid>
-          <ion-row>
-            <ion-col col-12>
-              <button round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto
-              </button>
-            </ion-col>
-          </ion-row>
-      </ion-grid>
+    <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <button round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto
+            </button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+      <!-- <ion-grid *ngIf="fotos.length < 10">
+        <ion-row>
+          <ion-col col-12>
+            <p>Total de fotos para completar el perfil:</p>
+            <h1><span>{{10 - fotos.length}}</span></h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid> -->
+
+    <ion-card *ngIf="fotos.length < 10">
+        <ion-card-header>
+          <h1 color="canfind">{{10 - fotos.length}}</h1>
+        </ion-card-header>
+        <ion-card-content>
+            <p>Fotos restantes para completar el perfil.</p>
+        </ion-card-content>
+
+    </ion-card>
+
 </ion-content>

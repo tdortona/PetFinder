@@ -19,14 +19,10 @@ import { MascotaNueva } from '../../app/models/MascotaNueva';
 @Injectable()
 export class ServicioProvider {
 
-<<<<<<< HEAD
   private URL_SERVER: string = "http://canfind.herokuapp.com";
-=======
-  // private URL_SERVER: string = "http://canfind.herokuapp.com";
   // private URL_SERVER: string = "https://localhost:44357";
-  private URL_SERVER: string = "https://localhost:5001";
+  // private URL_SERVER: string = "https://localhost:5001";
   // private URL_SERVER: string = "https://192.168.0.8:5001";
->>>>>>> be8aead4db1d014c5c26ede3663376924f99e3e7
   // private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
@@ -61,49 +57,49 @@ export class ServicioProvider {
 
     loader.present();
     //para el browser
-    this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
-      idUsuario: idUsuario,
-      imageURI: imageURI,
-      localizacion: "prueba"
-    })
-    .subscribe((response) => {
-      loader.dismiss();
-      this.resultadoWatson = response as ResultadoWatson;
-      if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-        this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
-      }
-      else {
-        this.showAlertError();
-      }
-    }, (error) => {
-      loader.dismiss();
-      console.log(error);
-    });
+    // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+    //   idUsuario: idUsuario,
+    //   imageURI: imageURI,
+    //   localizacion: "prueba"
+    // })
+    // .subscribe((response) => {
+    //   loader.dismiss();
+    //   this.resultadoWatson = response as ResultadoWatson;
+    //   if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+    //     this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+    //   }
+    //   else {
+    //     this.showAlertError();
+    //   }
+    // }, (error) => {
+    //   loader.dismiss();
+    //   console.log(error);
+    // });
 
     //para el celular
-    // this.base64.encodeFile(imageURI).then((base64File: string) => {
-    //   base64File = base64File.split(',')[1];
-    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
-    //     idUsuario: idUsuario,
-    //     imageURI: base64File,
-    //     localizacion: "prueba"
-    //   })
-    //   .subscribe((response) => {
-    //     loader.dismiss();
-    //     this.resultadoWatson = response as ResultadoWatson;
-    //     if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-    //       this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
-    //     }
-    //     else {
-    //       this.showAlertError();
-    //     }
-    //   }, (error) => {
-    //     loader.dismiss();
-    //     console.log(error);
-    //   });
-    // }, (err) => {
-    //   console.log(err);
-    // });
+    this.base64.encodeFile(imageURI).then((base64File: string) => {
+      base64File = base64File.split(',')[1];
+      this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+        idUsuario: idUsuario,
+        imageURI: base64File,
+        localizacion: "prueba"
+      })
+      .subscribe((response) => {
+        loader.dismiss();
+        this.resultadoWatson = response as ResultadoWatson;
+        if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+          this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+        }
+        else {
+          this.showAlertError();
+        }
+      }, (error) => {
+        loader.dismiss();
+        console.log(error);
+      });
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   public prueba() {
@@ -193,52 +189,45 @@ export class ServicioProvider {
 
         loader.present();
         //esto es para el browser
-        this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
-          imageURI: imageURI,
-          idMascota: idMascota,
-          localizacion: "prueba",
-          idUsuario: idUsuario
-         })
+        // this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
+        //   imageURI: imageURI,
+        //   idMascota: idMascota,
+        //   localizacion: "prueba",
+        //   idUsuario: idUsuario
+        //  })
+        // .subscribe((response) => {
+        //   loader.dismiss();
+        //   resolve("ok");
+        // }, (error) => {
+        //   loader.dismiss();
+        //   console.log("error al enviar al backend");
+        //   console.log(error);
+        //   reject("");
+        // });
+
+        //esto es para el celular
+        this.base64.encodeFile(imageURI).then((base64File: string) => {
+          base64File = base64File.split(',')[1];
+          this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
+            imageURI: base64File,
+            idMascota: idMascota,
+            localizacion: "prueba",
+            idUsuario: idUsuario
+          })
           .subscribe((response) => {
-            loader.dismiss();
-            resolve("ok");
+              loader.dismiss();
+              resolve("ok");
           }, (error) => {
             loader.dismiss();
-            console.log("error al enviar al backend");
-            console.log(error);
-            reject("");
+             console.log("error al enviar al backend");
+             console.log(error);
+             reject("");
           });
-      });
+        }, (err) => {
+          console.log(err);
+        });
 
-
-    
-    
-    
-
-      //esto es para el celu
-    // this.base64.encodeFile(imageURI).then((base64File: string) => {
-    //   base64File = base64File.split(',')[1];
-    //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { imageURI: base64File })
-    //   .subscribe((response) => {
-    //     loader.dismiss();
-    //     // this.resultadoWatson = response as ResultadoWatson;
-    //     // if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-    //     //   this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
-    //     // }
-    //     // else {
-    //     //   this.showAlertError();
-    //     // }
-
-    //     alert("Esto es la respuesta" + response);
-    //   }, (error) => {
-    //     loader.dismiss();
-    //     console.log("error al enviar al backend");
-    //     alert("error al enviar al backend");
-    //     console.log(error);
-    //   });
-    // }, (err) => {
-    //   console.log(err);
-    // });
+      });//fin de Promise 
   }
   
   public traerMascotas(id: number){
@@ -258,7 +247,7 @@ export class ServicioProvider {
   }
 
   public traerImagenMascota(idMascota: number){
-    return this.http.post(this.URL_SERVER + '/api/ImagenMascota/TraerFotos', {"IdMascota":idMascota});
+    return this.http.get(this.URL_SERVER + '/api/ImagenMascota/TraerFotos/'+idMascota);
   }
   
   public agregaMascota(mascota: MascotaNueva){
