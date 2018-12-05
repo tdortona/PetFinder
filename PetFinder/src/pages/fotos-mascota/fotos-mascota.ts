@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { ServicioProvider } from '../../providers/servicio/servicio';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Storage } from '@ionic/storage';
@@ -28,7 +28,9 @@ export class FotosMascotaPage {
     private service: ServicioProvider,
     private camera: Camera,
     public storage: Storage,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController) {
     
     this.idMascota = navParams.get("idMascota");
     this.mascota = navParams.get("nombreMascota");
@@ -78,6 +80,11 @@ export class FotosMascotaPage {
   }
 
   entrenarIA() {
+    let loader = this.loadingCtrl.create({
+      content: "Entrenando...",
+      dismissOnPageChange: true
+    });
+    loader.present();
     let imageUris = [];
     this.fotos.forEach(function (value) {
       imageUris.push('http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/' + value + '.jpg');
@@ -85,8 +92,40 @@ export class FotosMascotaPage {
     this.service.crearClaseWatson(this.idMascota, this.mascota, imageUris)
     .subscribe((result) => {
       console.log(result);
+      loader.dismiss();
+      this.showAlertExito();
     }, (error) => {
       console.log(error);
+      loader.dismiss();
+      this.showAlertError();
     });
+  }
+
+  showAlertExito() {
+    const alert = this.alertCtrl.create({
+      title: '¡Tu mascota ya está entrenada!',
+      subTitle: 'Ahora podremos encontrarla con facilidad.',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.pop();
+        }
+      }]
+    });
+    alert.present();
+  }
+
+  showAlertError() {
+    const alert = this.alertCtrl.create({
+      title: 'Ocurrió un error.',
+      subTitle: '',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          this.navCtrl.pop();
+        }
+      }]
+    });
+    alert.present();
   }
 }
