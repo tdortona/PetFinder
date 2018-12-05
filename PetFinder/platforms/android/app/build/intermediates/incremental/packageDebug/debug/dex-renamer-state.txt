@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-#Tue Dec 04 23:06:54 ART 2018
+#Tue Dec 04 23:55:15 ART 2018
 base.0=C\:\\Users\\tomasdo\\Desktop\\Universidad\\Proyecto Final\\PetFinder\\PetFinder\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-=======
-#Sat Nov 17 16:43:34 ART 2018
-base.0=/var/www/html/PetFinder/PetFinder/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
->>>>>>> 856bd23f10432767e2f9c77bbf3ffb1d228eb395
 path.0=classes.dex
 renamed.0=classes.dex
