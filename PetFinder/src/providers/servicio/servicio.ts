@@ -21,6 +21,9 @@ export class ServicioProvider {
 
   private URL_SERVER: string = "http://canfind.herokuapp.com";
   // private URL_SERVER: string = "https://localhost:44357";
+  // private URL_SERVER: string = "https://localhost:5001";
+  // private URL_SERVER: string = "https://192.168.0.8:5001";
+  // private URL_SERVER: string = "https://localhost:44357";
 
   imageFileName: any;
   pbaPost: UserData = new UserData();
@@ -57,7 +60,7 @@ export class ServicioProvider {
     // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
     //   idUsuario: idUsuario,
     //   imageURI: imageURI,
-    //   localizacion: localizacion
+    //   localizacion: "prueba"
     // })
     // .subscribe((response) => {
     //   loader.dismiss();
@@ -79,7 +82,7 @@ export class ServicioProvider {
       this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
         idUsuario: idUsuario,
         imageURI: base64File,
-        localizacion: localizacion
+        localizacion: "prueba"
       })
       .subscribe((response) => {
         loader.dismiss();
@@ -189,40 +192,42 @@ export class ServicioProvider {
         // this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
         //   imageURI: imageURI,
         //   idMascota: idMascota,
-        //   localizacion: "",
+        //   localizacion: "prueba",
         //   idUsuario: idUsuario
         //  })
-        //   .subscribe((response) => {
-        //     loader.dismiss();
-        //      let nav = this.app.getActiveNav();
-        //      nav.pop();
-        //   }, (error) => {
-        //      loader.dismiss();
-        //      this.showAlertErrorGenerico();
-        //      console.log(error);
-        //   });
+        // .subscribe((response) => {
+        //   loader.dismiss();
+        //   resolve("ok");
+        // }, (error) => {
+        //   loader.dismiss();
+        //   console.log("error al enviar al backend");
+        //   console.log(error);
+        //   reject("");
+        // });
 
-          //esto es para el celu
-          this.base64.encodeFile(imageURI).then((base64File: string) => {
-            base64File = base64File.split(',')[1];
-            this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
-              imageURI: base64File,
-              idMascota: idMascota,
-              localizacion: "",
-              idUsuario: idUsuario
-            })
-            .subscribe((response) => {
+        //esto es para el celular
+        this.base64.encodeFile(imageURI).then((base64File: string) => {
+          base64File = base64File.split(',')[1];
+          this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
+            imageURI: base64File,
+            idMascota: idMascota,
+            localizacion: "prueba",
+            idUsuario: idUsuario
+          })
+          .subscribe((response) => {
               loader.dismiss();
-              this.showAlertFotoAgregada();
-            }, (error) => {
-              loader.dismiss();
-              this.showAlertErrorGenerico();
-              console.log(error);
-            });
-          }, (err) => {
-            console.log(err);
+              resolve("ok");
+          }, (error) => {
+            loader.dismiss();
+             console.log("error al enviar al backend");
+             console.log(error);
+             reject("");
           });
-      });
+        }, (err) => {
+          console.log(err);
+        });
+
+      });//fin de Promise 
   }
   
   showAlertErrorGenerico() {

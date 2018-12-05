@@ -7,13 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "com-badrit-base64": {
-      "PACKAGE_NAME": "com.petfinder.iashley"
-    },
-    "cordova-android-support-gradle-release": {
-      "ANDROID_SUPPORT_VERSION": "27.+",
-      "PACKAGE_NAME": "com.petfinder.iashley"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
@@ -24,6 +17,9 @@
       "APP_ID": "293256888192075",
       "APP_NAME": "IAshley",
       "FACEBOOK_ANDROID_SDK_VERSION": "4.37.0",
+      "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
     "cordova-plugin-file-transfer": {
@@ -39,16 +35,14 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.petfinder.iashley"
-    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.petfinder.iashley"
     },
-    "cordova-plugin-geolocation": {
+    "cordova-android-support-gradle-release": {
+      "ANDROID_SUPPORT_VERSION": "27.+",
       "PACKAGE_NAME": "com.petfinder.iashley"
     }
   },

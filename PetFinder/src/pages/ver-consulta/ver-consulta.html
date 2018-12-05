@@ -50,7 +50,7 @@
                 <h1>{{ item.clase }} - {{ item.score }} %</h1> 
               </ion-card-title>
               <div class="imagenFondo">
-                <img class="imagenFrame" img-fluid src="{{ item.imagen }}" />
+                <img class="imagenFrame" img-fluid src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Encontrados/{{ item.imagen }}.jpg" />
               </div>
               <div>
                 La foto fue tomada en: {{ item.localizacion }}
@@ -61,6 +61,10 @@
             </ion-card-content>
         </ion-card>
     </ng-container>
+
+    <ion-row justify-content-center *ngIf="consultando">
+      <ion-spinner name="dots"></ion-spinner>
+    </ion-row>
 
     <ion-card *ngIf="consultaRealizada && resultados.length == 0">
         <ion-card-content>

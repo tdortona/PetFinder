@@ -19,6 +19,9 @@
 
 
 <ion-content padding class="backgroundGeneral">
+    <ion-row justify-content-center *ngIf="consultando">
+      <ion-spinner name="dots"></ion-spinner>
+    </ion-row>
   <ion-card *ngFor="let item of misMascotas">
       <ion-card-content (click)='irAPerfil(item.idMascota)'>
         <ion-card-title>
