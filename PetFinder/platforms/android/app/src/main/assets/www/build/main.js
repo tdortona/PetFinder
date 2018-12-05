@@ -205,6 +205,7 @@ var FotosMascotaPage = /** @class */ (function () {
         this.idMascota = navParams.get("idMascota");
         this.mascota = navParams.get("nombreMascota");
         this.entrenado = navParams.get("entrenado");
+        this.claseEntrenada = navParams.get("claseEntrenada");
         this.traerImagenesMascotas(this.idMascota);
     }
     FotosMascotaPage.prototype.traerImagenesMascotas = function (idMascota) {
@@ -246,9 +247,21 @@ var FotosMascotaPage = /** @class */ (function () {
             console.log(err);
         });
     };
+    FotosMascotaPage.prototype.entrenarIA = function () {
+        var imageUris = [];
+        this.fotos.forEach(function (value) {
+            imageUris.push('http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/' + value + '.jpg');
+        });
+        this.service.crearClaseWatson(this.idMascota, this.mascota, imageUris)
+            .subscribe(function (result) {
+            console.log(result);
+        }, function (error) {
+            console.log(error);
+        });
+    };
     FotosMascotaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n\n\n    \n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-grid>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n\n\n      <!-- <ion-grid *ngIf="fotos.length < 10">\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <p>Total de fotos para completar el perfil:</p>\n\n            <h1><span>{{10 - fotos.length}}</span></h1>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid> -->\n\n\n\n    <ion-card *ngIf="fotos.length < 10">\n\n        <ion-card-header>\n\n          <h1 color="canfind">{{10 - fotos.length}}</h1>\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <p>Fotos restantes para completar el perfil.</p>\n\n        </ion-card-content>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
+            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-grid>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button *ngIf="fotos.length < 10" round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n            </button>\n\n            <button *ngIf="fotos.length == 10 && !claseEntrenada" round ion-button block color="primary" (click)="entrenarIA();"> Entrenar IA\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n\n\n      <!-- <ion-grid *ngIf="fotos.length < 10">\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <p>Total de fotos para completar el perfil:</p>\n\n            <h1><span>{{10 - fotos.length}}</span></h1>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid> -->\n\n\n\n    <ion-card *ngIf="fotos.length < 10">\n\n        <ion-card-header>\n\n          <h1 color="canfind">{{10 - fotos.length}}</h1>\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <p>Fotos restantes para completar el perfil.</p>\n\n        </ion-card-content>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_servicio_servicio__["a" /* ServicioProvider */],
@@ -488,10 +501,6 @@ var ConfirmarFotoPage = /** @class */ (function () {
         this.direccion = "";
         this.direccionError = "";
         this.base64Image = navParams.get('data');
-        this.loading = this.loadingCtrl.create({
-            content: 'Localizando...',
-            dismissOnPageChange: true
-        });
     }
     ConfirmarFotoPage.prototype.ionViewDidLoad = function () {
         this.getPosition();
@@ -504,42 +513,45 @@ var ConfirmarFotoPage = /** @class */ (function () {
     };
     ConfirmarFotoPage.prototype.getPosition = function () {
         var _this = this;
-        this.loading.present();
+        var loader = this.loadingCtrl.create({
+            content: "Localizando...",
+            dismissOnPageChange: true
+        });
+        loader.present();
         this.geolocation.getCurrentPosition().then(function (resp) {
             _this.location = resp.coords.latitude + "," + resp.coords.longitude;
             _this.direccionError = "";
-            _this.getLocation(_this.location);
+            _this.getLocation(_this.location)
+                .subscribe(function (result) {
+                console.log(result);
+                _this.localizacionResult = result;
+                console.log(_this.localizacionResult);
+                if (_this.localizacionResult.status == "OK") {
+                    _this.direccion = _this.localizacionResult.results[0].address_components[1].long_name + " " + _this.localizacionResult.results[0].address_components[0].long_name + ", " + _this.localizacionResult.results[0].address_components[2].long_name;
+                }
+                else {
+                    _this.direccion = "No se pudo obtener la localización.";
+                }
+                loader.dismiss();
+            }, function (error) {
+                console.log(error);
+                loader.dismiss();
+            });
         }).catch(function (error) {
             _this.direccionError = "Por favor, activá la ubicación del dispositivo.";
             console.log('Error getting location', error);
-            _this.loading.dismiss();
+            loader.dismiss();
         });
     };
     ConfirmarFotoPage.prototype.cancelarFoto = function () {
         this.navCtrl.pop();
     };
     ConfirmarFotoPage.prototype.getLocation = function (pos) {
-        var _this = this;
-        this.service.getLocation(pos)
-            .subscribe(function (result) {
-            console.log(result);
-            _this.localizacionResult = result;
-            console.log(_this.localizacionResult);
-            if (_this.localizacionResult.status == "OK") {
-                _this.direccion = _this.localizacionResult.results[0].address_components[1].long_name + " " + _this.localizacionResult.results[0].address_components[0].long_name + ", " + _this.localizacionResult.results[0].address_components[2].long_name;
-            }
-            else {
-                _this.direccion = "No se pudo obtener la localización.";
-            }
-            _this.loading.dismiss();
-        }, function (error) {
-            console.log(error);
-            _this.loading.dismiss();
-        });
+        return this.service.getLocation(pos);
     };
     ConfirmarFotoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmar-foto',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/'<!--\n\n  Generated template for the ConfirmarFotoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="barra">\n\n    <ion-title>Confirmar Foto</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <img (show)="base64Image !== \'\'" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)" />\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-card *ngIf="direccion != \'\'">\n\n        <ion-card-content>\n\n          La foto fue tomada en: <br />\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n      <ion-card *ngIf="direccionError != \'\'">\n\n        <ion-card-content>\n\n          La foto fue tomada en: <br />\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <ion-icon class="pull-right confirm-button" (click)="confirmarFoto()" name="checkmark-circle"></ion-icon>\n\n      </ion-col>\n\n      <ion-col>\n\n        <ion-icon class="cancel-button" (click)="cancelarFoto()" name="close-circle"></ion-icon>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/,
+            selector: 'page-confirmar-foto',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/'<!--\n\n  Generated template for the ConfirmarFotoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="barra">\n\n    <ion-title>Confirmar Foto</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <img (show)="base64Image !== \'\'" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)" />\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-card *ngIf="direccion != \'\'">\n\n        <ion-card-content>\n\n          La foto fue tomada en: <br />\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n      <ion-card *ngIf="direccionError != \'\'">\n\n        <ion-card-content>\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <ion-icon class="pull-right confirm-button" (click)="confirmarFoto()" name="checkmark-circle"></ion-icon>\n\n      </ion-col>\n\n      <ion-col>\n\n        <ion-icon class="cancel-button" (click)="cancelarFoto()" name="close-circle"></ion-icon>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -621,7 +633,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/'<ion-content padding class="animated fadeIn login auth-page">\n\n  <div class="login-content">\n\n\n\n    <!-- Logo -->\n\n    <div padding-horizontal text-center class="animated fadeInDown">\n\n      <div class="logo"></div>\n\n    </div>\n\n\n\n    <div>\n\n    <ion-grid>\n\n <!--  <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-facebook" (click)="loginFb();">Iniciar sesión con Facebook \n\n              <ion-icon name="logo-facebook"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>  -->\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-twitter" (click)="login();">Iniciar sesión con Twitter \n\n              <ion-icon name="logo-twitter"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-gplus" (click)="loginGoogle();">\n\n              &nbsp;Iniciar sesión con Google\n\n              <ion-icon name="logo-googleplus"></ion-icon> \n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/
+            selector: 'page-login',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/'<ion-content padding class="animated fadeIn login auth-page">\n\n  <div class="login-content">\n\n\n\n    <!-- Logo -->\n\n    <div padding-horizontal text-center class="animated fadeInDown">\n\n      <div class="logo"></div>\n\n    </div>\n\n\n\n    <div>\n\n    <ion-grid>\n\n <!--  <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-facebook" (click)="loginFb();">Iniciar sesión con Facebook \n\n              <ion-icon name="logo-facebook"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-twitter" (click)="login();">Iniciar sesión con Twitter \n\n              <ion-icon name="logo-twitter"></ion-icon>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>  -->\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button icon-only block class="btn-gplus" (click)="loginGoogle();">\n\n              &nbsp;Iniciar sesión con Google\n\n              <ion-icon name="logo-googleplus"></ion-icon> \n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\login\login.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
@@ -961,7 +973,7 @@ var ServicioProvider = /** @class */ (function () {
                 //   loader.dismiss();
                 //   this.resultadoWatson = response as ResultadoWatson;
                 //   if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-                //     this.showAlertExito(this.resultadoWatson.images[0].classifiers[0].classes[0].class, this.resultadoWatson.images[0].classifiers[0].classes[0].score);
+                //     this.showAlertExito();
                 //   }
                 //   else {
                 //     this.showAlertError();
@@ -1631,11 +1643,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var PerfilMascotaPage = /** @class */ (function () {
     function PerfilMascotaPage(navCtrl, navParams, service, alertCtrl) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.service = service;
         this.alertCtrl = alertCtrl;
+    }
+    PerfilMascotaPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
         this.idMascota = this.navParams.get("idMascota");
         this.service.traerMascota(this.idMascota)
             .subscribe(function (result) {
@@ -1646,19 +1660,18 @@ var PerfilMascotaPage = /** @class */ (function () {
             _this.perdida = mascotaResult.perdida;
             _this.avatar = mascotaResult.avatar;
             _this.entrenado = mascotaResult.entrenado;
+            _this.claseEntrenada = mascotaResult.claseEntrenada;
             console.log(result);
         }, function (error) {
             console.log(error);
         });
-    }
-    PerfilMascotaPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PerfilMascotaPage');
     };
     PerfilMascotaPage.prototype.IrAFotos = function (idMascota) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fotos_mascota_fotos_mascota__["a" /* FotosMascotaPage */], {
             idMascota: idMascota,
             nombreMascota: this.nombre,
-            entrenado: this.entrenado
+            entrenado: this.entrenado,
+            claseEntrenada: this.claseEntrenada
         });
     };
     PerfilMascotaPage.prototype.showAlertPerdido = function (idMascota) {

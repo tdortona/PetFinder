@@ -29,7 +29,7 @@
           <ion-col col-12>
             <button *ngIf="fotos.length < 10" round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto
             </button>
-            <button (show)="fotos.length == 10 && !claseEntrenada" round ion-button block color="secondary" (click)="entrenarIA();"> Entrenar IA
+            <button *ngIf="fotos.length == 10 && !claseEntrenada" round ion-button block color="primary" (click)="entrenarIA();"> Entrenar IA
             </button>
           </ion-col>
         </ion-row>

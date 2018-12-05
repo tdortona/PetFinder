@@ -31,26 +31,26 @@ export class PerfilMascotaPage {
     public navParams: NavParams,
     private service: ServicioProvider,
     public alertCtrl: AlertController) {
-    this.idMascota = this.navParams.get("idMascota");
 
-      this.service.traerMascota(this.idMascota)
-      .subscribe((result) => { 
-          let mascotaResult = result as Mascota;
-          this.nombre = mascotaResult.nombre;
-          this.descripcionRaza = mascotaResult.descripcionRaza;
-          this.idMascota = mascotaResult.idMascota;
-          this.perdida = mascotaResult.perdida;
-          this.avatar = mascotaResult.avatar;
-          this.entrenado = mascotaResult.entrenado;
-          this.claseEntrenada = mascotaResult.claseEntrenada;
-          console.log(result);
-      }, (error) => {
-        console.log(error);
-      });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilMascotaPage');
+  ionViewWillEnter() {
+    this.idMascota = this.navParams.get("idMascota");
+
+    this.service.traerMascota(this.idMascota)
+    .subscribe((result) => { 
+        let mascotaResult = result as Mascota;
+        this.nombre = mascotaResult.nombre;
+        this.descripcionRaza = mascotaResult.descripcionRaza;
+        this.idMascota = mascotaResult.idMascota;
+        this.perdida = mascotaResult.perdida;
+        this.avatar = mascotaResult.avatar;
+        this.entrenado = mascotaResult.entrenado;
+        this.claseEntrenada = mascotaResult.claseEntrenada;
+        console.log(result);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   IrAFotos(idMascota: number){

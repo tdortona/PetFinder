@@ -261,7 +261,7 @@ var FotosMascotaPage = /** @class */ (function () {
     };
     FotosMascotaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-grid>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button *ngIf="fotos.length < 10" round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n            </button>\n\n            <button *ngIf="fotos.length >= 10 && !claseEntrenada" round ion-button block color="secondary" (click)="entrenarIA();"> Entrenar IA\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n\n\n      <!-- <ion-grid *ngIf="fotos.length < 10">\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <p>Total de fotos para completar el perfil:</p>\n\n            <h1><span>{{10 - fotos.length}}</span></h1>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid> -->\n\n\n\n    <ion-card *ngIf="fotos.length < 10">\n\n        <ion-card-header>\n\n          <h1 color="canfind">{{10 - fotos.length}}</h1>\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <p>Fotos restantes para completar el perfil.</p>\n\n        </ion-card-content>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
+            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-grid>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button *ngIf="fotos.length < 10" round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n            </button>\n\n            <button *ngIf="fotos.length == 10 && !claseEntrenada" round ion-button block color="primary" (click)="entrenarIA();"> Entrenar IA\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n\n\n      <!-- <ion-grid *ngIf="fotos.length < 10">\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <p>Total de fotos para completar el perfil:</p>\n\n            <h1><span>{{10 - fotos.length}}</span></h1>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid> -->\n\n\n\n    <ion-card *ngIf="fotos.length < 10">\n\n        <ion-card-header>\n\n          <h1 color="canfind">{{10 - fotos.length}}</h1>\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <p>Fotos restantes para completar el perfil.</p>\n\n        </ion-card-content>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_servicio_servicio__["a" /* ServicioProvider */],
@@ -501,10 +501,6 @@ var ConfirmarFotoPage = /** @class */ (function () {
         this.direccion = "";
         this.direccionError = "";
         this.base64Image = navParams.get('data');
-        this.loading = this.loadingCtrl.create({
-            content: 'Localizando...',
-            dismissOnPageChange: true
-        });
     }
     ConfirmarFotoPage.prototype.ionViewDidLoad = function () {
         this.getPosition();
@@ -517,42 +513,45 @@ var ConfirmarFotoPage = /** @class */ (function () {
     };
     ConfirmarFotoPage.prototype.getPosition = function () {
         var _this = this;
-        this.loading.present();
+        var loader = this.loadingCtrl.create({
+            content: "Localizando...",
+            dismissOnPageChange: true
+        });
+        loader.present();
         this.geolocation.getCurrentPosition().then(function (resp) {
             _this.location = resp.coords.latitude + "," + resp.coords.longitude;
             _this.direccionError = "";
-            _this.getLocation(_this.location);
+            _this.getLocation(_this.location)
+                .subscribe(function (result) {
+                console.log(result);
+                _this.localizacionResult = result;
+                console.log(_this.localizacionResult);
+                if (_this.localizacionResult.status == "OK") {
+                    _this.direccion = _this.localizacionResult.results[0].address_components[1].long_name + " " + _this.localizacionResult.results[0].address_components[0].long_name + ", " + _this.localizacionResult.results[0].address_components[2].long_name;
+                }
+                else {
+                    _this.direccion = "No se pudo obtener la localización.";
+                }
+                loader.dismiss();
+            }, function (error) {
+                console.log(error);
+                loader.dismiss();
+            });
         }).catch(function (error) {
             _this.direccionError = "Por favor, activá la ubicación del dispositivo.";
             console.log('Error getting location', error);
-            _this.loading.dismiss();
+            loader.dismiss();
         });
     };
     ConfirmarFotoPage.prototype.cancelarFoto = function () {
         this.navCtrl.pop();
     };
     ConfirmarFotoPage.prototype.getLocation = function (pos) {
-        var _this = this;
-        this.service.getLocation(pos)
-            .subscribe(function (result) {
-            console.log(result);
-            _this.localizacionResult = result;
-            console.log(_this.localizacionResult);
-            if (_this.localizacionResult.status == "OK") {
-                _this.direccion = _this.localizacionResult.results[0].address_components[1].long_name + " " + _this.localizacionResult.results[0].address_components[0].long_name + ", " + _this.localizacionResult.results[0].address_components[2].long_name;
-            }
-            else {
-                _this.direccion = "No se pudo obtener la localización.";
-            }
-            _this.loading.dismiss();
-        }, function (error) {
-            console.log(error);
-            _this.loading.dismiss();
-        });
+        return this.service.getLocation(pos);
     };
     ConfirmarFotoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-confirmar-foto',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/'<!--\n\n  Generated template for the ConfirmarFotoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="barra">\n\n    <ion-title>Confirmar Foto</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <img (show)="base64Image !== \'\'" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)" />\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-card *ngIf="direccion != \'\'">\n\n        <ion-card-content>\n\n          La foto fue tomada en: <br />\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n      <ion-card *ngIf="direccionError != \'\'">\n\n        <ion-card-content>\n\n          La foto fue tomada en: <br />\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <ion-icon class="pull-right confirm-button" (click)="confirmarFoto()" name="checkmark-circle"></ion-icon>\n\n      </ion-col>\n\n      <ion-col>\n\n        <ion-icon class="cancel-button" (click)="cancelarFoto()" name="close-circle"></ion-icon>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/,
+            selector: 'page-confirmar-foto',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/'<!--\n\n  Generated template for the ConfirmarFotoPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="barra">\n\n    <ion-title>Confirmar Foto</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n  <ion-grid>\n\n    <ion-row>\n\n      <ion-col>\n\n        <img (show)="base64Image !== \'\'" [src]="domSanitizer.bypassSecurityTrustUrl(base64Image)" />\n\n      </ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-card *ngIf="direccion != \'\'">\n\n        <ion-card-content>\n\n          La foto fue tomada en: <br />\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n      <ion-card *ngIf="direccionError != \'\'">\n\n        <ion-card-content>\n\n          {{ direccion }}\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-row>\n\n    <ion-row>\n\n      <ion-col>\n\n        <ion-icon class="pull-right confirm-button" (click)="confirmarFoto()" name="checkmark-circle"></ion-icon>\n\n      </ion-col>\n\n      <ion-col>\n\n        <ion-icon class="cancel-button" (click)="cancelarFoto()" name="close-circle"></ion-icon>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\confirmar-foto\confirmar-foto.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
@@ -940,8 +939,7 @@ var ServicioProvider = /** @class */ (function () {
         this.base64 = base64;
         this.app = app;
         this.storage = storage;
-        // private URL_SERVER: string = "http://canfind.herokuapp.com";
-        this.URL_SERVER = "https://localhost:44357";
+        this.URL_SERVER = "http://canfind.herokuapp.com";
         this.pbaPost = new __WEBPACK_IMPORTED_MODULE_2__app_models_UserData__["a" /* UserData */]();
         this.resultadoWatson = new __WEBPACK_IMPORTED_MODULE_4__app_models_ResultadoWatson__["a" /* ResultadoWatson */]();
         this.usuarioLogueado = new __WEBPACK_IMPORTED_MODULE_6__app_models_Usuario__["a" /* Usuario */]();
@@ -966,23 +964,47 @@ var ServicioProvider = /** @class */ (function () {
                 });
                 loader.present();
                 //para el browser
-                this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
-                    idUsuario: idUsuario,
-                    imageURI: imageURI,
-                    localizacion: localizacion
-                })
-                    .subscribe(function (response) {
-                    loader.dismiss();
-                    _this.resultadoWatson = response;
-                    if (_this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
-                        _this.showAlertExito();
-                    }
-                    else {
-                        _this.showAlertError();
-                    }
-                }, function (error) {
-                    loader.dismiss();
-                    console.log(error);
+                // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+                //   idUsuario: idUsuario,
+                //   imageURI: imageURI,
+                //   localizacion: localizacion
+                // })
+                // .subscribe((response) => {
+                //   loader.dismiss();
+                //   this.resultadoWatson = response as ResultadoWatson;
+                //   if(this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+                //     this.showAlertExito();
+                //   }
+                //   else {
+                //     this.showAlertError();
+                //   }
+                // }, (error) => {
+                //   loader.dismiss();
+                //   console.log(error);
+                // });
+                //para el celular
+                this.base64.encodeFile(imageURI).then(function (base64File) {
+                    base64File = base64File.split(',')[1];
+                    _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
+                        idUsuario: idUsuario,
+                        imageURI: base64File,
+                        localizacion: localizacion
+                    })
+                        .subscribe(function (response) {
+                        loader.dismiss();
+                        _this.resultadoWatson = response;
+                        if (_this.resultadoWatson.images[0].classifiers[0].classes.length > 0) {
+                            _this.showAlertExito();
+                        }
+                        else {
+                            _this.showAlertError();
+                        }
+                    }, function (error) {
+                        loader.dismiss();
+                        console.log(error);
+                    });
+                }, function (err) {
+                    console.log(err);
                 });
                 return [2 /*return*/];
             });
@@ -1069,41 +1091,41 @@ var ServicioProvider = /** @class */ (function () {
             });
             loader.present();
             //esto es para el browser
-            _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', {
-                imageURI: imageURI,
-                idMascota: idMascota,
-                localizacion: "",
-                idUsuario: idUsuario
-            })
-                .subscribe(function (response) {
-                loader.dismiss();
-                var nav = _this.app.getActiveNav();
-                nav.pop();
-            }, function (error) {
-                loader.dismiss();
-                _this.showAlertErrorGenerico();
-                console.log(error);
-            });
-            //esto es para el celu
-            // this.base64.encodeFile(imageURI).then((base64File: string) => {
-            //   base64File = base64File.split(',')[1];
-            //   this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
-            //     imageURI: base64File,
-            //     idMascota: idMascota,
-            //     localizacion: "",
-            //     idUsuario: idUsuario
-            //   })
+            // this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
+            //   imageURI: imageURI,
+            //   idMascota: idMascota,
+            //   localizacion: "",
+            //   idUsuario: idUsuario
+            //  })
             //   .subscribe((response) => {
             //     loader.dismiss();
-            //     this.showAlertFotoAgregada();
+            //      let nav = this.app.getActiveNav();
+            //      nav.pop();
             //   }, (error) => {
-            //     loader.dismiss();
-            //     this.showAlertErrorGenerico();
-            //     console.log(error);
+            //      loader.dismiss();
+            //      this.showAlertErrorGenerico();
+            //      console.log(error);
             //   });
-            // }, (err) => {
-            //   console.log(err);
-            // });
+            //esto es para el celu
+            _this.base64.encodeFile(imageURI).then(function (base64File) {
+                base64File = base64File.split(',')[1];
+                _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', {
+                    imageURI: base64File,
+                    idMascota: idMascota,
+                    localizacion: "",
+                    idUsuario: idUsuario
+                })
+                    .subscribe(function (response) {
+                    loader.dismiss();
+                    _this.showAlertFotoAgregada();
+                }, function (error) {
+                    loader.dismiss();
+                    _this.showAlertErrorGenerico();
+                    console.log(error);
+                });
+            }, function (err) {
+                console.log(err);
+            });
         });
     };
     ServicioProvider.prototype.showAlertErrorGenerico = function () {
@@ -1621,11 +1643,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  */
 var PerfilMascotaPage = /** @class */ (function () {
     function PerfilMascotaPage(navCtrl, navParams, service, alertCtrl) {
-        var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.service = service;
         this.alertCtrl = alertCtrl;
+    }
+    PerfilMascotaPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
         this.idMascota = this.navParams.get("idMascota");
         this.service.traerMascota(this.idMascota)
             .subscribe(function (result) {
@@ -1641,9 +1665,6 @@ var PerfilMascotaPage = /** @class */ (function () {
         }, function (error) {
             console.log(error);
         });
-    }
-    PerfilMascotaPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad PerfilMascotaPage');
     };
     PerfilMascotaPage.prototype.IrAFotos = function (idMascota) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__fotos_mascota_fotos_mascota__["a" /* FotosMascotaPage */], {
