@@ -7,7 +7,7 @@ webpackJsonp([1],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AgregaMascotaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_models_MascotaNueva__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_models_MascotaNueva__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_servicio_servicio__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mis_mascotas_mis_mascotas__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(32);
@@ -128,7 +128,7 @@ webpackEmptyAsyncContext.id = 119;
 
 var map = {
 	"../pages/agrega-mascota/agrega-mascota.module": [
-		299,
+		300,
 		0
 	]
 };
@@ -194,12 +194,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var FotosMascotaPage = /** @class */ (function () {
-    function FotosMascotaPage(navCtrl, service, camera, storage, navParams) {
+    function FotosMascotaPage(navCtrl, service, camera, storage, navParams, loadingCtrl, alertCtrl) {
         this.navCtrl = navCtrl;
         this.service = service;
         this.camera = camera;
         this.storage = storage;
         this.navParams = navParams;
+        this.loadingCtrl = loadingCtrl;
+        this.alertCtrl = alertCtrl;
         this.fotos = [];
         this.base64Image = "";
         this.idMascota = navParams.get("idMascota");
@@ -248,6 +250,12 @@ var FotosMascotaPage = /** @class */ (function () {
         });
     };
     FotosMascotaPage.prototype.entrenarIA = function () {
+        var _this = this;
+        var loader = this.loadingCtrl.create({
+            content: "Entrenando...",
+            dismissOnPageChange: true
+        });
+        loader.present();
         var imageUris = [];
         this.fotos.forEach(function (value) {
             imageUris.push('http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/' + value + '.jpg');
@@ -255,19 +263,53 @@ var FotosMascotaPage = /** @class */ (function () {
         this.service.crearClaseWatson(this.idMascota, this.mascota, imageUris)
             .subscribe(function (result) {
             console.log(result);
+            loader.dismiss();
+            _this.showAlertExito();
         }, function (error) {
             console.log(error);
+            loader.dismiss();
+            _this.showAlertError();
         });
+    };
+    FotosMascotaPage.prototype.showAlertExito = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: '¡Tu mascota ya está entrenada!',
+            subTitle: 'Ahora podremos encontrarla con facilidad.',
+            buttons: [{
+                    text: 'OK',
+                    handler: function () {
+                        _this.navCtrl.pop();
+                    }
+                }]
+        });
+        alert.present();
+    };
+    FotosMascotaPage.prototype.showAlertError = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: 'Ocurrió un error.',
+            subTitle: '',
+            buttons: [{
+                    text: 'OK',
+                    handler: function () {
+                        _this.navCtrl.pop();
+                    }
+                }]
+        });
+        alert.present();
     };
     FotosMascotaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n\n\n    \n\n      <ion-row justify-content-center *ngIf="fotos.length == 0">\n\n        <ion-spinner name="dots"></ion-spinner>\n\n      </ion-row>\n\n    \n\n    \n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-grid>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button *ngIf="fotos.length < 10" round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n            </button>\n\n            <button *ngIf="fotos.length == 10 && !claseEntrenada" round ion-button block color="primary" (click)="entrenarIA();"> Entrenar IA\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n\n\n      <!-- <ion-grid *ngIf="fotos.length < 10">\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <p>Total de fotos para completar el perfil:</p>\n\n            <h1><span>{{10 - fotos.length}}</span></h1>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid> -->\n\n\n\n    <ion-card *ngIf="fotos.length < 10">\n\n        <ion-card-header>\n\n          <h1 color="canfind">{{10 - fotos.length}}</h1>\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <p>Fotos restantes para completar el perfil.</p>\n\n        </ion-card-content>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
+            selector: 'page-fotos-mascota',template:/*ion-inline-start:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/'<!--\n\n  Generated template for the FotosMascotaPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n\n\n<ion-header>\n\n  <ion-navbar color="barra">\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>Fotos de {{ mascota }}</ion-title>\n\n    <ion-buttons end>\n\n        <img class="imagenLogo" src="{{imagepath || \'assets/imgs/logo.png\'}}" />\n\n      </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding class="backgroundGeneral">\n\n\n\n    \n\n      <ion-row justify-content-center *ngIf="fotos.length == 0">\n\n        <ion-spinner name="dots"></ion-spinner>\n\n      </ion-row>\n\n    \n\n    \n\n    <ion-card *ngFor="let item of fotos">\n\n          <ion-card-content>\n\n            <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />\n\n          </ion-card-content>\n\n    </ion-card>\n\n\n\n    <ion-grid>\n\n        <ion-row>\n\n          <ion-col col-12>\n\n            <button round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto\n\n            </button>\n\n            <button *ngIf="fotos.length >= 10 && !claseEntrenada" round ion-button block color="primary" (click)="entrenarIA();"> Entrenar IA\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n    </ion-grid>\n\n\n\n    <ion-card *ngIf="fotos.length < 10">\n\n        <ion-card-header>\n\n          <h1 color="canfind">{{10 - fotos.length}}</h1>\n\n        </ion-card-header>\n\n        <ion-card-content>\n\n            <p>Fotos restantes para completar el perfil.</p>\n\n        </ion-card-content>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\src\pages\fotos-mascota\fotos-mascota.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_servicio_servicio__["a" /* ServicioProvider */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_camera__["a" /* Camera */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], FotosMascotaPage);
     return FotosMascotaPage;
 }());
@@ -473,6 +515,7 @@ var EncontrePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_servicio_servicio__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_geocoder__ = __webpack_require__(210);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -488,8 +531,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ConfirmarFotoPage = /** @class */ (function () {
-    function ConfirmarFotoPage(navCtrl, navParams, domSanitizer, service, storage, geolocation, loadingCtrl) {
+    function ConfirmarFotoPage(navCtrl, navParams, domSanitizer, service, storage, geolocation, loadingCtrl, nativeGeocoder) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.domSanitizer = domSanitizer;
@@ -497,6 +541,7 @@ var ConfirmarFotoPage = /** @class */ (function () {
         this.storage = storage;
         this.geolocation = geolocation;
         this.loadingCtrl = loadingCtrl;
+        this.nativeGeocoder = nativeGeocoder;
         this.direccion = "";
         this.direccionError = "";
         this.base64Image = navParams.get('data');
@@ -520,22 +565,8 @@ var ConfirmarFotoPage = /** @class */ (function () {
         this.geolocation.getCurrentPosition().then(function (resp) {
             _this.location = resp.coords.latitude + "," + resp.coords.longitude;
             _this.direccionError = "";
-            _this.getLocation(_this.location)
-                .subscribe(function (result) {
-                console.log(result);
-                _this.localizacionResult = result;
-                console.log(_this.localizacionResult);
-                if (_this.localizacionResult.status == "OK") {
-                    _this.direccion = _this.localizacionResult.results[0].address_components[1].long_name + " " + _this.localizacionResult.results[0].address_components[0].long_name + ", " + _this.localizacionResult.results[0].address_components[2].long_name;
-                }
-                else {
-                    _this.direccion = "No se pudo obtener la localización.";
-                }
-                loader.dismiss();
-            }, function (error) {
-                console.log(error);
-                loader.dismiss();
-            });
+            _this.getLocation(resp.coords.latitude, resp.coords.longitude);
+            loader.present();
         }).catch(function (error) {
             _this.direccionError = "Por favor, activá la ubicación del dispositivo.";
             console.log('Error getting location', error);
@@ -545,8 +576,21 @@ var ConfirmarFotoPage = /** @class */ (function () {
     ConfirmarFotoPage.prototype.cancelarFoto = function () {
         this.navCtrl.pop();
     };
-    ConfirmarFotoPage.prototype.getLocation = function (pos) {
-        return this.service.getLocation(pos);
+    ConfirmarFotoPage.prototype.getLocation = function (lat, lon) {
+        var _this = this;
+        var options = {
+            useLocale: true,
+            maxResults: 1
+        };
+        this.nativeGeocoder.reverseGeocode(lat, lon, options)
+            .then(function (result) {
+            console.log(JSON.stringify(result[0]));
+            _this.direccion = result[0].thoroughfare + " " + result[0].subThoroughfare + ", " + result[0].locality;
+        })
+            .catch(function (error) {
+            console.log(error);
+            _this.direccion = "No se pudo obtener la localización.";
+        });
     };
     ConfirmarFotoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -558,7 +602,8 @@ var ConfirmarFotoPage = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_3__providers_servicio_servicio__["a" /* ServicioProvider */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__["a" /* Geolocation */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_native_geocoder__["a" /* NativeGeocoder */]])
     ], ConfirmarFotoPage);
     return ConfirmarFotoPage;
 }());
@@ -567,15 +612,15 @@ var ConfirmarFotoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 210:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hello_ionic_hello_ionic__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_google_plus__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hello_ionic_hello_ionic__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_google_plus__ = __webpack_require__(213);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_models_UserData__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_servicio_servicio__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -648,7 +693,7 @@ var LoginPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 211:
+/***/ 212:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -754,7 +799,7 @@ var HelloIonicPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 214:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -806,7 +851,7 @@ var EditProfilePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 215:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -844,13 +889,13 @@ var ItemDetailsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 216:
+/***/ 217:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(238);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -867,7 +912,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_models_UserData__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_models_ResultadoWatson__ = __webpack_require__(268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_models_ResultadoWatson__ = __webpack_require__(269);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_base64__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_models_Usuario__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(32);
@@ -966,7 +1011,7 @@ var ServicioProvider = /** @class */ (function () {
                 // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
                 //   idUsuario: idUsuario,
                 //   imageURI: imageURI,
-                //   localizacion: "prueba"
+                //   localizacion: localizacion
                 // })
                 // .subscribe((response) => {
                 //   loader.dismiss();
@@ -987,7 +1032,7 @@ var ServicioProvider = /** @class */ (function () {
                     _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
                         idUsuario: idUsuario,
                         imageURI: base64File,
-                        localizacion: "prueba"
+                        localizacion: localizacion
                     })
                         .subscribe(function (response) {
                         loader.dismiss();
@@ -1093,7 +1138,7 @@ var ServicioProvider = /** @class */ (function () {
             // this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
             //   imageURI: imageURI,
             //   idMascota: idMascota,
-            //   localizacion: "prueba",
+            //   localizacion: "",
             //   idUsuario: idUsuario
             //  })
             // .subscribe((response) => {
@@ -1111,7 +1156,7 @@ var ServicioProvider = /** @class */ (function () {
                 _this.http.post(_this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', {
                     imageURI: base64File,
                     idMascota: idMascota,
-                    localizacion: "prueba",
+                    localizacion: "",
                     idUsuario: idUsuario
                 })
                     .subscribe(function (response) {
@@ -1182,9 +1227,6 @@ var ServicioProvider = /** @class */ (function () {
     ServicioProvider.prototype.traerRazas = function () {
         return this.http.get(this.URL_SERVER + '/api/Mascota/TraerRazas/');
     };
-    ServicioProvider.prototype.getLocation = function (pos) {
-        return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos + '&key=AIzaSyDR4UkFnDchql4WRvuv48FFS9X7A0mXsjw');
-    };
     ServicioProvider.prototype.crearClaseWatson = function (idMascota, nombreMascota, imagenes) {
         return this.http.post(this.URL_SERVER + '/api/ImagenMascota/CrearClaseWatson', {
             "IdMascota": idMascota,
@@ -1208,7 +1250,7 @@ var ServicioProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 237:
+/***/ 238:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1216,36 +1258,38 @@ var ServicioProvider = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_hello_ionic_hello_ionic__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_item_details_item_details__ = __webpack_require__(215);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_list_list__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_hello_ionic_hello_ionic__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_item_details_item_details__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_list_list__ = __webpack_require__(296);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_encontre_encontre__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_edit_profile_edit_profile__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_edit_profile_edit_profile__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_confirmar_foto_confirmar_foto__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_mis_mascotas_mis_mascotas__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_perfil_mascota_perfil_mascota__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_fotos_mascota_fotos_mascota__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_ver_consulta_ver_consulta__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_agrega_mascota_agrega_mascota__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_splash_screen__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_splash_screen__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_camera__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_base64__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_common_http__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_servicio_servicio__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_facebook__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_facebook__ = __webpack_require__(297);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_storage__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_google_plus__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_file_transfer__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_file__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ionic_native_google_plus__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ionic_native_file_transfer__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__ionic_native_file__ = __webpack_require__(299);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__ionic_native_geolocation__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__ionic_native_native_geocoder__ = __webpack_require__(210);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1330,7 +1374,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_24__ionic_native_file_transfer__["a" /* FileTransfer */],
                 __WEBPACK_IMPORTED_MODULE_24__ionic_native_file_transfer__["b" /* FileTransferObject */],
                 __WEBPACK_IMPORTED_MODULE_25__ionic_native_file__["a" /* File */],
-                __WEBPACK_IMPORTED_MODULE_26__ionic_native_geolocation__["a" /* Geolocation */]
+                __WEBPACK_IMPORTED_MODULE_26__ionic_native_geolocation__["a" /* Geolocation */],
+                __WEBPACK_IMPORTED_MODULE_27__ionic_native_native_geocoder__["a" /* NativeGeocoder */]
             ]
         })
     ], AppModule);
@@ -1341,7 +1386,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 262:
+/***/ 263:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1356,7 +1401,7 @@ var MascotaNueva = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 268:
+/***/ 269:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1371,7 +1416,7 @@ var ResultadoWatson = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 294:
+/***/ 295:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1379,10 +1424,10 @@ var ResultadoWatson = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_encontre_encontre__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_login_login__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_login_login__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_edit_profile_edit_profile__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_edit_profile_edit_profile__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_mis_mascotas_mis_mascotas__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1465,7 +1510,7 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 295:
+/***/ 296:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1473,7 +1518,7 @@ var MyApp = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_details_item_details__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_details_item_details__ = __webpack_require__(216);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1580,16 +1625,12 @@ var MisMascotasPage = /** @class */ (function () {
         this.consultando = true;
         this.storage.get("idUsuarioLogueado").then(function (data) {
             _this.idUsuarioLogueado = data;
-            _this.service.traerMascotas(_this.idUsuarioLogueado)
-                .subscribe(function (result) {
-                _this.misMascotas = result;
-                console.log(result);
-                _this.consultando = false;
-            }, function (error) {
-                console.log(error);
-            });
+            _this.consultarMascotas();
         });
     }
+    MisMascotasPage.prototype.ionViewWillEnter = function () {
+        this.consultarMascotas();
+    };
     MisMascotasPage.prototype.irAPerfil = function (idMascota) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__perfil_mascota_perfil_mascota__["a" /* PerfilMascotaPage */], {
             idMascota: idMascota
@@ -1597,6 +1638,17 @@ var MisMascotasPage = /** @class */ (function () {
     };
     MisMascotasPage.prototype.agregarMascota = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__agrega_mascota_agrega_mascota__["a" /* AgregaMascotaPage */], {});
+    };
+    MisMascotasPage.prototype.consultarMascotas = function () {
+        var _this = this;
+        this.service.traerMascotas(this.idUsuarioLogueado)
+            .subscribe(function (result) {
+            _this.misMascotas = result;
+            console.log(result);
+            _this.consultando = false;
+        }, function (error) {
+            console.log(error);
+        });
     };
     MisMascotasPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -1704,7 +1756,7 @@ var PerfilMascotaPage = /** @class */ (function () {
     PerfilMascotaPage.prototype.consultar = function () {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ver_consulta_ver_consulta__["a" /* VerConsultaPage */], {
             nombre: this.nombre,
-            raza: "canichetoyclass"
+            raza: this.descripcionRaza
         });
     };
     PerfilMascotaPage.prototype.showAlertEncontrado = function (idMascota) {
@@ -1746,5 +1798,5 @@ var PerfilMascotaPage = /** @class */ (function () {
 
 /***/ })
 
-},[216]);
+},[217]);
 //# sourceMappingURL=main.js.map

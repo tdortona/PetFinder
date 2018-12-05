@@ -50,6 +50,9 @@
     },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.petfinder.iashley"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "com.petfinder.iashley"
     }
   },
   "dependent_plugins": {

@@ -28,6 +28,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Geolocation } from '@ionic-native/geolocation';
+import { NativeGeocoder } from '@ionic-native/native-geocoder';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     FileTransfer,
     FileTransferObject,
     File,
-    Geolocation
+    Geolocation,
+    NativeGeocoder
   ]
 })
 export class AppModule {}

@@ -11,10 +11,10 @@ INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetF
 	android:name
 		ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:12:127-180
 manifest
-ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
+ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-27:12
 MERGED from [com.facebook.android:facebook-android-sdk:4.37.0] C:\Users\tomasdo\.gradle\caches\transforms-1\files-1.1\facebook-android-sdk-4.37.0.aar\8ef4ddcf5f08e08e802cf0b6366de411\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-login:4.37.0] C:\Users\tomasdo\.gradle\caches\transforms-1\files-1.1\facebook-login-4.37.0.aar\ad7b8745077e3925ade6d489c7dcb1cd\AndroidManifest.xml:21:1-31:12
 MERGED from [com.facebook.android:facebook-share:4.37.0] C:\Users\tomasdo\.gradle\caches\transforms-1\files-1.1\facebook-share-4.37.0.aar\efbb6c7a1862f9f6b2c2f4f39c32688f\AndroidManifest.xml:21:1-31:12
@@ -53,9 +53,9 @@ MERGED from [com.google.android.gms:play-services-base-license:11.8.0] C:\Users\
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] C:\Users\tomasdo\.gradle\caches\transforms-1\files-1.1\play-services-basement-license-11.8.0.aar\18701aba2b9ec98fe1075d3107731c89\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] C:\Users\tomasdo\.gradle\caches\transforms-1\files-1.1\play-services-tasks-license-11.8.0.aar\3b13d5f80d850f0543b7162bf5507557\AndroidManifest.xml:2:1-6:12
 MERGED from [android.arch.core:runtime:1.1.0] C:\Users\tomasdo\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\ef49e7a28aafe18cd544143b12049948\AndroidManifest.xml:17:1-22:12
-INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
-INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-27:12
+INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:1-27:12
 	package
 		ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:2:98-129
 		INJECTED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml
@@ -300,6 +300,10 @@ uses-permission#android.permission.USE_CREDENTIALS
 ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:25:5-74
 	android:name
 		ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:25:22-71
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:26:5-79
+	android:name
+		ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:26:22-76
 meta-data#android.support.FILE_PROVIDER_PATHS
 ADDED from C:\Users\tomasdo\Desktop\Universidad\Proyecto Final\PetFinder\PetFinder\platforms\android\app\src\main\AndroidManifest.xml:13:13-123
 	android:resource

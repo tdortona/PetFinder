@@ -31,17 +31,13 @@ export class MisMascotasPage {
       this.consultando = true;
       this.storage.get("idUsuarioLogueado").then((data)=>{
         this.idUsuarioLogueado = data;
-
-        this.service.traerMascotas(this.idUsuarioLogueado)
-        .subscribe((result) => { 
-            this.misMascotas = result as Array<Mascota>;
-            console.log(result);
-            this.consultando = false;
-        }, (error) => {
-          console.log(error);
-        });
+        this.consultarMascotas();
       });
    }
+
+  ionViewWillEnter() {
+    this.consultarMascotas();
+  }
 
   irAPerfil(idMascota: number){
     this.navCtrl.push(PerfilMascotaPage, { 
@@ -52,5 +48,16 @@ export class MisMascotasPage {
   agregarMascota(){
       this.navCtrl.push(AgregaMascotaPage, { 
     })
+  }
+
+  consultarMascotas() {
+    this.service.traerMascotas(this.idUsuarioLogueado)
+    .subscribe((result) => { 
+        this.misMascotas = result as Array<Mascota>;
+        console.log(result);
+        this.consultando = false;
+    }, (error) => {
+      console.log(error);
+    });
   }
 }

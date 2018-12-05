@@ -5,6 +5,7 @@ import { ServicioProvider } from '../../providers/servicio/servicio';
 import { Storage } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GeoResult } from '../../app/models/GeoResult/GeoResult';
+import { NativeGeocoder, NativeGeocoderReverseResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder';
 
 @Component({
   selector: 'page-confirmar-foto',
@@ -23,7 +24,8 @@ export class ConfirmarFotoPage {
               private service: ServicioProvider,
               public storage: Storage,
               public geolocation: Geolocation,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              private nativeGeocoder: NativeGeocoder) {
     this.base64Image = navParams.get('data');
 
   }
@@ -47,22 +49,8 @@ export class ConfirmarFotoPage {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.location = resp.coords.latitude + "," + resp.coords.longitude;
       this.direccionError = "";
-      this.getLocation(this.location)
-      .subscribe((result) => {
-        console.log(result);
-        this.localizacionResult = result as GeoResult;
-        console.log(this.localizacionResult);
-        if(this.localizacionResult.status == "OK") {
-          this.direccion = this.localizacionResult.results[0].address_components[1].long_name + " " + this.localizacionResult.results[0].address_components[0].long_name + ", " + this.localizacionResult.results[0].address_components[2].long_name;
-        }
-        else {
-          this.direccion = "No se pudo obtener la localización.";
-        }
-        loader.dismiss();
-      }, (error) => {
-        console.log(error);
-        loader.dismiss();
-      });
+      this.getLocation(resp.coords.latitude, resp.coords.longitude);
+      loader.present();
      }).catch((error) => {
        this.direccionError = "Por favor, activá la ubicación del dispositivo.";
        console.log('Error getting location', error);
@@ -74,7 +62,20 @@ export class ConfirmarFotoPage {
     this.navCtrl.pop();
   }
 
-  getLocation(pos: string) {
-    return this.service.getLocation(pos);
+  getLocation(lat: number, lon: number) {
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 1
+    };
+  
+    this.nativeGeocoder.reverseGeocode(lat, lon, options)
+      .then((result: NativeGeocoderReverseResult[]) =>{
+        console.log(JSON.stringify(result[0]));
+        this.direccion = result[0].thoroughfare + " " + result[0].subThoroughfare + ", " + result[0].locality;
+      })
+      .catch((error: any) =>{
+        console.log(error);
+        this.direccion = "No se pudo obtener la localización.";
+      });
   }
 }

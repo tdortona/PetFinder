@@ -60,7 +60,7 @@ export class ServicioProvider {
     // this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
     //   idUsuario: idUsuario,
     //   imageURI: imageURI,
-    //   localizacion: "prueba"
+    //   localizacion: localizacion
     // })
     // .subscribe((response) => {
     //   loader.dismiss();
@@ -82,7 +82,7 @@ export class ServicioProvider {
       this.http.post(this.URL_SERVER + '/api/ImagenMascota/FotoEncontrado', {
         idUsuario: idUsuario,
         imageURI: base64File,
-        localizacion: "prueba"
+        localizacion: localizacion
       })
       .subscribe((response) => {
         loader.dismiss();
@@ -192,7 +192,7 @@ export class ServicioProvider {
         // this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
         //   imageURI: imageURI,
         //   idMascota: idMascota,
-        //   localizacion: "prueba",
+        //   localizacion: "",
         //   idUsuario: idUsuario
         //  })
         // .subscribe((response) => {
@@ -211,7 +211,7 @@ export class ServicioProvider {
           this.http.post(this.URL_SERVER + '/api/ImagenMascota/AgregarFoto', { 
             imageURI: base64File,
             idMascota: idMascota,
-            localizacion: "prueba",
+            localizacion: "",
             idUsuario: idUsuario
           })
           .subscribe((response) => {
@@ -290,10 +290,6 @@ export class ServicioProvider {
 
   public traerRazas(){
     return this.http.get(this.URL_SERVER +'/api/Mascota/TraerRazas/')
-  }
-
-  public getLocation(pos: string) {
-    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos + '&key=AIzaSyDR4UkFnDchql4WRvuv48FFS9X7A0mXsjw');
   }
 
   public crearClaseWatson(idMascota: number, nombreMascota: string, imagenes: string[]) {

@@ -88,7 +88,7 @@ export class PerfilMascotaPage {
   consultar() {
     this.navCtrl.push(VerConsultaPage, {
       nombre: this.nombre,
-      raza: "canichetoyclass"
+      raza: this.descripcionRaza
     });
   }
 

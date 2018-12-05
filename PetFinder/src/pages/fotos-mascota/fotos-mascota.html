@@ -34,22 +34,13 @@
     <ion-grid>
         <ion-row>
           <ion-col col-12>
-            <button *ngIf="fotos.length < 10" round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto
+            <button round ion-button block color="secondary" (click)="agregarFotoMascota();"> Agregar Foto
             </button>
-            <button *ngIf="fotos.length == 10 && !claseEntrenada" round ion-button block color="primary" (click)="entrenarIA();"> Entrenar IA
+            <button *ngIf="fotos.length >= 10 && !claseEntrenada" round ion-button block color="primary" (click)="entrenarIA();"> Entrenar IA
             </button>
           </ion-col>
         </ion-row>
     </ion-grid>
-
-      <!-- <ion-grid *ngIf="fotos.length < 10">
-        <ion-row>
-          <ion-col col-12>
-            <p>Total de fotos para completar el perfil:</p>
-            <h1><span>{{10 - fotos.length}}</span></h1>
-          </ion-col>
-        </ion-row>
-      </ion-grid> -->
 
     <ion-card *ngIf="fotos.length < 10">
         <ion-card-header>
