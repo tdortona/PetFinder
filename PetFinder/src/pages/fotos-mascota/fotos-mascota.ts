@@ -21,6 +21,7 @@ export class FotosMascotaPage {
   idMascota: number;
   base64Image: string = "";
   entrenado: number;
+  claseEntrenada: boolean;
 
   constructor(
     public navCtrl: NavController, 
@@ -30,7 +31,9 @@ export class FotosMascotaPage {
     public navParams: NavParams) {
     
     this.idMascota = navParams.get("idMascota");
+    this.mascota = navParams.get("nombreMascota");
     this.entrenado = navParams.get("entrenado");
+    this.claseEntrenada = navParams.get("claseEntrenada");
     this.traerImagenesMascotas(this.idMascota);
   }
 
@@ -48,8 +51,10 @@ export class FotosMascotaPage {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      targetWidth: 720,
+      correctOrientation: true
     }
     
     this.camera.getPicture(options).then((imageData) => {
@@ -69,9 +74,19 @@ export class FotosMascotaPage {
     }, (err) => {
       // Handle error
       console.log(err);
-    });
-    
+    });    
+  }
 
-    
+  entrenarIA() {
+    let imageUris = [];
+    this.fotos.forEach(function (value) {
+      imageUris.push('http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/' + value + '.jpg');
+    });
+    this.service.crearClaseWatson(this.idMascota, this.mascota, imageUris)
+    .subscribe((result) => {
+      console.log(result);
+    }, (error) => {
+      console.log(error);
+    });
   }
 }

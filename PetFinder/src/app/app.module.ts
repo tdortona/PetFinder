@@ -27,7 +27,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -77,7 +77,8 @@ import { File } from '@ionic-native/file';
     GooglePlus,
     FileTransfer,
     FileTransferObject,
-    File
+    File,
+    Geolocation
   ]
 })
 export class AppModule {}

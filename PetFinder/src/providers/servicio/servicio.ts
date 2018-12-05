@@ -49,7 +49,7 @@ export class ServicioProvider {
              });
   }
 
-  public async enviarFotoEncontradoAWatson(imageURI: string, idUsuario: number) {  
+  public async enviarFotoEncontradoAWatson(imageURI: string, idUsuario: number, localizacion: string) {  
     let loader = this.loadingCtrl.create({
       content: "Cargando...",
       dismissOnPageChange: true
@@ -150,7 +150,7 @@ export class ServicioProvider {
     return this.http.get(this.URL_SERVER + '/api/Usuario/GetUsuarioContacto/' + idUsuario);
   }
 
-  showAlertExito(clase: string, score: number) {
+  showAlertExito() {
     const alert = this.alertCtrl.create({
       title: '¡Ya recibimos tu foto!',
       subTitle: 'Gracias por colaborar con CanFind.',
@@ -168,7 +168,7 @@ export class ServicioProvider {
   showAlertError() {
     const alert = this.alertCtrl.create({
       title: '¡Ya recibimos tu foto!',
-      subTitle: 'Gracias por colaborar con CanFind.',
+      subTitle: 'Gracias por colaborar con CanFind. Por el momento no encontramos un resultado, podés probar con otra foto.',
       buttons: [{
         text: 'OK',
         handler: () => {
@@ -183,7 +183,7 @@ export class ServicioProvider {
    agregarFotoMascota(imageURI: string, idMascota: number, idUsuario: number){
       return new Promise((resolve, reject) => {
         let loader = this.loadingCtrl.create({
-          content: "Agregando mascota...",
+          content: "Agregando foto...",
           dismissOnPageChange: true
         });
 
@@ -230,6 +230,36 @@ export class ServicioProvider {
       });//fin de Promise 
   }
   
+  showAlertErrorGenerico() {
+    const alert = this.alertCtrl.create({
+      title: 'Ocurrió un error :(',
+      subTitle: '',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          let nav = this.app.getActiveNav();
+          nav.pop();
+        }
+      }]
+    });
+    alert.present();
+  }
+
+  showAlertFotoAgregada() {
+    const alert = this.alertCtrl.create({
+      title: '¡Foto agregada con éxito!',
+      subTitle: '',
+      buttons: [{
+        text: 'OK',
+        handler: () => {
+          let nav = this.app.getActiveNav();
+          nav.pop();
+        }
+      }]
+    });
+    alert.present();
+  }
+
   public traerMascotas(id: number){
     return this.http.get(this.URL_SERVER +'/api/Usuario/TraerMisMascotas/'+id)
   }
@@ -247,7 +277,7 @@ export class ServicioProvider {
   }
 
   public traerImagenMascota(idMascota: number){
-    return this.http.get(this.URL_SERVER + '/api/ImagenMascota/TraerFotos/'+idMascota);
+    return this.http.get(this.URL_SERVER + '/api/ImagenMascota/TraerFotos/' + idMascota);
   }
   
   public agregaMascota(mascota: MascotaNueva){
@@ -260,5 +290,17 @@ export class ServicioProvider {
 
   public traerRazas(){
     return this.http.get(this.URL_SERVER +'/api/Mascota/TraerRazas/')
-  } 
+  }
+
+  public getLocation(pos: string) {
+    return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + pos + '&key=AIzaSyDR4UkFnDchql4WRvuv48FFS9X7A0mXsjw');
+  }
+
+  public crearClaseWatson(idMascota: number, nombreMascota: string, imagenes: string[]) {
+    return this.http.post(this.URL_SERVER + '/api/ImagenMascota/CrearClaseWatson', {
+      "IdMascota": idMascota,
+      "NombreMascota": nombreMascota,
+      "ImagesUris": imagenes
+    });
+  }
 }

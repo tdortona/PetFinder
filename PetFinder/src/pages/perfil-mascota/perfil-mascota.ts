@@ -24,6 +24,7 @@ export class PerfilMascotaPage {
   avatar: string;
   perdida: boolean;
   entrenado: number;
+  claseEntrenada: boolean;
 
   constructor(
     public navCtrl: NavController, 
@@ -41,6 +42,7 @@ export class PerfilMascotaPage {
           this.perdida = mascotaResult.perdida;
           this.avatar = mascotaResult.avatar;
           this.entrenado = mascotaResult.entrenado;
+          this.claseEntrenada = mascotaResult.claseEntrenada;
           console.log(result);
       }, (error) => {
         console.log(error);
@@ -54,7 +56,9 @@ export class PerfilMascotaPage {
   IrAFotos(idMascota: number){
     this.navCtrl.push(FotosMascotaPage, {
       idMascota: idMascota,
-      entrenado: this.entrenado
+      nombreMascota: this.nombre,
+      entrenado: this.entrenado,
+      claseEntrenada: this.claseEntrenada
     })
   }
 

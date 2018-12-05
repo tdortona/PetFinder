@@ -12,4 +12,6 @@ export class Mascota {
     public avatar: string;
 
     public entrenado: number;
+
+    public claseEntrenada: boolean;
 }

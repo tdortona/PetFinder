@@ -73,6 +73,7 @@ export class AgregaMascotaPage {
               }
             }]
           });
+          alert.present();
           console.log(error);
           alert.present();
       })
