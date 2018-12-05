@@ -23,8 +23,12 @@
         <ion-slides>
             <ion-slide *ngFor = "let slide of slides">
               <ion-card>
-              <p [innerHTML]="slide.title"></p>
-              <img [src]="slide.image" />
+                
+                  <p [innerHTML]="slide.title"></p>
+                  <ion-row justify-content-center>
+                    <img [src]="slide.image" />
+                  </ion-row>
+                
               </ion-card>
             </ion-slide>
         </ion-slides> 

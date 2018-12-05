@@ -25,6 +25,7 @@ export class VerConsultaPage {
   resultados: Array<ResultadoBusqueda> = [];
   usuarioContacto: ContactarUsuario;
   consultaRealizada: boolean = false;
+  consultando: boolean = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -37,24 +38,22 @@ export class VerConsultaPage {
   }
 
   consultar() {
+    this.consultando = true;
+    this.filtroNombre = "";
     if(this.chkNombre) {
       this.filtroNombre = this.navParams.get("nombre");
     }
-    else {
-      this.filtroNombre = "";
-    }
-
+    
+    this.filtroRaza = "";
     if(this.chkRaza) {
       this.filtroRaza = this.navParams.get("raza");
-    }
-    else {
-      this.filtroRaza = "";
     }
 
     this.servicio.verConsulta(this.filtroRaza, this.filtroNombre, this.filtroScore)
     .subscribe((result) => {
       console.log(result);
       this.resultados = result as Array<ResultadoBusqueda>;
+      this.consultando = false;
     }, (error) => {
       console.log(error);
       this.resultados = [];

@@ -17,6 +17,9 @@
 
 
 <ion-content padding class="backgroundGeneral">
+    <ion-row justify-content-center *ngIf="idMascota == null">
+      <ion-spinner name="dots"></ion-spinner>
+    </ion-row>
   <ion-grid>
     <ion-card>
       <div id="imagen-perfil" class="row">
@@ -26,7 +29,7 @@
           <br>
           <div *ngIf="entrenado < 10">
             <h3><ion-badge color="danger">Perfil incompleto</ion-badge></h3>
-            <p>Debes agregar fotos de tu mascota para mejorar las probabilidades de reconocerla por la I.A.</p>
+            <p>Agrega mas fotos para reconocer mejor a {{nombre}}.</p>
           </div>
         </div>
         <div class="col">

@@ -18,8 +18,9 @@ import { AgregaMascotaPage } from '../agrega-mascota/agrega-mascota';
   templateUrl: 'mis-mascotas.html',
 })
 export class MisMascotasPage {
-  misMascotas: Mascota[];
+  misMascotas: Mascota[] = [];
   idUsuarioLogueado: number;
+  consultando: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -27,7 +28,7 @@ export class MisMascotasPage {
     private service: ServicioProvider,
     public storage: Storage
     ) {
- 
+      this.consultando = true;
       this.storage.get("idUsuarioLogueado").then((data)=>{
         this.idUsuarioLogueado = data;
 
@@ -35,6 +36,7 @@ export class MisMascotasPage {
         .subscribe((result) => { 
             this.misMascotas = result as Array<Mascota>;
             console.log(result);
+            this.consultando = false;
         }, (error) => {
           console.log(error);
         });

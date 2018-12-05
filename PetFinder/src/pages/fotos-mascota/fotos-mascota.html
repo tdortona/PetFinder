@@ -22,6 +22,11 @@
 <ion-content padding class="backgroundGeneral">
 
     
+      <ion-row justify-content-center *ngIf="fotos.length == 0">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-row>
+    
+    
     <ion-card *ngFor="let item of fotos">
           <ion-card-content>
             <img src="http://criaderononthue.com/img/canfind/controllers/resources/Img/Mascotas/{{ item }}.jpg" />
